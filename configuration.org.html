@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.43 in css mode. -->
+<html>
+  <head>
+    <title>configuration.org</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #333333;
+        background-color: #F6F6EF;
+      }
+      .builtin {
+        /* font-lock-builtin-face */
+        color: #006FE0;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #8D8D84;
+        font-style: italic;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: #8D8D84;
+      }
+      .constant {
+        /* font-lock-constant-face */
+        color: #D0372D;
+      }
+      .css-property {
+        /* css-property */
+        color: #00AA00;
+      }
+      .css-selector {
+        /* css-selector */
+        color: #0000ff;
+        font-weight: bold;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #006699;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #0000FF;
+      }
+      .org-block-begin-line {
+        /* org-block-begin-line */
+        color: #555555;
+        background-color: #E2E1D5;
+        text-decoration: underline;
+      }
+      .org-block-end-line {
+        /* org-block-end-line */
+        color: #555555;
+        background-color: #E2E1D5;
+        text-decoration: overline;
+      }
+      .org-document-info {
+        /* org-document-info */
+        color: #484848;
+      }
+      .org-document-info-keyword {
+        /* org-document-info-keyword */
+        color: #008ED1;
+        background-color: #EAEAFF;
+      }
+      .org-document-title {
+        /* org-document-title */
+        color: #000000;
+        font-size: 180%;
+        font-weight: bold;
+      }
+      .org-level-1 {
+        /* org-level-1 */
+        color: #3C3C3C;
+        background-color: #F0F0F0;
+        font-size: 130%;
+        font-weight: bold;
+        text-decoration: overline;
+      }
+      .org-link {
+        /* org-link */
+        color: #006DAF;
+        text-decoration: underline;
+      }
+      .org-meta-line {
+        /* org-meta-line */
+        color: #008ED1;
+        background-color: #EAEAFF;
+      }
+      .rainbow-delimiters-depth-1 {
+        /* rainbow-delimiters-depth-1-face */
+        color: #707183;
+      }
+      .rainbow-delimiters-depth-2 {
+        /* rainbow-delimiters-depth-2-face */
+        color: #7388D6;
+      }
+      .rainbow-delimiters-depth-3 {
+        /* rainbow-delimiters-depth-3-face */
+        color: #909183;
+      }
+      .rainbow-delimiters-depth-4 {
+        /* rainbow-delimiters-depth-4-face */
+        color: #709870;
+      }
+      .rainbow-delimiters-depth-5 {
+        /* rainbow-delimiters-depth-5-face */
+        color: #907373;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #008000;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="org-meta-line">#+OPTIONS: ':nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t c:nil</span>
+<span class="org-meta-line">#+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t</span>
+<span class="org-meta-line">#+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t</span>
+<span class="org-meta-line">#+OPTIONS: title:t toc:nil todo:t |:t</span>
+<span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">Configuration
+</span><span class="org-document-info-keyword">#+DATE:</span> <span class="org-document-info">&lt;2016-12-06 Tue&gt;
+</span><span class="org-document-info-keyword">#+AUTHOR:</span> <span class="org-document-info">chastang
+</span><span class="org-document-info-keyword">#+EMAIL:</span> <span class="org-document-info">julien dot c dot chastang at gmail
+</span><span class="org-meta-line">#+LANGUAGE: en</span>
+<span class="org-meta-line">#+SELECT_TAGS: export</span>
+<span class="org-meta-line">#+EXCLUDE_TAGS: noexport</span>
+<span class="org-meta-line">#+CREATOR: Emacs 25.1.2 (Org mode 8.3.6)</span>
+
+<span class="org-meta-line">#+SETUPFILE: ../templates/level-0.org</span>
+<span class="org-meta-line">#+INCLUDE: ../templates/level-0.org</span>
+
+This website heavily borrows from the work of <span class="org-link"><a href="http://explog.in/">Kunal Bhalla</a></span>.
+
+<span class="org-level-1">* Imports</span>
+<span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp :results none
+</span>  <span class="rainbow-delimiters-depth-1">(</span><span class="keyword">require</span> '<span class="constant">ob-css</span><span class="rainbow-delimiters-depth-1">)</span>
+  <span class="rainbow-delimiters-depth-1">(</span><span class="keyword">require</span> '<span class="constant">ox-publish</span><span class="rainbow-delimiters-depth-1">)</span>
+<span class="org-block-end-line">#+END_SRC
+</span>
+<span class="org-level-1">* Style</span>
+<span class="org-meta-line">#+NAME: style</span>
+<span class="org-block-begin-line">#+BEGIN_SRC css :results none
+</span>  <span class="css-selector">body </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">color</span>: #111;
+    <span class="css-property">font-family</span>: <span class="string">'Gentium Book Basic'</span>, serif;
+    <span class="css-property">font-size</span>: 16px;
+    <span class="css-property">line-height</span>: 24px;
+    <span class="css-property">margin</span>: 0 auto;
+    <span class="css-property">max-width</span>: 672px;
+    <span class="css-property">padding</span>: 0 32px;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-property">a</span>:link,
+  <span class="css-property">a</span>:visited <span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">background-color</span>: #eee;
+    <span class="css-property">border-bottom</span>: solid #333 1px;
+    <span class="css-property">color</span>: #111;
+    <span class="css-property">padding</span>: 0 .2em;
+    <span class="css-property">text-decoration</span>: none;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-property">a</span>:hover <span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">background-color</span>: #333;
+    <span class="css-property">color</span>: #eee;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-property">a</span>:active <span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">border-bottom</span>: solid #f00 1px;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">h1, h2, h3, h4, h5, h6 </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">font-family</span>: <span class="string">'helvetica neue'</span>, <span class="string">'arial'</span>, sans-serif;
+    <span class="css-property">font-weight</span>: normal;
+    <span class="css-property">line-height</span>: 1.2em;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">h1.title </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">border-bottom</span>: solid #d4d4d4 1px;
+    <span class="css-property">padding-bottom</span>: .2em;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">#postamble </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">border-top</span>: solid #d4d4d4 1px;
+    <span class="css-property">color</span>: #999;
+    <span class="css-property">font-style</span>: italic;
+    <span class="css-property">text-align</span>: right;
+    <span class="css-property">margin-top</span>: 1em;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  #postamble a.source-link:link,
+  <span class="css-selector">#postamble a.source-link:visited </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">color</span>: #000;
+    <span class="css-property">float</span>: left;
+    <span class="css-property">font-family</span>: monospace;
+    <span class="css-property">font-style</span>: normal;
+    <span class="css-property">text-transform</span>: lowercase;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  #postamble a.source-link:hover,
+  <span class="css-selector">#postamble a.source-link:active </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">background-color</span>: #000;
+    <span class="css-property">color</span>: #fff;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">#postamble a:link, #postamble a:visited </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">background-color</span>: transparent;
+    <span class="css-property">border-bottom</span>: none;
+    <span class="css-property">color</span>: #999;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">#postamble a:hover </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">background-color</span>: #777;
+    <span class="css-property">color</span>: #fff;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">#postamble a:active </span><span class="rainbow-delimiters-depth-1">{</span>
+   <span class="css-property">border-bottom</span>: solid 1px #f00;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">code </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">background-color</span>: #eee;
+    <span class="css-property">border-top</span>: solid #d4d4d4 1px;
+    <span class="css-property">border-bottom</span>: solid #d4d4d4 1px;
+    <span class="css-property">padding</span>: 0 .2em;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">pre.src, pre.example </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">background-color</span>: #eee;
+    <span class="css-property">border-top</span>: solid #d4d4d4 1px;
+    <span class="css-property">border-bottom</span>: solid #d4d4d4 1px;
+    <span class="css-property">border-left</span>: none;
+    <span class="css-property">border-right</span>: none;
+    <span class="css-property">box-shadow</span>: none;
+    <span class="css-property">font-size</span>: 14px;
+    <span class="css-property">line-height</span>: 20px;
+    <span class="css-property">padding</span>: 1em;
+    <span class="css-property">margin</span>: 0;
+    <span class="css-property">overflow</span>: auto;
+    <span class="css-property">max-width</span>: 100%;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">pre.src:before </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">background-color</span>: transparent;
+    <span class="css-property">border</span>: none;
+    <span class="css-property">top</span>: 0;
+    <span class="css-property">right</span>: 0;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">sup </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">line-height</span>: 0;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">hr </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">border-top</span>: solid 1px #d4d4d4;
+    <span class="css-property">border-bottom</span>: none;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">li p </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">margin</span>: 0;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">.footpara </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">margin</span>: 0;
+  <span class="rainbow-delimiters-depth-1">}</span>
+
+  <span class="css-selector">.footnotes </span><span class="rainbow-delimiters-depth-1">{</span>
+    <span class="css-property">margin-top</span>: 1em;
+  <span class="rainbow-delimiters-depth-1">}</span>
+<span class="org-block-end-line">#+END_SRC
+</span>
+
+<span class="org-level-1">* Header</span>
+<span class="org-meta-line">#+NAME: header</span>
+<span class="org-block-begin-line">#+BEGIN_SRC css :noweb yes :results none
+</span>  &lt;link href=<span class="string">'https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400i,700'</span> rel=<span class="string">'stylesheet'</span> /&gt;
+  &lt;style type=<span class="string">'text/css'</span>&gt;
+    &lt;&lt;style&gt;&gt;
+  &lt;/style&gt;
+<span class="org-block-end-line">#+END_SRC
+</span>
+
+<span class="org-level-1">* Publishing configuration</span>
+<span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp :noweb yes :results none
+</span>  <span class="rainbow-delimiters-depth-1">(</span><span class="keyword">defun</span> <span class="function-name">create-source-link</span> <span class="rainbow-delimiters-depth-2">(</span>filename<span class="rainbow-delimiters-depth-2">)</span>
+    <span class="rainbow-delimiters-depth-2">(</span>concat <span class="string">"./"</span> <span class="rainbow-delimiters-depth-3">(</span>file-name-nondirectory filename<span class="rainbow-delimiters-depth-3">)</span> <span class="string">".html"</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+
+  <span class="rainbow-delimiters-depth-1">(</span><span class="keyword">defun</span> <span class="function-name">create-postamble</span> <span class="rainbow-delimiters-depth-2">(</span>options<span class="rainbow-delimiters-depth-2">)</span>
+    <span class="rainbow-delimiters-depth-2">(</span><span class="keyword">let</span> <span class="rainbow-delimiters-depth-3">(</span><span class="rainbow-delimiters-depth-4">(</span>input-file <span class="rainbow-delimiters-depth-5">(</span>plist-get options <span class="builtin">:input-file</span><span class="rainbow-delimiters-depth-5">)</span><span class="rainbow-delimiters-depth-4">)</span><span class="rainbow-delimiters-depth-3">)</span>
+      <span class="rainbow-delimiters-depth-3">(</span>concat
+       <span class="string">"&lt;a class='source-link' href='"</span>
+       <span class="rainbow-delimiters-depth-4">(</span>create-source-link input-file<span class="rainbow-delimiters-depth-4">)</span>
+       <span class="string">"'&gt;Source&lt;/a&gt;"</span>
+       <span class="string">"Last updated on "</span>
+       <span class="rainbow-delimiters-depth-4">(</span>current-time-string<span class="rainbow-delimiters-depth-4">)</span>
+       <span class="string">" &amp;bullet; &lt;a href='http://julienchastang.com'&gt;julienchastang.com&lt;/a&gt;"</span>
+       <span class="string">" by &lt;a href='http://julienchastang.com'&gt;Julien Chastang&lt;/a&gt;"</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+
+  <span class="rainbow-delimiters-depth-1">(</span><span class="keyword">defun</span> <span class="function-name">create-project-configuration</span> <span class="rainbow-delimiters-depth-2">(</span>title base-dir publishing-dir<span class="rainbow-delimiters-depth-2">)</span>
+    `<span class="rainbow-delimiters-depth-2">(</span><span class="rainbow-delimiters-depth-3">(</span>,<span class="rainbow-delimiters-depth-4">(</span>concat title <span class="string">"-source"</span><span class="rainbow-delimiters-depth-4">)</span>
+       <span class="builtin">:base-directory</span> ,base-dir
+       <span class="builtin">:publishing-directory</span> ,publishing-dir
+       <span class="builtin">:base-extension</span> <span class="string">"org"</span>
+       <span class="builtin">:recursive</span> t
+       <span class="builtin">:htmlized-source</span> t
+       <span class="builtin">:publishing-function</span> org-org-publish-to-org<span class="rainbow-delimiters-depth-3">)</span>
+      <span class="rainbow-delimiters-depth-3">(</span>,title
+       <span class="builtin">:base-directory</span> ,base-dir
+       <span class="builtin">:publishing-directory</span> ,publishing-dir
+       <span class="builtin">:base-extension</span> <span class="string">"org"</span>
+       <span class="builtin">:recursive</span> t
+       <span class="builtin">:section-numbers</span> nil
+       <span class="builtin">:publishing-function</span> org-html-publish-to-html
+       <span class="builtin">:with-author</span> nil
+       <span class="builtin">:with-toc</span> nil
+       <span class="builtin">:html-head-include-scripts</span> nil
+       <span class="builtin">:html-head-extra</span> <span class="string">"
+      &lt;&lt;header&gt;&gt;
+              "</span>
+       <span class="builtin">:html-validation-link</span> nil
+       <span class="builtin">:html-footnotes-section</span> <span class="string">"&lt;div class=\"footnotes\" title=\"%s\"&gt;%s&lt;/div&gt;"</span>
+       <span class="builtin">:html-postamble</span> ,'create-postamble<span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+
+  <span class="rainbow-delimiters-depth-1">(</span><span class="keyword">setq</span>
+   org-publish-project-alist
+   `<span class="rainbow-delimiters-depth-2">(</span>,@<span class="rainbow-delimiters-depth-3">(</span>create-project-configuration
+        <span class="string">"jc-notes"</span>
+        <span class="string">"~/git/julienchastang/src/org/"</span>
+        <span class="string">"~/git/julienchastang/publish/julienchastang.github.io/"</span><span class="rainbow-delimiters-depth-3">)</span>
+     <span class="rainbow-delimiters-depth-3">(</span><span class="string">"jc-static"</span>
+      <span class="builtin">:base-directory</span> <span class="string">"~/git/julienchastang/src/static/"</span>
+      <span class="builtin">:publishing-directory</span> <span class="string">"~/git/julienchastang/publish/julienchastang.github.io/static/"</span>
+      <span class="builtin">:base-extension</span> any
+      <span class="builtin">:recursive</span> t
+      <span class="builtin">:publishing-function</span> org-publish-attachment<span class="rainbow-delimiters-depth-3">)</span>
+     <span class="rainbow-delimiters-depth-3">(</span><span class="string">"jc"</span>
+      <span class="builtin">:components</span> <span class="rainbow-delimiters-depth-4">(</span><span class="string">"jc-notes"</span>
+                   <span class="string">"jc-notes-source"</span>
+                   <span class="string">"jc-static"</span><span class="rainbow-delimiters-depth-4">)</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+<span class="org-block-end-line">#+END_SRC
+</span>
+<span class="org-level-1">* Publish</span>
+<span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp :eval no
+</span>  <span class="rainbow-delimiters-depth-1">(</span>org-publish <span class="string">"jc"</span> nil<span class="rainbow-delimiters-depth-1">)</span>
+  <span class="rainbow-delimiters-depth-1">(</span>global-set-key
+   <span class="rainbow-delimiters-depth-2">(</span>kbd <span class="string">"C-c c"</span><span class="rainbow-delimiters-depth-2">)</span>
+   <span class="rainbow-delimiters-depth-2">(</span><span class="keyword">lambda</span> <span class="rainbow-delimiters-depth-3">()</span>
+     <span class="rainbow-delimiters-depth-3">(</span><span class="keyword">interactive</span><span class="rainbow-delimiters-depth-3">)</span>
+     <span class="rainbow-delimiters-depth-3">(</span>org-babel-load-file <span class="string">"~/git/julienchastang/src/org/config.org"</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+  <span class="comment-delimiter">; </span><span class="comment">(org-babel-execute-buffer)
+</span><span class="org-block-end-line">#+END_SRC
+</span></pre>
+  </body>
+</html>
