@@ -144,14 +144,14 @@
 <span class="org-meta-line">#+INCLUDE: ../templates/level-0.org</span>
 
 <span class="org-block-begin-line"> #+BEGIN_SRC ipython :session :exports results :file ../static/shell.png 
-</span>   <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt; plt.rcdefaults<span class="rainbow-delimiters-depth-1">()</span>
+</span>   <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
    <span class="keyword">import</span> numpy <span class="keyword">as</span> np
-   <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
-   <span class="keyword">import</span> matplotlib.path <span class="keyword">as</span> mpath
-   <span class="keyword">import</span> matplotlib.lines <span class="keyword">as</span> mlines
    <span class="keyword">import</span> matplotlib.patches <span class="keyword">as</span> mpatches
    <span class="keyword">from</span> matplotlib.collections <span class="keyword">import</span> PatchCollection
 
+   plt.rcdefaults<span class="rainbow-delimiters-depth-1">()</span>
+ 
+ 
    <span class="keyword">def</span> <span class="function-name">fib</span><span class="rainbow-delimiters-depth-1">(</span>n<span class="rainbow-delimiters-depth-1">)</span>:
        <span class="keyword">if</span> n &lt; 2:
            <span class="keyword">return</span> n
