@@ -1,4 +1,4 @@
-# Created 2016-12-07 Wed 16:59
+# Created 2016-12-08 Thu 08:50
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -11,6 +11,6 @@
 #+EXCLUDE_TAGS: noexport
 #+SETUPFILE: ../../templates/level-1.org
 
-* julienchastang.com
+* <2016-12-08 Thu> julienchastang.com
 
 This website was build in a few hours with emacs org-mode. It heavily borrows from the work of [[http://explog.in/][Kunal Bhalla]].

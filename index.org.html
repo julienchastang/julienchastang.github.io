@@ -187,34 +187,34 @@
            <span class="variable-name">xy</span> = xy + <span class="rainbow-delimiters-depth-1">[</span>fib<span class="rainbow-delimiters-depth-2">(</span>j - 1<span class="rainbow-delimiters-depth-2">)</span>, 0<span class="rainbow-delimiters-depth-1">]</span>
            <span class="variable-name">c</span> = c + <span class="rainbow-delimiters-depth-1">[</span>0, fib<span class="rainbow-delimiters-depth-2">(</span>j - 2<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">]</span>
        <span class="comment-delimiter"># </span><span class="comment">Add a wedge
-</span>       <span class="variable-name">rect</span> = mpatches.Wedge<span class="rainbow-delimiters-depth-1">(</span><span class="rainbow-delimiters-depth-2">[</span>c<span class="rainbow-delimiters-depth-3">[</span>0<span class="rainbow-delimiters-depth-3">]</span>, c<span class="rainbow-delimiters-depth-3">[</span>1<span class="rainbow-delimiters-depth-3">]</span><span class="rainbow-delimiters-depth-2">]</span>, fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, t<span class="rainbow-delimiters-depth-2">[</span>0<span class="rainbow-delimiters-depth-2">]</span>, t<span class="rainbow-delimiters-depth-2">[</span>1<span class="rainbow-delimiters-depth-2">]</span>, ec=<span class="string">"none"</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-       patches.append<span class="rainbow-delimiters-depth-1">(</span>rect<span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-       <span class="comment-delimiter"># </span><span class="comment">Add a rectangle&#57344;&#57345;&#57345;
-</span>       <span class="variable-name">rect</span> = mpatches.Rectangle<span class="rainbow-delimiters-depth-1">(</span><span class="rainbow-delimiters-depth-2">[</span>xy<span class="rainbow-delimiters-depth-3">[</span>0<span class="rainbow-delimiters-depth-3">]</span>, xy<span class="rainbow-delimiters-depth-3">[</span>1<span class="rainbow-delimiters-depth-3">]</span><span class="rainbow-delimiters-depth-2">]</span>, fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, ec=<span class="string">"none"</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-       patches.append<span class="rainbow-delimiters-depth-1">(</span>rect<span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-       <span class="variable-name">i</span> += 1&#57344;&#57345;&#57345;
-       label<span class="rainbow-delimiters-depth-1">(</span>xy + <span class="rainbow-delimiters-depth-2">[</span>0.5 * fib<span class="rainbow-delimiters-depth-3">(</span>j<span class="rainbow-delimiters-depth-3">)</span>, 0.5 * fib<span class="rainbow-delimiters-depth-3">(</span>j<span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">]</span>, <span class="string">"%s"</span> % fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, j * 2<span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
- &#57344;&#57345;&#57345;
- &#57344;&#57345;&#57345;
-   <span class="variable-name">colors</span> = np.linspace<span class="rainbow-delimiters-depth-1">(</span>0, 1, <span class="builtin">len</span><span class="rainbow-delimiters-depth-2">(</span>patches<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-   <span class="variable-name">collection</span> = PatchCollection<span class="rainbow-delimiters-depth-1">(</span>patches, cmap=plt.cm.hsv, alpha=0.3<span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-   collection.set_array<span class="rainbow-delimiters-depth-1">(</span>np.array<span class="rainbow-delimiters-depth-2">(</span>colors<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-   ax.add_collection<span class="rainbow-delimiters-depth-1">(</span>collection<span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
- &#57344;&#57345;&#57345;
-   ax.autoscale_view<span class="rainbow-delimiters-depth-1">(</span><span class="string">'tight'</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
- &#57344;&#57345;&#57345;
-   plt.axis<span class="rainbow-delimiters-depth-1">(</span><span class="string">'equal'</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-   plt.axis<span class="rainbow-delimiters-depth-1">(</span><span class="string">'off'</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-   plt.grid<span class="rainbow-delimiters-depth-1">(</span><span class="string">'off'</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-   plt.show<span class="rainbow-delimiters-depth-1">()</span>&#57344;&#57345;&#57345;
-<span class="org-block-end-line"> #+END_SRC&#57344;&#57345;&#57345;
-</span> &#57344;&#57345;&#57345;
-<span class="org-meta-line"> #+RESULTS:</span>&#57344;&#57345;&#57345;
-<img src="../static/shell.png" alt="file:../static/shell.png" />&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
+</span>       <span class="variable-name">rect</span> = mpatches.Wedge<span class="rainbow-delimiters-depth-1">(</span><span class="rainbow-delimiters-depth-2">[</span>c<span class="rainbow-delimiters-depth-3">[</span>0<span class="rainbow-delimiters-depth-3">]</span>, c<span class="rainbow-delimiters-depth-3">[</span>1<span class="rainbow-delimiters-depth-3">]</span><span class="rainbow-delimiters-depth-2">]</span>, fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, t<span class="rainbow-delimiters-depth-2">[</span>0<span class="rainbow-delimiters-depth-2">]</span>, t<span class="rainbow-delimiters-depth-2">[</span>1<span class="rainbow-delimiters-depth-2">]</span>, ec=<span class="string">"none"</span><span class="rainbow-delimiters-depth-1">)</span>
+       patches.append<span class="rainbow-delimiters-depth-1">(</span>rect<span class="rainbow-delimiters-depth-1">)</span>
+       <span class="comment-delimiter"># </span><span class="comment">Add a rectangle
+</span>       <span class="variable-name">rect</span> = mpatches.Rectangle<span class="rainbow-delimiters-depth-1">(</span><span class="rainbow-delimiters-depth-2">[</span>xy<span class="rainbow-delimiters-depth-3">[</span>0<span class="rainbow-delimiters-depth-3">]</span>, xy<span class="rainbow-delimiters-depth-3">[</span>1<span class="rainbow-delimiters-depth-3">]</span><span class="rainbow-delimiters-depth-2">]</span>, fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, ec=<span class="string">"none"</span><span class="rainbow-delimiters-depth-1">)</span>
+       patches.append<span class="rainbow-delimiters-depth-1">(</span>rect<span class="rainbow-delimiters-depth-1">)</span>
+       <span class="variable-name">i</span> += 1
+       label<span class="rainbow-delimiters-depth-1">(</span>xy + <span class="rainbow-delimiters-depth-2">[</span>0.5 * fib<span class="rainbow-delimiters-depth-3">(</span>j<span class="rainbow-delimiters-depth-3">)</span>, 0.5 * fib<span class="rainbow-delimiters-depth-3">(</span>j<span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">]</span>, <span class="string">"%s"</span> % fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, j * 2<span class="rainbow-delimiters-depth-1">)</span>
+ 
+ 
+   <span class="variable-name">colors</span> = np.linspace<span class="rainbow-delimiters-depth-1">(</span>0, 1, <span class="builtin">len</span><span class="rainbow-delimiters-depth-2">(</span>patches<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+   <span class="variable-name">collection</span> = PatchCollection<span class="rainbow-delimiters-depth-1">(</span>patches, cmap=plt.cm.hsv, alpha=0.3<span class="rainbow-delimiters-depth-1">)</span>
+   collection.set_array<span class="rainbow-delimiters-depth-1">(</span>np.array<span class="rainbow-delimiters-depth-2">(</span>colors<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+   ax.add_collection<span class="rainbow-delimiters-depth-1">(</span>collection<span class="rainbow-delimiters-depth-1">)</span>
+ 
+   ax.autoscale_view<span class="rainbow-delimiters-depth-1">(</span><span class="string">'tight'</span><span class="rainbow-delimiters-depth-1">)</span>
+ 
+   plt.axis<span class="rainbow-delimiters-depth-1">(</span><span class="string">'equal'</span><span class="rainbow-delimiters-depth-1">)</span>
+   plt.axis<span class="rainbow-delimiters-depth-1">(</span><span class="string">'off'</span><span class="rainbow-delimiters-depth-1">)</span>
+   plt.grid<span class="rainbow-delimiters-depth-1">(</span><span class="string">'off'</span><span class="rainbow-delimiters-depth-1">)</span>
+   plt.show<span class="rainbow-delimiters-depth-1">()</span>
+<span class="org-block-end-line"> #+END_SRC
+</span> 
+<span class="org-meta-line"> #+RESULTS:</span>
+<img src="../static/shell.png" alt="file:../static/shell.png" />
+
 <span class="org-level-1">* Notes</span>
 
-<span class="org-level-2">** </span><span class="org-date">&lt;2016-12-07 Wed&gt;</span><span class="org-level-2"> </span><span class="org-link"><a href="file:blog/first.org">This Web Site</a></span>
+<span class="org-level-2"> ** </span><span class="org-date">&lt;2016-12-08 Thu&gt;</span><span class="org-level-2"> </span><span class="org-link"><a href="file:blog/first.org">This Web Site</a></span>
 </pre>
   </body>
 </html>
