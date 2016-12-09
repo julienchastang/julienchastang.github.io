@@ -1,4 +1,4 @@
-# Created 2016-12-09 Fri 08:49
+# Created 2016-12-09 Fri 08:56
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -10,7 +10,7 @@
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
 #+SETUPFILE: ../templates/level-0.org
-This website heavily borrows from the work of [[http://explog.in/][Kunal Bhalla]] and can be found on [[https://github.com/julienchastang/julienchastang.github.io][github]]. 
+This website heavily borrows from the work of [[http://explog.in/][Kunal Bhalla]] and can be found on [[https://github.com/julienchastang/julienchastang.com][github]]. 
 
 * Imports
 #+BEGIN_SRC emacs-lisp
