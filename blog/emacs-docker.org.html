@@ -80,6 +80,9 @@
 <span class="org-meta-line">#+EXCLUDE_TAGS: noexport</span>&#57344;&#57345;&#57345;
 <span class="org-meta-line">#+CREATOR: Emacs 24.5.1 (Org mode 8.3.6)</span>&#57344;&#57345;&#57345;
 &#57344;&#57345;&#57345;
+<span class="org-meta-line"> #+SETUPFILE: ../../templates/level-1.org</span>&#57344;&#57345;&#57345;
+<span class="org-meta-line"> #+INCLUDE: ../../templates/level-1.org</span>&#57344;&#57345;&#57345;
+ &#57344;&#57345;&#57345;
 <span class="org-level-1">* </span><span class="org-date">&lt;2016-12-12 Mon&gt;</span>&#57344;&#57345;&#57345;
 &#57344;&#57345;&#57345;
 I have a complex <span class="org-link"><a href="http://julienchastang.com/dotemacs.html">emacs configuration</a></span> for my scientific programming workflows. This configuration assumes many external dependencies including:&#57344;&#57345;
@@ -100,9 +103,9 @@ I have a complex <span class="org-link"><a href="http://julienchastang.com/dotem
 &#57344;&#57345;&#57345;
 In addition, I curate my own version of org-mode so I can control the version of org-mode I am running.&#57344;&#57345;
 &#57344;&#57345;&#57345;
- In order to manage this complexity, I <span class="org-link"><a href="https://github.com/julienchastang/emacs-docker">created a Docker container</a></span> to capture my emacs environment and its many dependencies. Running emacs in a container has several advantages. I can "codify" complex dependencies in a <span class="org-code">~Dockerfile~</span>. I also tend to avoid package managers other than brew on my Macbook Pro such as conda to avoid library conflicts that result in programs like meld (a Python program) not working. I realize there are solutions and workarounds to these problems but I appreciate the Docker sandboxing philosophy so I would just as soon choose that option. Finally, I like the Docker containers for the defined, reproducible, predictable medium they provide.&#57344;&#57345;
+ In order to manage this complexity, I <span class="org-link"><a href="https://github.com/julienchastang/emacs-docker">created a Docker container</a></span> to capture my emacs environment and its many dependencies. Running emacs in a container has several advantages. I can "codify" complex dependencies in a <span class="org-code">~Dockerfile~</span>. I also tend to avoid package managers other than brew on my Macbook Pro such as conda to avoid library conflicts that result in programs like meld (a Python program) not working. I realize there are solutions and workarounds to these problems but I appreciate the Docker sandboxing philosophy so I would just as soon choose that option. Finally, I like Docker containers for the defined, reproducible, predictable medium they provide.&#57344;&#57345;
 &#57344;&#57345;&#57345;
- My emacs container is fully-featured, but unfortunately it is rather huge. When I save the container image to a file, even compressed, it is 2.5 gigabytes. Being on a fast network is imperative for building or downloading this container.&#57344;&#57345;
+My emacs container is fully-featured, but unfortunately it is rather huge. When I save the container image to a file, even compressed, it is 2.5 gigabytes. Being on a fast network is imperative for building or downloading this container.&#57344;&#57345;
 &#57344;&#57345;&#57345;
 Finally, I run X11 emacs, which by the way, <span class="org-link"><a href="https://github.com/Homebrew/homebrew-core/pull/3531">is no longer maintained by brew</a></span>. This was the last tricky part but <span class="org-link"><a href="https://fredrikaverpil.github.io/2016/07/31/docker-for-mac-and-gui-applications/">this blog entry</a></span> showed me how to run GUI programs in Docker on my Macbook Pro.&#57344;&#57345;
 </pre>
