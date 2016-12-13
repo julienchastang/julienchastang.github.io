@@ -6,7 +6,7 @@
 <!-- 2016-12-13 Tue 11:19 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>This Web Site</title>
+<title>Running Emacs in Docker</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Julien Chastang" />
 <style type="text/css">
@@ -227,27 +227,53 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">This Web Site</h1>
-<div class="menu">
- ( 
-   <a href="../index.html">home</a> | 
-   <a href="../about.html">about</a> | 
-   <a href="../configuration.html">configuration</a> | 
-   <a href="../dotemacs.html">.emacs</a> 
- )
-</div>
+<h1 class="title">Running Emacs in Docker</h1>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-12-08 Thu&gt;</span></span></h2>
+<h2 id="orgheadline1"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-12-12 Mon&gt;</span></span></h2>
 <div class="outline-text-2" id="text-orgheadline1">
 <p>
-This website was build in a few hours with emacs org-mode. It heavily borrows from the work of <a href="http://explog.in/">Kunal Bhalla</a>.
+I have a complex <a href="http://julienchastang.com/dotemacs.html">emacs configuration</a> for my scientific programming workflows. This configuration assumes many external dependencies including:
+</p>
+
+<ul class="org-ul">
+<li>Tex Live</li>
+<li>Gnuplot</li>
+<li>ditaa</li>
+<li>Java</li>
+<li>Clojure</li>
+<li>Python (via conda)
+<ul class="org-ul">
+<li>netcdf4-python</li>
+<li>matplotlib</li>
+<li>cartopy</li>
+<li>jupyter</li>
+<li>jedi</li>
+<li>etc.</li>
+</ul></li>
+<li>Miscellaneous utilities such as spelling programs</li>
+</ul>
+
+<p>
+In addition, I curate my own version of org-mode so I can control the version of org-mode I am running.
+</p>
+
+<p>
+In order to manage this complexity, I <a href="https://github.com/julienchastang/emacs-docker">created a Docker container</a> to capture my emacs environement and its many dependencies. Running emacs in a container has several advantages. I can "codify" complex dependencies in a <code>Dockerfile</code>. I also tend to avoid package managers other than brew on my Macbook Pro such as conda to avoid library conflicts that result in programs like meld (a Python program) not working. I realize there are solutions and workarounds to these problems but I appreciate the Docker sandboxing philosophy so I would just as soon choose that option. Finally, I like the Docker containers for the defined, reproducible, predictable medium they provide.
+</p>
+
+<p>
+My emacs container is fully-featured, but unfortunately it is rather huge. When I save the container image to a file, even compressed, it is 2.5 gigabytes. Being on a fast network is imperitive for building or downloading this container.
+</p>
+
+<p>
+Finally, I run X11 emacs, which by the way, <a href="https://github.com/Homebrew/homebrew-core/pull/3531">is no longer maintained by brew</a>. This was the last tricky part but <a href="https://fredrikaverpil.github.io/2016/07/31/docker-for-mac-and-gui-applications/">this blog entry</a> showed me how to run GUI programs in Docker on my Macbook Pro.
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<a class='source-link' href='./first.org.html'>Source</a>Last updated on Tue Dec 13 11:19:48 2016 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
+<a class='source-link' href='./emacs-docker.org.html'>Source</a>Last updated on Tue Dec 13 11:19:48 2016 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
 </div>
 </body>
 </html>

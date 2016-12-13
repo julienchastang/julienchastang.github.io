@@ -1,4 +1,4 @@
-# Created 2016-12-08 Thu 09:03
+# Created 2016-12-13 Tue 11:19
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -16,3 +16,4 @@
 * Notes
 
 ** <2016-12-08 Thu> [[file:blog/first.org][This Web Site]]
+** <2016-12-12 Mon> [[file:blog/emacs-docker.org][Running Emacs in Docker]]
