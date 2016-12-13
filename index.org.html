@@ -81,82 +81,82 @@
   </head>
   <body>
     <pre>
-<span class="org-meta-line">#+OPTIONS: ':nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t c:nil</span>
-<span class="org-meta-line">#+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t</span>
-<span class="org-meta-line">#+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t</span>
-<span class="org-meta-line">#+OPTIONS: title:t toc:nil todo:t |:t</span>
-<span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">Julien Chastang
-</span><span class="org-document-info-keyword">#+DATE:</span> <span class="org-document-info">&lt;2016-12-06 Tue&gt;
-</span><span class="org-document-info-keyword">#+AUTHOR:</span> <span class="org-document-info">Julien Chastang
-</span><span class="org-document-info-keyword">#+EMAIL:</span> <span class="org-document-info">julien dot c dot chastang at gmail
-</span><span class="org-meta-line">#+LANGUAGE: en</span>
-<span class="org-meta-line">#+SELECT_TAGS: export</span>
-<span class="org-meta-line">#+EXCLUDE_TAGS: noexport</span>
-<span class="org-meta-line">#+CREATOR: Emacs 25.1.2 (Org mode 8.3.6)</span>
-
-<span class="org-meta-line">#+SETUPFILE: ../templates/level-0.org</span>
-<span class="org-meta-line">#+INCLUDE: ../templates/level-0.org</span>
-
-<span class="org-block-begin-line">#+BEGIN_SRC ipython :session :exports results :file ../static/shell.png 
-</span>  import matplotlib.pyplot as plt
-  import numpy as np
-  import matplotlib.patches as mpatches
-  from matplotlib.collections import PatchCollection
-
-  plt.rcdefaults()
-
-
-  def fib(n):
-      if n &lt; 2:
-          return n
-      else:
-          return fib(n - 1) + fib(n - 2)
-
-
-  def label(xy, text, j):
-      y = xy[1] - 0.025  # shift y-value to center label
-      plt.text(xy[0], y, text, ha="center", family='sans-serif', size=j)
-
-
-  fig, ax = plt.subplots(); patches = []
-
-  xy = np.array([0, 0])
-  c = xy
-  i = 1
-  t = np.array([270, 0])
-
-  for j in range(1, 7 + 4):
-      t += 90
-      if i == 5: i = 1
-      if i == 1:
-          xy = xy + [-fib(j - 2), fib(j - 1)]
-          c = c + [-fib(j - 2), 0]
-      if i == 2:
-          xy = xy + [-fib(j), -fib(j - 2)]
-          c = c + [0, -fib(j - 2)]
-      elif i == 3:
-          xy = xy + [0, -fib(j)]
-          c = c + [fib(j - 2), 0]
-      elif i == 4:
-          xy = xy + [fib(j - 1), 0]
-          c = c + [0, fib(j - 2)]
-      # Add a wedge
-      rect = mpatches.Wedge([c[0], c[1]], fib(j), t[0], t[1], ec="none")
-      patches.append(rect)
-      # Add a rectangle
-      rect = mpatches.Rectangle([xy[0], xy[1]], fib(j), fib(j), ec="none")
-      patches.append(rect)
-      i += 1
-      label(xy + [0.5 * fib(j), 0.5 * fib(j)], "%s" % fib(j), j * 2)
-
-
-  colors = np.linspace(0, 1, len(patches))
-  collection = PatchCollection(patches, cmap=plt.cm.hsv, alpha=0.3)
-  collection.set_array(np.array(colors))
-  ax.add_collection(collection)
-
-  plt.axis('equal')
-  plt.axis('off')
+<span class="org-meta-line">#+OPTIONS: ':nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t c:nil</span>&#57344;&#57345;&#57345;
+<span class="org-meta-line">#+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t</span>&#57344;&#57345;&#57345;
+<span class="org-meta-line">#+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t</span>&#57344;&#57345;
+<span class="org-meta-line">#+OPTIONS: title:t toc:nil todo:t |:t</span>&#57344;&#57345;&#57345;
+<span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">Julien Chastang&#57344;&#57345;&#57345;
+</span><span class="org-document-info-keyword">#+DATE:</span> <span class="org-document-info">&lt;2016-12-06 Tue&gt;&#57344;&#57345;&#57345;
+</span><span class="org-document-info-keyword">#+AUTHOR:</span> <span class="org-document-info">Julien Chastang&#57344;&#57345;&#57345;
+</span><span class="org-document-info-keyword">#+EMAIL:</span> <span class="org-document-info">julien dot c dot chastang at gmail&#57344;&#57345;&#57345;
+</span><span class="org-meta-line">#+LANGUAGE: en</span>&#57344;&#57345;&#57345;
+<span class="org-meta-line">#+SELECT_TAGS: export</span>&#57344;&#57345;&#57345;
+<span class="org-meta-line">#+EXCLUDE_TAGS: noexport</span>&#57344;&#57345;&#57345;
+<span class="org-meta-line">#+CREATOR: Emacs 25.1.2 (Org mode 8.3.6)</span>&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+<span class="org-meta-line">#+SETUPFILE: ../templates/level-0.org</span>&#57344;&#57345;&#57345;
+<span class="org-meta-line">#+INCLUDE: ../templates/level-0.org</span>&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+<span class="org-block-begin-line">#+BEGIN_SRC ipython :session :exports results :file ../static/shell.png &#57344;&#57345;&#57345;
+</span>  import matplotlib.pyplot as plt&#57344;&#57345;&#57345;
+  import numpy as np&#57344;&#57345;&#57345;
+  import matplotlib.patches as mpatches&#57344;&#57345;&#57345;
+  from matplotlib.collections import PatchCollection&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  plt.rcdefaults()&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  def fib(n):&#57344;&#57345;&#57345;
+      if n &lt; 2:&#57344;&#57345;&#57345;
+          return n&#57344;&#57345;&#57345;
+      else:&#57344;&#57345;&#57345;
+          return fib(n - 1) + fib(n - 2)&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  def label(xy, text, j):&#57344;&#57345;&#57345;
+      y = xy[1] - 0.025  # shift y-value to center label&#57344;&#57345;&#57345;
+      plt.text(xy[0], y, text, ha="center", family='sans-serif', size=j)&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  fig, ax = plt.subplots(); patches = []&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  xy = np.array([0, 0])&#57344;&#57345;&#57345;
+  c = xy&#57344;&#57345;&#57345;
+  i = 1&#57344;&#57345;&#57345;
+  t = np.array([270, 0])&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  for j in range(1, 7 + 4):&#57344;&#57345;&#57345;
+      t += 90&#57344;&#57345;&#57345;
+      if i == 5: i = 1&#57344;&#57345;&#57345;
+      if i == 1:&#57344;&#57345;&#57345;
+          xy = xy + [-fib(j - 2), fib(j - 1)]&#57344;&#57345;&#57345;
+          c = c + [-fib(j - 2), 0]&#57344;&#57345;&#57345;
+      if i == 2:&#57344;&#57345;&#57345;
+          xy = xy + [-fib(j), -fib(j - 2)]&#57344;&#57345;&#57345;
+          c = c + [0, -fib(j - 2)]&#57344;&#57345;&#57345;
+      elif i == 3:&#57344;&#57345;&#57345;
+          xy = xy + [0, -fib(j)]&#57344;&#57345;&#57345;
+          c = c + [fib(j - 2), 0]&#57344;&#57345;&#57345;
+      elif i == 4:&#57344;&#57345;&#57345;
+          xy = xy + [fib(j - 1), 0]&#57344;&#57345;&#57345;
+          c = c + [0, fib(j - 2)]&#57344;&#57345;&#57345;
+      # Add a wedge&#57344;&#57345;&#57345;
+      rect = mpatches.Wedge([c[0], c[1]], fib(j), t[0], t[1], ec="none")&#57344;&#57345;&#57345;
+      patches.append(rect)&#57344;&#57345;&#57345;
+      # Add a rectangle&#57344;&#57345;&#57345;
+      rect = mpatches.Rectangle([xy[0], xy[1]], fib(j), fib(j), ec="none")&#57344;&#57345;&#57345;
+      patches.append(rect)&#57344;&#57345;&#57345;
+      i += 1&#57344;&#57345;&#57345;
+      label(xy + [0.5 * fib(j), 0.5 * fib(j)], "%s" % fib(j), j * 2)&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  colors = np.linspace(0, 1, len(patches))&#57344;&#57345;&#57345;
+  collection = PatchCollection(patches, cmap=plt.cm.hsv, alpha=0.3)&#57344;&#57345;&#57345;
+  collection.set_array(np.array(colors))&#57344;&#57345;&#57345;
+  ax.add_collection(collection)&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  plt.axis('equal')&#57344;&#57345;&#57345;
+  plt.axis('off')&#57344;&#57345;&#57345;
   plt.grid('off')&#57344;&#57345;&#57345;
   plt.show()<span class="org-meta-line">&#57344;&#57345;&#57345;
 </span><span class="org-block-end-line">#+END_SRC&#57344;&#57345;&#57345;
@@ -165,9 +165,10 @@
 <span class="org-link"><a href="file:../static/shell.png">file:../static/shell.png</a></span>&#57344;&#57345;&#57345;
 &#57344;&#57345;&#57345;
 <span class="org-level-1">* Notes</span>&#57344;&#57345;&#57345;
+ &#57344;&#57345;&#57345;
+<span class="org-level-2">** </span><span class="org-date">&lt;2016-12-12 Mon&gt;</span><span class="org-level-2"> </span><span class="org-link"><a href="file:blog/emacs-docker.org">Running Emacs in Docker</a></span>&#57344;&#57345;&#57345;
 &#57344;&#57345;&#57345;
-<span class="org-level-2">** </span><span class="org-date">&lt;2016-12-08 Thu&gt;</span><span class="org-level-2"> </span><span class="org-link"><a href="file:blog/first.org">This Web Site</a></span>&#57344;&#57345;&#57345;
-<span class="org-level-2"> ** </span><span class="org-date">&lt;2016-12-12 Mon&gt;</span><span class="org-level-2"> </span><span class="org-link"><a href="file:blog/emacs-docker.org">Running Emacs in Docker</a></span>&#57344;&#57345;&#57345;
+<span class="org-level-2"> ** </span><span class="org-date">&lt;2016-12-08 Thu&gt;</span><span class="org-level-2"> </span><span class="org-link"><a href="file:blog/first.org">This Web Site</a></span>&#57344;&#57345;&#57345;
  &#57344;&#57345;&#57345;
 </pre>
   </body>
