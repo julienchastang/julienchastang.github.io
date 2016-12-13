@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-13 Tue 11:19 -->
+<!-- 2016-12-13 Tue 11:22 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Running Emacs in Docker</title>
@@ -259,11 +259,11 @@ In addition, I curate my own version of org-mode so I can control the version of
 </p>
 
 <p>
-In order to manage this complexity, I <a href="https://github.com/julienchastang/emacs-docker">created a Docker container</a> to capture my emacs environement and its many dependencies. Running emacs in a container has several advantages. I can "codify" complex dependencies in a <code>Dockerfile</code>. I also tend to avoid package managers other than brew on my Macbook Pro such as conda to avoid library conflicts that result in programs like meld (a Python program) not working. I realize there are solutions and workarounds to these problems but I appreciate the Docker sandboxing philosophy so I would just as soon choose that option. Finally, I like the Docker containers for the defined, reproducible, predictable medium they provide.
+In order to manage this complexity, I <a href="https://github.com/julienchastang/emacs-docker">created a Docker container</a> to capture my emacs environment and its many dependencies. Running emacs in a container has several advantages. I can "codify" complex dependencies in a <code>Dockerfile</code>. I also tend to avoid package managers other than brew on my Macbook Pro such as conda to avoid library conflicts that result in programs like meld (a Python program) not working. I realize there are solutions and workarounds to these problems but I appreciate the Docker sandboxing philosophy so I would just as soon choose that option. Finally, I like the Docker containers for the defined, reproducible, predictable medium they provide.
 </p>
 
 <p>
-My emacs container is fully-featured, but unfortunately it is rather huge. When I save the container image to a file, even compressed, it is 2.5 gigabytes. Being on a fast network is imperitive for building or downloading this container.
+My emacs container is fully-featured, but unfortunately it is rather huge. When I save the container image to a file, even compressed, it is 2.5 gigabytes. Being on a fast network is imperative for building or downloading this container.
 </p>
 
 <p>
@@ -273,7 +273,7 @@ Finally, I run X11 emacs, which by the way, <a href="https://github.com/Homebrew
 </div>
 </div>
 <div id="postamble" class="status">
-<a class='source-link' href='./emacs-docker.org.html'>Source</a>Last updated on Tue Dec 13 11:19:48 2016 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
+<a class='source-link' href='./emacs-docker.org.html'>Source</a>Last updated on Tue Dec 13 11:22:07 2016 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
 </div>
 </body>
 </html>
