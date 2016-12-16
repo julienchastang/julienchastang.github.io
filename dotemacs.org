@@ -1,8 +1,8 @@
-# Created 2016-12-16 Fri 22:37
+# Created 2016-12-16 Fri 16:01
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
-#+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
-#+OPTIONS: title:t toc:nil todo:t |:t
+#+OPTIONS: num:1 p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
+#+OPTIONS: title:t toc:t todo:t |:t
 #+TITLE: .emacs
 #+DATE: <2016-12-06 Tue>
 #+AUTHOR: chastang
@@ -10,7 +10,7 @@
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
 #+SETUPFILE: ../templates/level-0.org
-ou can find my [[https://github.com/julienchastang/dotemacs][.emacs]] configuration file on github. Checkout both the ~master~  and ~python~ branches.
+You can find my [[https://github.com/julienchastang/dotemacs][.emacs]] configuration file on github. Checkout both the ~master~  and ~python~ branches.
 
 #+BEGIN_EXAMPLE
      ____.     .__  .__            /\                                                 
@@ -27,6 +27,8 @@ Emacs initialization as org file. It is a constant work in progress.
 
 - [[https://github.com/dakrone/dakrone-dotfiles/blob/master/emacs.org][Lee’s Emacs settings file]]
 - [[https://github.com/vdemeester/emacs-config][Vincent Demeester’s emacs configuration]]
+
+* Disclaimer
 
 * Preamble
 
