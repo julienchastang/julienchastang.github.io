@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-16 Fri 16:01 -->
+<!-- 2016-12-16 Fri 16:11 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>.emacs</title>
@@ -228,54 +228,6 @@
 <body>
 <div id="content">
 <h1 class="title">.emacs</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline1">1. Inspiration</a></li>
-<li><a href="#orgheadline2">2. Disclaimer</a></li>
-<li><a href="#orgheadline3">3. Preamble</a></li>
-<li><a href="#orgheadline4">4. General Settings</a></li>
-<li><a href="#orgheadline5">5. Org mode Settings</a></li>
-<li><a href="#orgheadline6">6. Manually Curated Packages</a></li>
-<li><a href="#orgheadline7">7. Package Archives</a></li>
-<li><a href="#orgheadline8">8. Packages We Will Use</a></li>
-<li><a href="#orgheadline37">9. Package Configuration</a>
-<ul>
-<li><a href="#orgheadline9">Helm</a></li>
-<li><a href="#orgheadline10">Projectile</a></li>
-<li><a href="#orgheadline11">Ace Jump Mode</a></li>
-<li><a href="#orgheadline12">Spelling</a></li>
-<li><a href="#orgheadline13">YASnippet</a></li>
-<li><a href="#orgheadline14">git</a></li>
-<li><a href="#orgheadline15">Fill Column Indicator</a></li>
-<li><a href="#orgheadline16">Mode line</a></li>
-<li><a href="#orgheadline17">Parentheses</a></li>
-<li><a href="#orgheadline18">Undo</a></li>
-<li><a href="#orgheadline19">Clojure</a></li>
-<li><a href="#orgheadline20">Markdown</a></li>
-<li><a href="#orgheadline21">YAML</a></li>
-<li><a href="#orgheadline22">EMMS</a></li>
-<li><a href="#orgheadline23">Stack Exchange</a></li>
-<li><a href="#orgheadline24">Python</a></li>
-<li><a href="#orgheadline25">org-present</a></li>
-<li><a href="#orgheadline26">Rotate</a></li>
-<li><a href="#orgheadline27">Babel</a></li>
-<li><a href="#orgheadline28">XML</a></li>
-<li><a href="#orgheadline29">emacs-lisp</a></li>
-<li><a href="#orgheadline30">restclient</a></li>
-<li><a href="#orgheadline31">dired-x</a></li>
-<li><a href="#orgheadline32">Writing</a></li>
-<li><a href="#orgheadline33">Info</a></li>
-<li><a href="#orgheadline34">Calendar</a></li>
-<li><a href="#orgheadline35">Gnuplot</a></li>
-<li><a href="#orgheadline36">Taskjuggler</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline38">10. Emacs Shell Settings</a></li>
-</ul>
-</div>
-</div>
 <div class="menu">
  ( 
    <a href="index.html">home</a> | 
@@ -303,8 +255,8 @@ Emacs initialization as org file. It is a constant work in progress.
 </p>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Inspiration</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="orgheadline1">Inspiration</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <ul class="org-ul">
 <li><a href="https://github.com/dakrone/dakrone-dotfiles/blob/master/emacs.org">Lee’s Emacs settings file</a></li>
 <li><a href="https://github.com/vdemeester/emacs-config">Vincent Demeester’s emacs configuration</a></li>
@@ -313,12 +265,12 @@ Emacs initialization as org file. It is a constant work in progress.
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Disclaimer</h2>
+<h2 id="orgheadline2">Disclaimer</h2>
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> Preamble</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="orgheadline3">Preamble</h2>
+<div class="outline-text-2" id="text-orgheadline3">
 <p>
 In order to have this file be the emacs initialization file, put the following
 snippet in your <code>~/.emacs.d/init.el</code> file.
@@ -364,8 +316,8 @@ snippet in your <code>~/.emacs.d/init.el</code> file.
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> General Settings</h2>
-<div class="outline-text-2" id="text-4">
+<h2 id="orgheadline4">General Settings</h2>
+<div class="outline-text-2" id="text-orgheadline4">
 <p>
 Everything in this section are general settings that should not need any
 non-default packages.
@@ -655,8 +607,8 @@ EWW
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">5</span> Org mode Settings</h2>
-<div class="outline-text-2" id="text-5">
+<h2 id="orgheadline5">Org mode Settings</h2>
+<div class="outline-text-2" id="text-orgheadline5">
 <p>
 At this point we still have not done anything special outside of what is
 possible in a default emacs programming environment. This will continue for this
@@ -752,8 +704,8 @@ Inline image support
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">6</span> Manually Curated Packages</h2>
-<div class="outline-text-2" id="text-6">
+<h2 id="orgheadline6">Manually Curated Packages</h2>
+<div class="outline-text-2" id="text-orgheadline6">
 <p>
 These modes are not in any package manager so curate them manually.
 </p>
@@ -809,8 +761,8 @@ These modes are not in any package manager so curate them manually.
 </div>
 
 <div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">7</span> Package Archives</h2>
-<div class="outline-text-2" id="text-7">
+<h2 id="orgheadline7">Package Archives</h2>
+<div class="outline-text-2" id="text-orgheadline7">
 <p>
 We have a decent emacs configuration at this point. Now start loading external
 utilities.
@@ -849,8 +801,8 @@ First define the package archives and where they live.
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">8</span> Packages We Will Use</h2>
-<div class="outline-text-2" id="text-8">
+<h2 id="orgheadline8">Packages We Will Use</h2>
+<div class="outline-text-2" id="text-orgheadline8">
 <p>
 Define all the packages we are going to use. Note if you are viewing this table
 on github, the anchors will not take you anywhere. The anchors only work in
@@ -1244,8 +1196,8 @@ Now handle unstable packages.
 </div>
 
 <div id="outline-container-orgheadline37" class="outline-2">
-<h2 id="orgheadline37"><span class="section-number-2">9</span> Package Configuration</h2>
-<div class="outline-text-2" id="text-9">
+<h2 id="orgheadline37">Package Configuration</h2>
+<div class="outline-text-2" id="text-orgheadline37">
 </div><div id="outline-container-orgheadline9" class="outline-3">
 <h3 id="orgheadline9">Helm</h3>
 <div class="outline-text-3" id="text-orgheadline9">
@@ -2061,8 +2013,8 @@ eldoc for emacs lisp development
 </div>
 </div>
 <div id="outline-container-orgheadline38" class="outline-2">
-<h2 id="orgheadline38"><span class="section-number-2">10</span> Emacs Shell Settings</h2>
-<div class="outline-text-2" id="text-10">
+<h2 id="orgheadline38">Emacs Shell Settings</h2>
+<div class="outline-text-2" id="text-orgheadline38">
 <p>
 Magit
 </p>
@@ -2094,7 +2046,7 @@ Clear buffer
 </div>
 </div>
 <div id="postamble" class="status">
-<a class='source-link' href='./dotemacs.org.html'>Source</a>Last updated on Fri Dec 16 16:01:58 2016 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
+<a class='source-link' href='./dotemacs.org.html'>Source</a>Last updated on Fri Dec 16 16:11:42 2016 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
 </div>
 </body>
 </html>
