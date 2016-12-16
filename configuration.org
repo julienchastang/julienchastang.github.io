@@ -1,11 +1,11 @@
-# Created 2016-12-09 Fri 08:56
+# Created 2016-12-16 Fri 09:57
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
 #+OPTIONS: title:t toc:nil todo:t |:t
 #+TITLE: Configuration
 #+DATE: <2016-12-06 Tue>
-#+AUTHOR: chastang
+#+AUTHOR: Julien Chastang
 #+LANGUAGE: en
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
@@ -149,7 +149,6 @@ This website heavily borrows from the work of [[http://explog.in/][Kunal Bhalla]
   }
 #+END_SRC
 
-
 * Header
 #+NAME: header
 #+BEGIN_SRC css
@@ -283,7 +282,6 @@ This website heavily borrows from the work of [[http://explog.in/][Kunal Bhalla]
     }
   </style>
 #+END_SRC
-
 
 * Publishing configuration
 #+BEGIN_SRC emacs-lisp
@@ -479,6 +477,6 @@ This website heavily borrows from the work of [[http://explog.in/][Kunal Bhalla]
    (kbd "C-c c")
    (lambda ()
      (interactive)
-     (org-babel-load-file "~/git/julienchastang/src/org/config.org")))
+     (org-babel-load-file "~/git/julienchastang/src/org/configuration.org")))
   ; (org-babel-execute-buffer)
 #+END_SRC

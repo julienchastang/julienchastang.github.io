@@ -133,7 +133,7 @@
 <span class="org-meta-line">#+OPTIONS: title:t toc:nil todo:t |:t</span>
 <span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">Configuration
 </span><span class="org-document-info-keyword">#+DATE:</span> <span class="org-document-info">&lt;2016-12-06 Tue&gt;
-</span><span class="org-document-info-keyword">#+AUTHOR:</span> <span class="org-document-info">chastang
+</span><span class="org-document-info-keyword">#+AUTHOR:</span> <span class="org-document-info">Julien Chastang
 </span><span class="org-document-info-keyword">#+EMAIL:</span> <span class="org-document-info">julien dot c dot chastang at gmail
 </span><span class="org-meta-line">#+LANGUAGE: en</span>
 <span class="org-meta-line">#+SELECT_TAGS: export</span>
@@ -143,7 +143,7 @@
 <span class="org-meta-line">#+SETUPFILE: ../templates/level-0.org</span>
 <span class="org-meta-line">#+INCLUDE: ../templates/level-0.org</span>
 
- This website heavily borrows from the work of <span class="org-link"><a href="http://explog.in/">Kunal Bhalla</a></span> and can be found on <span class="org-link"><a href="https://github.com/julienchastang/julienchastang.com">github</a></span>. 
+This website heavily borrows from the work of <span class="org-link"><a href="http://explog.in/">Kunal Bhalla</a></span> and can be found on <span class="org-link"><a href="https://github.com/julienchastang/julienchastang.com">github</a></span>. 
 
 <span class="org-level-1">* Imports</span>
 <span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp :results none
@@ -282,7 +282,6 @@
   <span class="rainbow-delimiters-depth-1">}</span>
 <span class="org-block-end-line">#+END_SRC
 </span>
-
 <span class="org-level-1">* Header</span>
 <span class="org-meta-line">#+NAME: header</span>
 <span class="org-block-begin-line">#+BEGIN_SRC css :noweb yes :results none
@@ -292,7 +291,6 @@
   &lt;/style&gt;
 <span class="org-block-end-line">#+END_SRC
 </span>
-
 <span class="org-level-1">* Publishing configuration</span>
 <span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp :noweb yes :results none
 </span>  <span class="rainbow-delimiters-depth-1">(</span><span class="keyword">defun</span> <span class="function-name">create-source-link</span> <span class="rainbow-delimiters-depth-2">(</span>filename<span class="rainbow-delimiters-depth-2">)</span>
@@ -352,16 +350,16 @@
                    <span class="string">"jc-static"</span><span class="rainbow-delimiters-depth-4">)</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
 <span class="org-block-end-line">#+END_SRC
 </span>
-<span class="org-level-1">* Publish</span>
-<span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp :eval no
-</span>  <span class="rainbow-delimiters-depth-1">(</span>org-publish <span class="string">"jc"</span> nil<span class="rainbow-delimiters-depth-1">)</span>
-  <span class="rainbow-delimiters-depth-1">(</span>global-set-key
-   <span class="rainbow-delimiters-depth-2">(</span>kbd <span class="string">"C-c c"</span><span class="rainbow-delimiters-depth-2">)</span>
-   <span class="rainbow-delimiters-depth-2">(</span><span class="keyword">lambda</span> <span class="rainbow-delimiters-depth-3">()</span>
-     <span class="rainbow-delimiters-depth-3">(</span><span class="keyword">interactive</span><span class="rainbow-delimiters-depth-3">)</span>
-     <span class="rainbow-delimiters-depth-3">(</span>org-babel-load-file <span class="string">"~/git/julienchastang/src/org/config.org"</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
-  <span class="comment-delimiter">; </span><span class="comment">(org-babel-execute-buffer)
-</span><span class="org-block-end-line">#+END_SRC
+<span class="org-level-1">* Publish</span>&#57344;&#57345;&#57345;
+<span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp :eval no&#57344;&#57345;&#57345;
+</span>  <span class="rainbow-delimiters-depth-1">(</span>org-publish <span class="string">"jc"</span> nil<span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
+  <span class="rainbow-delimiters-depth-1">(</span>global-set-key&#57344;&#57345;&#57345;
+   <span class="rainbow-delimiters-depth-2">(</span>kbd <span class="string">"C-c c"</span><span class="rainbow-delimiters-depth-2">)</span>&#57344;&#57345;&#57345;
+   <span class="rainbow-delimiters-depth-2">(</span><span class="keyword">lambda</span> <span class="rainbow-delimiters-depth-3">()</span>&#57344;&#57345;&#57345;
+     <span class="rainbow-delimiters-depth-3">(</span><span class="keyword">interactive</span><span class="rainbow-delimiters-depth-3">)</span>&#57344;&#57345;&#57345;
+     <span class="rainbow-delimiters-depth-3">(</span>org-babel-load-file <span class="string">"~/git/julienchastang/src/org/configuration.org"</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
+  <span class="comment-delimiter">; </span><span class="comment">(org-babel-execute-buffer)&#57344;&#57345;&#57345;
+</span><span class="org-block-end-line">#+END_SRC&#57344;&#57345;&#57345;
 </span></pre>
   </body>
 </html>
