@@ -9,6 +9,27 @@
         color: #333333;
         background-color: #F6F6EF;
       }
+      .builtin {
+        /* font-lock-builtin-face */
+        color: #006FE0;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #8D8D84;
+        font-style: italic;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: #8D8D84;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #006699;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #0000FF;
+      }
       .org-block-begin-line {
         /* org-block-begin-line */
         color: #555555;
@@ -66,6 +87,26 @@
         color: #008ED1;
         background-color: #EAEAFF;
       }
+      .rainbow-delimiters-depth-1 {
+        /* rainbow-delimiters-depth-1-face */
+        color: #707183;
+      }
+      .rainbow-delimiters-depth-2 {
+        /* rainbow-delimiters-depth-2-face */
+        color: #7388D6;
+      }
+      .rainbow-delimiters-depth-3 {
+        /* rainbow-delimiters-depth-3-face */
+        color: #909183;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #008000;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #BA36A5;
+      }
 
       a {
         color: inherit;
@@ -81,87 +122,87 @@
   </head>
   <body>
     <pre>
-<span class="org-meta-line">#+OPTIONS: ':nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t c:nil</span>&#57344;&#57345;&#57345;
-<span class="org-meta-line">#+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t</span>&#57344;&#57345;&#57345;
-<span class="org-meta-line">#+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t</span>&#57344;&#57345;
-<span class="org-meta-line">#+OPTIONS: title:t toc:nil todo:t |:t</span>&#57344;&#57345;&#57345;
-<span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">Julien Chastang&#57344;&#57345;&#57345;
-</span><span class="org-document-info-keyword">#+DATE:</span> <span class="org-document-info">&lt;2016-12-06 Tue&gt;&#57344;&#57345;&#57345;
-</span><span class="org-document-info-keyword">#+AUTHOR:</span> <span class="org-document-info">Julien Chastang&#57344;&#57345;&#57345;
-</span><span class="org-document-info-keyword">#+EMAIL:</span> <span class="org-document-info">julien dot c dot chastang at gmail&#57344;&#57345;&#57345;
-</span><span class="org-meta-line">#+LANGUAGE: en</span>&#57344;&#57345;&#57345;
-<span class="org-meta-line">#+SELECT_TAGS: export</span>&#57344;&#57345;&#57345;
-<span class="org-meta-line">#+EXCLUDE_TAGS: noexport</span>&#57344;&#57345;&#57345;
-<span class="org-meta-line">#+CREATOR: Emacs 25.1.2 (Org mode 8.3.6)</span>&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-<span class="org-meta-line">#+SETUPFILE: ../templates/level-0.org</span>&#57344;&#57345;&#57345;
-<span class="org-meta-line">#+INCLUDE: ../templates/level-0.org</span>&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-<span class="org-block-begin-line">#+BEGIN_SRC ipython :session :exports results :file ../static/shell.png &#57344;&#57345;&#57345;
-</span>  import matplotlib.pyplot as plt&#57344;&#57345;&#57345;
-  import numpy as np&#57344;&#57345;&#57345;
-  import matplotlib.patches as mpatches&#57344;&#57345;&#57345;
-  from matplotlib.collections import PatchCollection&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  plt.rcdefaults()&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  def fib(n):&#57344;&#57345;&#57345;
-      if n &lt; 2:&#57344;&#57345;&#57345;
-          return n&#57344;&#57345;&#57345;
-      else:&#57344;&#57345;&#57345;
-          return fib(n - 1) + fib(n - 2)&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  def label(xy, text, j):&#57344;&#57345;&#57345;
-      y = xy[1] - 0.025  # shift y-value to center label&#57344;&#57345;&#57345;
-      plt.text(xy[0], y, text, ha="center", family='sans-serif', size=j)&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  fig, ax = plt.subplots()&#57344;&#57345;&#57345;
-  patches = []&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  xy = np.array([0, 0])&#57344;&#57345;&#57345;
-  c = xy&#57344;&#57345;&#57345;
-  i = 1&#57344;&#57345;&#57345;
-  t = np.array([270, 0])&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  for j in range(1, 7 + 4):
-      t += 90
-      if i == 5:
-          i = 1
-      if i == 1:
-          xy = xy + [-fib(j - 2), fib(j - 1)]
-          c = c + [-fib(j - 2), 0]
-      if i == 2:
-          xy = xy + [-fib(j), -fib(j - 2)]
-          c = c + [0, -fib(j - 2)]
-      elif i == 3:
-          xy = xy + [0, -fib(j)]
-          c = c + [fib(j - 2), 0]
-      elif i == 4:
-          xy = xy + [fib(j - 1), 0]
-          c = c + [0, fib(j - 2)]
-      # Add a wedge
-      rect = mpatches.Wedge([c[0], c[1]], fib(j), t[0], t[1], ec="none")
-      patches.append(rect)
-      # Add a rectangle
-      rect = mpatches.Rectangle([xy[0], xy[1]], fib(j), fib(j), ec="none")
-      patches.append(rect)
-      i += 1
-      label(xy + [0.5 * fib(j), 0.5 * fib(j)], "%s" % fib(j), j * 2)
+<span class="org-meta-line">#+OPTIONS: ':nil *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t c:nil</span>
+<span class="org-meta-line">#+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t</span>
+<span class="org-meta-line">#+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t</span>
+<span class="org-meta-line">#+OPTIONS: title:t toc:nil todo:t |:t</span>
+<span class="org-document-info-keyword">#+TITLE:</span> <span class="org-document-title">Julien Chastang
+</span><span class="org-document-info-keyword">#+DATE:</span> <span class="org-document-info">&lt;2016-12-06 Tue&gt;
+</span><span class="org-document-info-keyword">#+AUTHOR:</span> <span class="org-document-info">Julien Chastang
+</span><span class="org-document-info-keyword">#+EMAIL:</span> <span class="org-document-info">julien dot c dot chastang at gmail
+</span><span class="org-meta-line">#+LANGUAGE: en</span>
+<span class="org-meta-line">#+SELECT_TAGS: export</span>
+<span class="org-meta-line">#+EXCLUDE_TAGS: noexport</span>
+<span class="org-meta-line">#+CREATOR: Emacs 25.1.2 (Org mode 8.3.6)</span>
+
+<span class="org-meta-line">#+SETUPFILE: ../templates/level-0.org</span>
+<span class="org-meta-line">#+INCLUDE: ../templates/level-0.org</span>
+
+<span class="org-block-begin-line">#+BEGIN_SRC ipython :session :exports results :file ../static/shell.png 
+</span>  <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
+  <span class="keyword">import</span> numpy <span class="keyword">as</span> np
+  <span class="keyword">import</span> matplotlib.patches <span class="keyword">as</span> mpatches
+  <span class="keyword">from</span> matplotlib.collections <span class="keyword">import</span> PatchCollection
+
+  plt.rcdefaults<span class="rainbow-delimiters-depth-1">()</span>
 
 
-  colors = np.linspace(0, 1, len(patches))
-  collection = PatchCollection(patches, cmap=plt.cm.hsv, alpha=0.3)
-  collection.set_array(np.array(colors))
-  ax.add_collection(collection)
+  <span class="keyword">def</span> <span class="function-name">fib</span><span class="rainbow-delimiters-depth-1">(</span>n<span class="rainbow-delimiters-depth-1">)</span>:
+      <span class="keyword">if</span> n &lt; 2:
+          <span class="keyword">return</span> n
+      <span class="keyword">else</span>:
+          <span class="keyword">return</span> fib<span class="rainbow-delimiters-depth-1">(</span>n - 1<span class="rainbow-delimiters-depth-1">)</span> + fib<span class="rainbow-delimiters-depth-1">(</span>n - 2<span class="rainbow-delimiters-depth-1">)</span>
 
-  plt.axis('equal')
-  plt.axis('off')
-  plt.grid('off')
-  plt.show()<span class="org-meta-line">
-</span><span class="org-block-end-line">#+END_SRC
+
+  <span class="keyword">def</span> <span class="function-name">label</span><span class="rainbow-delimiters-depth-1">(</span>xy, text, j<span class="rainbow-delimiters-depth-1">)</span>:
+      <span class="variable-name">y</span> = xy<span class="rainbow-delimiters-depth-1">[</span>1<span class="rainbow-delimiters-depth-1">]</span> - 0.025  <span class="comment-delimiter"># </span><span class="comment">shift y-value to center label
+</span>      plt.text<span class="rainbow-delimiters-depth-1">(</span>xy<span class="rainbow-delimiters-depth-2">[</span>0<span class="rainbow-delimiters-depth-2">]</span>, y, text, ha=<span class="string">"center"</span>, family=<span class="string">'sans-serif'</span>, size=j<span class="rainbow-delimiters-depth-1">)</span>
+
+
+  <span class="variable-name">fig</span>, <span class="variable-name">ax</span> = plt.subplots<span class="rainbow-delimiters-depth-1">()</span>
+  <span class="variable-name">patches</span> = <span class="rainbow-delimiters-depth-1">[]</span>
+
+  <span class="variable-name">xy</span> = np.array<span class="rainbow-delimiters-depth-1">(</span><span class="rainbow-delimiters-depth-2">[</span>0, 0<span class="rainbow-delimiters-depth-2">]</span><span class="rainbow-delimiters-depth-1">)</span>
+  <span class="variable-name">c</span> = xy
+  <span class="variable-name">i</span> = 1
+  <span class="variable-name">t</span> = np.array<span class="rainbow-delimiters-depth-1">(</span><span class="rainbow-delimiters-depth-2">[</span>270, 0<span class="rainbow-delimiters-depth-2">]</span><span class="rainbow-delimiters-depth-1">)</span>
+
+  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="builtin">range</span><span class="rainbow-delimiters-depth-1">(</span>1, 7 + 4<span class="rainbow-delimiters-depth-1">)</span>:
+      <span class="variable-name">t</span> += 90
+      <span class="keyword">if</span> i == 5:
+          <span class="variable-name">i</span> = 1
+      <span class="keyword">if</span> i == 1:
+          <span class="variable-name">xy</span> = xy + <span class="rainbow-delimiters-depth-1">[</span>-fib<span class="rainbow-delimiters-depth-2">(</span>j - 2<span class="rainbow-delimiters-depth-2">)</span>, fib<span class="rainbow-delimiters-depth-2">(</span>j - 1<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">]</span>
+          <span class="variable-name">c</span> = c + <span class="rainbow-delimiters-depth-1">[</span>-fib<span class="rainbow-delimiters-depth-2">(</span>j - 2<span class="rainbow-delimiters-depth-2">)</span>, 0<span class="rainbow-delimiters-depth-1">]</span>
+      <span class="keyword">if</span> i == 2:
+          <span class="variable-name">xy</span> = xy + <span class="rainbow-delimiters-depth-1">[</span>-fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, -fib<span class="rainbow-delimiters-depth-2">(</span>j - 2<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">]</span>
+          <span class="variable-name">c</span> = c + <span class="rainbow-delimiters-depth-1">[</span>0, -fib<span class="rainbow-delimiters-depth-2">(</span>j - 2<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">]</span>
+      <span class="keyword">elif</span> i == 3:
+          <span class="variable-name">xy</span> = xy + <span class="rainbow-delimiters-depth-1">[</span>0, -fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">]</span>
+          <span class="variable-name">c</span> = c + <span class="rainbow-delimiters-depth-1">[</span>fib<span class="rainbow-delimiters-depth-2">(</span>j - 2<span class="rainbow-delimiters-depth-2">)</span>, 0<span class="rainbow-delimiters-depth-1">]</span>
+      <span class="keyword">elif</span> i == 4:
+          <span class="variable-name">xy</span> = xy + <span class="rainbow-delimiters-depth-1">[</span>fib<span class="rainbow-delimiters-depth-2">(</span>j - 1<span class="rainbow-delimiters-depth-2">)</span>, 0<span class="rainbow-delimiters-depth-1">]</span>
+          <span class="variable-name">c</span> = c + <span class="rainbow-delimiters-depth-1">[</span>0, fib<span class="rainbow-delimiters-depth-2">(</span>j - 2<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">]</span>
+      <span class="comment-delimiter"># </span><span class="comment">Add a wedge
+</span>      <span class="variable-name">rect</span> = mpatches.Wedge<span class="rainbow-delimiters-depth-1">(</span><span class="rainbow-delimiters-depth-2">[</span>c<span class="rainbow-delimiters-depth-3">[</span>0<span class="rainbow-delimiters-depth-3">]</span>, c<span class="rainbow-delimiters-depth-3">[</span>1<span class="rainbow-delimiters-depth-3">]</span><span class="rainbow-delimiters-depth-2">]</span>, fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, t<span class="rainbow-delimiters-depth-2">[</span>0<span class="rainbow-delimiters-depth-2">]</span>, t<span class="rainbow-delimiters-depth-2">[</span>1<span class="rainbow-delimiters-depth-2">]</span>, ec=<span class="string">"none"</span><span class="rainbow-delimiters-depth-1">)</span>
+      patches.append<span class="rainbow-delimiters-depth-1">(</span>rect<span class="rainbow-delimiters-depth-1">)</span>
+      <span class="comment-delimiter"># </span><span class="comment">Add a rectangle
+</span>      <span class="variable-name">rect</span> = mpatches.Rectangle<span class="rainbow-delimiters-depth-1">(</span><span class="rainbow-delimiters-depth-2">[</span>xy<span class="rainbow-delimiters-depth-3">[</span>0<span class="rainbow-delimiters-depth-3">]</span>, xy<span class="rainbow-delimiters-depth-3">[</span>1<span class="rainbow-delimiters-depth-3">]</span><span class="rainbow-delimiters-depth-2">]</span>, fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, ec=<span class="string">"none"</span><span class="rainbow-delimiters-depth-1">)</span>
+      patches.append<span class="rainbow-delimiters-depth-1">(</span>rect<span class="rainbow-delimiters-depth-1">)</span>
+      <span class="variable-name">i</span> += 1
+      label<span class="rainbow-delimiters-depth-1">(</span>xy + <span class="rainbow-delimiters-depth-2">[</span>0.5 * fib<span class="rainbow-delimiters-depth-3">(</span>j<span class="rainbow-delimiters-depth-3">)</span>, 0.5 * fib<span class="rainbow-delimiters-depth-3">(</span>j<span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">]</span>, <span class="string">"%s"</span> % fib<span class="rainbow-delimiters-depth-2">(</span>j<span class="rainbow-delimiters-depth-2">)</span>, j * 2<span class="rainbow-delimiters-depth-1">)</span>
+
+
+  <span class="variable-name">colors</span> = np.linspace<span class="rainbow-delimiters-depth-1">(</span>0, 1, <span class="builtin">len</span><span class="rainbow-delimiters-depth-2">(</span>patches<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+  <span class="variable-name">collection</span> = PatchCollection<span class="rainbow-delimiters-depth-1">(</span>patches, cmap=plt.cm.hsv, alpha=0.3<span class="rainbow-delimiters-depth-1">)</span>
+  collection.set_array<span class="rainbow-delimiters-depth-1">(</span>np.array<span class="rainbow-delimiters-depth-2">(</span>colors<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+  ax.add_collection<span class="rainbow-delimiters-depth-1">(</span>collection<span class="rainbow-delimiters-depth-1">)</span>
+
+  plt.axis<span class="rainbow-delimiters-depth-1">(</span><span class="string">'equal'</span><span class="rainbow-delimiters-depth-1">)</span>
+  plt.axis<span class="rainbow-delimiters-depth-1">(</span><span class="string">'off'</span><span class="rainbow-delimiters-depth-1">)</span>
+  plt.grid<span class="rainbow-delimiters-depth-1">(</span><span class="string">'off'</span><span class="rainbow-delimiters-depth-1">)</span>
+  plt.show<span class="rainbow-delimiters-depth-1">()</span>
+<span class="org-block-end-line">#+END_SRC
 </span>
 <span class="org-meta-line">#+RESULTS:</span>
 <span class="org-link"><a href="file:../static/shell.png">file:../static/shell.png</a></span>

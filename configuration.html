@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-16 Fri 15:21 -->
+<!-- 2016-12-17 Sat 06:13 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration</title>
@@ -134,6 +134,11 @@
       h1.title {
         border-bottom: solid #d4d4d4 1px;
         padding-bottom: .2em;
+        text-align: left;
+      }
+      
+      .figure p {
+        text-align: left;
       }
       
       #postamble {
@@ -241,6 +246,7 @@
 This website heavily borrows from the work of <a href="http://explog.in/">Kunal Bhalla</a> and can be found on <a href="https://github.com/julienchastang/julienchastang.com">github</a>. 
 </p>
 
+
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1">Imports</h2>
 <div class="outline-text-2" id="text-orgheadline1">
@@ -258,7 +264,7 @@ This website heavily borrows from the work of <a href="http://explog.in/">Kunal 
 <div class="outline-text-2" id="text-orgheadline2">
 <div class="org-src-container">
 
-<pre class="src src-css" id="orgsrcblock1"><span style="color: #0000ff; font-weight: bold;">body </span><span style="color: #707183;">{</span>
+<pre class="src src-css" id="orgsrcblock1"><span style="color: #0000ff; font-weight: bold;">body </span>{
   <span style="color: #00AA00;">color</span>: #111;
   <span style="color: #00AA00;">font-family</span>: <span style="color: #008000;">'Gentium Book Basic'</span>, serif;
   <span style="color: #00AA00;">font-size</span>: 16px;
@@ -266,83 +272,88 @@ This website heavily borrows from the work of <a href="http://explog.in/">Kunal 
   <span style="color: #00AA00;">margin</span>: 0 auto;
   <span style="color: #00AA00;">max-width</span>: 672px;
   <span style="color: #00AA00;">padding</span>: 0 32px;
-<span style="color: #707183;">}</span>
+}
 
 <span style="color: #00AA00;">a</span>:link,
-<span style="color: #00AA00;">a</span>:visited <span style="color: #707183;">{</span>
+<span style="color: #00AA00;">a</span>:visited {
   <span style="color: #00AA00;">background-color</span>: #eee;
   <span style="color: #00AA00;">border-bottom</span>: solid #333 1px;
   <span style="color: #00AA00;">color</span>: #111;
   <span style="color: #00AA00;">padding</span>: 0 .2em;
   <span style="color: #00AA00;">text-decoration</span>: none;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #00AA00;">a</span>:hover <span style="color: #707183;">{</span>
+<span style="color: #00AA00;">a</span>:hover {
   <span style="color: #00AA00;">background-color</span>: #333;
   <span style="color: #00AA00;">color</span>: #eee;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #00AA00;">a</span>:active <span style="color: #707183;">{</span>
+<span style="color: #00AA00;">a</span>:active {
   <span style="color: #00AA00;">border-bottom</span>: solid #f00 1px;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">h1, h2, h3, h4, h5, h6 </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">h1, h2, h3, h4, h5, h6 </span>{
   <span style="color: #00AA00;">font-family</span>: <span style="color: #008000;">'helvetica neue'</span>, <span style="color: #008000;">'arial'</span>, sans-serif;
   <span style="color: #00AA00;">font-weight</span>: normal;
   <span style="color: #00AA00;">line-height</span>: 1.2em;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">h1.title </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">h1.title </span>{
   <span style="color: #00AA00;">border-bottom</span>: solid #d4d4d4 1px;
   <span style="color: #00AA00;">padding-bottom</span>: .2em;
-<span style="color: #707183;">}</span>
+  <span style="color: #00AA00;">text-align</span>: left;
+}
 
-<span style="color: #0000ff; font-weight: bold;">#postamble </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">.figure p </span>{
+  <span style="color: #00AA00;">text-align</span>: left;
+}
+
+<span style="color: #0000ff; font-weight: bold;">#postamble </span>{
   <span style="color: #00AA00;">border-top</span>: solid #d4d4d4 1px;
   <span style="color: #00AA00;">color</span>: #999;
   <span style="color: #00AA00;">font-style</span>: italic;
   <span style="color: #00AA00;">text-align</span>: right;
   <span style="color: #00AA00;">margin-top</span>: 1em;
-<span style="color: #707183;">}</span>
+}
 
 #postamble a.source-link:link,
-<span style="color: #0000ff; font-weight: bold;">#postamble a.source-link:visited </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">#postamble a.source-link:visited </span>{
   <span style="color: #00AA00;">color</span>: #000;
   <span style="color: #00AA00;">float</span>: left;
   <span style="color: #00AA00;">font-family</span>: monospace;
   <span style="color: #00AA00;">font-style</span>: normal;
   <span style="color: #00AA00;">text-transform</span>: lowercase;
-<span style="color: #707183;">}</span>
+}
 
 #postamble a.source-link:hover,
-<span style="color: #0000ff; font-weight: bold;">#postamble a.source-link:active </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">#postamble a.source-link:active </span>{
   <span style="color: #00AA00;">background-color</span>: #000;
   <span style="color: #00AA00;">color</span>: #fff;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">#postamble a:link, #postamble a:visited </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">#postamble a:link, #postamble a:visited </span>{
   <span style="color: #00AA00;">background-color</span>: transparent;
   <span style="color: #00AA00;">border-bottom</span>: none;
   <span style="color: #00AA00;">color</span>: #999;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">#postamble a:hover </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">#postamble a:hover </span>{
   <span style="color: #00AA00;">background-color</span>: #777;
   <span style="color: #00AA00;">color</span>: #fff;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">#postamble a:active </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">#postamble a:active </span>{
  <span style="color: #00AA00;">border-bottom</span>: solid 1px #f00;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">code </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">code </span>{
   <span style="color: #00AA00;">background-color</span>: #eee;
   <span style="color: #00AA00;">border-top</span>: solid #d4d4d4 1px;
   <span style="color: #00AA00;">border-bottom</span>: solid #d4d4d4 1px;
   <span style="color: #00AA00;">padding</span>: 0 .2em;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">pre.src, pre.example </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">pre.src, pre.example </span>{
   <span style="color: #00AA00;">background-color</span>: #eee;
   <span style="color: #00AA00;">border-top</span>: solid #d4d4d4 1px;
   <span style="color: #00AA00;">border-bottom</span>: solid #d4d4d4 1px;
@@ -355,35 +366,35 @@ This website heavily borrows from the work of <a href="http://explog.in/">Kunal 
   <span style="color: #00AA00;">margin</span>: 0;
   <span style="color: #00AA00;">overflow</span>: auto;
   <span style="color: #00AA00;">max-width</span>: 100%;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">pre.src:before </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">pre.src:before </span>{
   <span style="color: #00AA00;">background-color</span>: transparent;
   <span style="color: #00AA00;">border</span>: none;
   <span style="color: #00AA00;">top</span>: 0;
   <span style="color: #00AA00;">right</span>: 0;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">sup </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">sup </span>{
   <span style="color: #00AA00;">line-height</span>: 0;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">hr </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">hr </span>{
   <span style="color: #00AA00;">border-top</span>: solid 1px #d4d4d4;
   <span style="color: #00AA00;">border-bottom</span>: none;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">li p </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">li p </span>{
   <span style="color: #00AA00;">margin</span>: 0;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">.footpara </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">.footpara </span>{
   <span style="color: #00AA00;">margin</span>: 0;
-<span style="color: #707183;">}</span>
+}
 
-<span style="color: #0000ff; font-weight: bold;">.footnotes </span><span style="color: #707183;">{</span>
+<span style="color: #0000ff; font-weight: bold;">.footnotes </span>{
   <span style="color: #00AA00;">margin-top</span>: 1em;
-<span style="color: #707183;">}</span>
+}
 </pre>
 </div>
 </div>
@@ -395,133 +406,8 @@ This website heavily borrows from the work of <a href="http://explog.in/">Kunal 
 <div class="org-src-container">
 
 <pre class="src src-css" id="orgsrcblock2">&lt;link href=<span style="color: #008000;">'https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400i,700'</span> rel=<span style="color: #008000;">'stylesheet'</span> /&gt;
-<span style="color: #0000ff; font-weight: bold;">&lt;style type=</span><span style="color: #008000;">'text/css'</span><span style="color: #0000ff; font-weight: bold;">&gt;</span>
-<span style="color: #0000ff; font-weight: bold;">  body </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">color</span>: #111;
-    <span style="color: #00AA00;">font-family</span>: <span style="color: #008000;">'Gentium Book Basic'</span>, serif;
-    <span style="color: #00AA00;">font-size</span>: 16px;
-    <span style="color: #00AA00;">line-height</span>: 24px;
-    <span style="color: #00AA00;">margin</span>: 0 auto;
-    <span style="color: #00AA00;">max-width</span>: 672px;
-    <span style="color: #00AA00;">padding</span>: 0 32px;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #00AA00;">a</span>:link,
-  <span style="color: #00AA00;">a</span>:visited <span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">background-color</span>: #eee;
-    <span style="color: #00AA00;">border-bottom</span>: solid #333 1px;
-    <span style="color: #00AA00;">color</span>: #111;
-    <span style="color: #00AA00;">padding</span>: 0 .2em;
-    <span style="color: #00AA00;">text-decoration</span>: none;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #00AA00;">a</span>:hover <span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">background-color</span>: #333;
-    <span style="color: #00AA00;">color</span>: #eee;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #00AA00;">a</span>:active <span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">border-bottom</span>: solid #f00 1px;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">h1, h2, h3, h4, h5, h6 </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">font-family</span>: <span style="color: #008000;">'helvetica neue'</span>, <span style="color: #008000;">'arial'</span>, sans-serif;
-    <span style="color: #00AA00;">font-weight</span>: normal;
-    <span style="color: #00AA00;">line-height</span>: 1.2em;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">h1.title </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">border-bottom</span>: solid #d4d4d4 1px;
-    <span style="color: #00AA00;">padding-bottom</span>: .2em;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">#postamble </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">border-top</span>: solid #d4d4d4 1px;
-    <span style="color: #00AA00;">color</span>: #999;
-    <span style="color: #00AA00;">font-style</span>: italic;
-    <span style="color: #00AA00;">text-align</span>: right;
-    <span style="color: #00AA00;">margin-top</span>: 1em;
-  <span style="color: #707183;">}</span>
-
-  #postamble a.source-link:link,
-  <span style="color: #0000ff; font-weight: bold;">#postamble a.source-link:visited </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">color</span>: #000;
-    <span style="color: #00AA00;">float</span>: left;
-    <span style="color: #00AA00;">font-family</span>: monospace;
-    <span style="color: #00AA00;">font-style</span>: normal;
-    <span style="color: #00AA00;">text-transform</span>: lowercase;
-  <span style="color: #707183;">}</span>
-
-  #postamble a.source-link:hover,
-  <span style="color: #0000ff; font-weight: bold;">#postamble a.source-link:active </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">background-color</span>: #000;
-    <span style="color: #00AA00;">color</span>: #fff;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">#postamble a:link, #postamble a:visited </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">background-color</span>: transparent;
-    <span style="color: #00AA00;">border-bottom</span>: none;
-    <span style="color: #00AA00;">color</span>: #999;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">#postamble a:hover </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">background-color</span>: #777;
-    <span style="color: #00AA00;">color</span>: #fff;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">#postamble a:active </span><span style="color: #707183;">{</span>
-   <span style="color: #00AA00;">border-bottom</span>: solid 1px #f00;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">code </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">background-color</span>: #eee;
-    <span style="color: #00AA00;">border-top</span>: solid #d4d4d4 1px;
-    <span style="color: #00AA00;">border-bottom</span>: solid #d4d4d4 1px;
-    <span style="color: #00AA00;">padding</span>: 0 .2em;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">pre.src, pre.example </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">background-color</span>: #eee;
-    <span style="color: #00AA00;">border-top</span>: solid #d4d4d4 1px;
-    <span style="color: #00AA00;">border-bottom</span>: solid #d4d4d4 1px;
-    <span style="color: #00AA00;">border-left</span>: none;
-    <span style="color: #00AA00;">border-right</span>: none;
-    <span style="color: #00AA00;">box-shadow</span>: none;
-    <span style="color: #00AA00;">font-size</span>: 14px;
-    <span style="color: #00AA00;">line-height</span>: 20px;
-    <span style="color: #00AA00;">padding</span>: 1em;
-    <span style="color: #00AA00;">margin</span>: 0;
-    <span style="color: #00AA00;">overflow</span>: auto;
-    <span style="color: #00AA00;">max-width</span>: 100%;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">pre.src:before </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">background-color</span>: transparent;
-    <span style="color: #00AA00;">border</span>: none;
-    <span style="color: #00AA00;">top</span>: 0;
-    <span style="color: #00AA00;">right</span>: 0;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">sup </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">line-height</span>: 0;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">hr </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">border-top</span>: solid 1px #d4d4d4;
-    <span style="color: #00AA00;">border-bottom</span>: none;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">li p </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">margin</span>: 0;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">.footpara </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">margin</span>: 0;
-  <span style="color: #707183;">}</span>
-
-  <span style="color: #0000ff; font-weight: bold;">.footnotes </span><span style="color: #707183;">{</span>
-    <span style="color: #00AA00;">margin-top</span>: 1em;
-  <span style="color: #707183;">}</span>
+&lt;style type=<span style="color: #008000;">'text/css'</span>&gt;
+  &lt;&lt;style&gt;&gt;
 &lt;/style&gt;
 </pre>
 </div>
@@ -566,141 +452,13 @@ This website heavily borrows from the work of <a href="http://explog.in/">Kunal 
      <span style="color: #006FE0;">:with-toc</span> nil
      <span style="color: #006FE0;">:html-head-include-scripts</span> nil
      <span style="color: #006FE0;">:html-head-extra</span> <span style="color: #008000;">"</span>
-<span style="color: #008000;">    &lt;link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400i,700' rel='stylesheet' /&gt;</span>
-<span style="color: #008000;">    &lt;style type='text/css'&gt;</span>
-<span style="color: #008000;">      body {</span>
-<span style="color: #008000;">        color: #111;</span>
-<span style="color: #008000;">        font-family: 'Gentium Book Basic', serif;</span>
-<span style="color: #008000;">        font-size: 16px;</span>
-<span style="color: #008000;">        line-height: 24px;</span>
-<span style="color: #008000;">        margin: 0 auto;</span>
-<span style="color: #008000;">        max-width: 672px;</span>
-<span style="color: #008000;">        padding: 0 32px;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      a:link,</span>
-<span style="color: #008000;">      a:visited {</span>
-<span style="color: #008000;">        background-color: #eee;</span>
-<span style="color: #008000;">        border-bottom: solid #333 1px;</span>
-<span style="color: #008000;">        color: #111;</span>
-<span style="color: #008000;">        padding: 0 .2em;</span>
-<span style="color: #008000;">        text-decoration: none;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      a:hover {</span>
-<span style="color: #008000;">        background-color: #333;</span>
-<span style="color: #008000;">        color: #eee;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      a:active {</span>
-<span style="color: #008000;">        border-bottom: solid #f00 1px;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      h1, h2, h3, h4, h5, h6 {</span>
-<span style="color: #008000;">        font-family: 'helvetica neue', 'arial', sans-serif;</span>
-<span style="color: #008000;">        font-weight: normal;</span>
-<span style="color: #008000;">        line-height: 1.2em;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      h1.title {</span>
-<span style="color: #008000;">        border-bottom: solid #d4d4d4 1px;</span>
-<span style="color: #008000;">        padding-bottom: .2em;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      #postamble {</span>
-<span style="color: #008000;">        border-top: solid #d4d4d4 1px;</span>
-<span style="color: #008000;">        color: #999;</span>
-<span style="color: #008000;">        font-style: italic;</span>
-<span style="color: #008000;">        text-align: right;</span>
-<span style="color: #008000;">        margin-top: 1em;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      #postamble a.source-link:link,</span>
-<span style="color: #008000;">      #postamble a.source-link:visited {</span>
-<span style="color: #008000;">        color: #000;</span>
-<span style="color: #008000;">        float: left;</span>
-<span style="color: #008000;">        font-family: monospace;</span>
-<span style="color: #008000;">        font-style: normal;</span>
-<span style="color: #008000;">        text-transform: lowercase;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      #postamble a.source-link:hover,</span>
-<span style="color: #008000;">      #postamble a.source-link:active {</span>
-<span style="color: #008000;">        background-color: #000;</span>
-<span style="color: #008000;">        color: #fff;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      #postamble a:link, #postamble a:visited {</span>
-<span style="color: #008000;">        background-color: transparent;</span>
-<span style="color: #008000;">        border-bottom: none;</span>
-<span style="color: #008000;">        color: #999;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      #postamble a:hover {</span>
-<span style="color: #008000;">        background-color: #777;</span>
-<span style="color: #008000;">        color: #fff;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      #postamble a:active {</span>
-<span style="color: #008000;">       border-bottom: solid 1px #f00;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      code {</span>
-<span style="color: #008000;">        background-color: #eee;</span>
-<span style="color: #008000;">        border-top: solid #d4d4d4 1px;</span>
-<span style="color: #008000;">        border-bottom: solid #d4d4d4 1px;</span>
-<span style="color: #008000;">        padding: 0 .2em;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      pre.src, pre.example {</span>
-<span style="color: #008000;">        background-color: #eee;</span>
-<span style="color: #008000;">        border-top: solid #d4d4d4 1px;</span>
-<span style="color: #008000;">        border-bottom: solid #d4d4d4 1px;</span>
-<span style="color: #008000;">        border-left: none;</span>
-<span style="color: #008000;">        border-right: none;</span>
-<span style="color: #008000;">        box-shadow: none;</span>
-<span style="color: #008000;">        font-size: 14px;</span>
-<span style="color: #008000;">        line-height: 20px;</span>
-<span style="color: #008000;">        padding: 1em;</span>
-<span style="color: #008000;">        margin: 0;</span>
-<span style="color: #008000;">        overflow: auto;</span>
-<span style="color: #008000;">        max-width: 100%;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      pre.src:before {</span>
-<span style="color: #008000;">        background-color: transparent;</span>
-<span style="color: #008000;">        border: none;</span>
-<span style="color: #008000;">        top: 0;</span>
-<span style="color: #008000;">        right: 0;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      sup {</span>
-<span style="color: #008000;">        line-height: 0;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      hr {</span>
-<span style="color: #008000;">        border-top: solid 1px #d4d4d4;</span>
-<span style="color: #008000;">        border-bottom: none;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      li p {</span>
-<span style="color: #008000;">        margin: 0;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      .footpara {</span>
-<span style="color: #008000;">        margin: 0;</span>
-<span style="color: #008000;">      }</span>
-
-<span style="color: #008000;">      .footnotes {</span>
-<span style="color: #008000;">        margin-top: 1em;</span>
-<span style="color: #008000;">      }</span>
-<span style="color: #008000;">    &lt;/style&gt;</span>
+<span style="color: #008000;">    &lt;&lt;header&gt;&gt;</span>
 <span style="color: #008000;">            "</span>
      <span style="color: #006FE0;">:html-validation-link</span> nil
      <span style="color: #006FE0;">:html-footnotes-section</span> <span style="color: #008000;">"&lt;div class=\"footnotes\" title=\"%s\"&gt;%s&lt;/div&gt;"</span>
      <span style="color: #006FE0;">:html-postamble</span> ,'create-postamble<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
 
-<span style="color: #707183;">(</span><span style="color: #0000FF;">setq</span>
+<span style="color: #707183;">(</span>setq
  org-publish-project-alist
  `<span style="color: #7388D6;">(</span>,@<span style="color: #909183;">(</span>create-project-configuration
       <span style="color: #008000;">"jc-notes"</span>
@@ -730,7 +488,7 @@ This website heavily borrows from the work of <a href="http://explog.in/">Kunal 
 <span style="color: #707183;">(</span>global-set-key
  <span style="color: #7388D6;">(</span>kbd <span style="color: #008000;">"C-c c"</span><span style="color: #7388D6;">)</span>
  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
-   <span style="color: #909183;">(</span><span style="color: #0000FF;">interactive</span><span style="color: #909183;">)</span>
+   <span style="color: #909183;">(</span>interactive<span style="color: #909183;">)</span>
    <span style="color: #909183;">(</span>org-babel-load-file <span style="color: #008000;">"~/git/julienchastang/src/org/configuration.org"</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
 <span style="color: #8D8D84;">; </span><span style="color: #8D8D84; font-style: italic;">(org-babel-execute-buffer)</span>
 </pre>
@@ -739,7 +497,7 @@ This website heavily borrows from the work of <a href="http://explog.in/">Kunal 
 </div>
 </div>
 <div id="postamble" class="status">
-<a class='source-link' href='./configuration.org.html'>Source</a>Last updated on Fri Dec 16 15:21:22 2016 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
+<a class='source-link' href='./configuration.org.html'>Source</a>Last updated on Sat Dec 17 06:13:43 2016 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
 </div>
 </body>
 </html>
