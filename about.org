@@ -1,4 +1,4 @@
-# Created 2017-01-28 Sat 17:48
+# Created 2017-01-28 Sat 18:02
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -20,8 +20,13 @@ I am scientific software developer living in beautiful [[http://en.wikipedia.org
 
 ** Curriculum Vitæ
 
-[[file:../static/cv.pdf][PDF version]]
-[[file:cv/cvorg.org][org version]]
+[[file:../static/cv.pdf][PDF version]] 
+
+[[file:cv/cvorg.org][HTML version]]
+
+[[file:cv/cv.org.html][org version]]
+
+[[file:../static/julienchastang.bib][bibtex file]]
 
 ** Contact
 
