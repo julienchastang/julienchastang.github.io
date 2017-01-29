@@ -1,4 +1,4 @@
-# Created 2017-01-28 Sat 17:53
+# Created 2017-01-28 Sat 17:55
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -6,46 +6,43 @@
 #+TITLE: Julien Chastang
 #+DATE: <2017-01-28 Sat>
 #+AUTHOR: Julien Chastang
+#+SUBTITLE: Curriculum Vitæ
 #+LANGUAGE: en
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
-#+SETUPFILE: ../../templates/level-1.org
-
-* 
-
 | Unidata Program Center  |
 | UCAR Community Programs |
 | 1850 Table Mesa Drive   |
 | Boulder, CO 80305       |
 | USA                     |
-** Contact
+* Contact
 | phone       | +1.303.497.2825               |
 | email       | chastang@ucar.edu             |
 | URL         | [[http://julienchastang.com]] |
 | Citizenship | USA and French                |
-** Educational Background
+* Educational Background
 | M. Sc. | University of Colorado | 2000 |
 | B. Sc. | University of Colorado | 1994 |
-** Positions Held
+* Positions Held
 |     2010- | Software Engineer III | Unidata Program Center            | UCAR |
 | 2006-2010 | Software Engineer III | Computational Information Systems | UCAR |
 |           |                       | Laboratory                        |      |
 | 2000-2006 | Software Engineer II  | Research Application Laboratory   | UCAR |
 | 1999-2000 | Student Assistant     | Research Application Laboratory   | UCAR |
-** 
+* 
 UCAR is the University Corporation for Atmospheric Research located in Boulder, Colorado USA
-** Publications
+* Publications
 \fullcite{Dunlap2008}\\
 
 \fullcite{Welch1995}
-** Awards
+* Awards
 | 2001 | UCAR Outstanding Accomplishment Award for Scientific and Technical |
 |      | Advancement                                                        |
 | 2009 | UCAR Special Recognition Award                                     |
 | 2014 | UCAR Special Recognition Award                                     |
-** Grants
+* Grants
 | $20,000 | 2016 | Microsoft Azure for Research cloud computing grant |
-** Conference Presentations
+* Conference Presentations
 \fullcite{Chastang2017a}\\
 
 
@@ -59,9 +56,9 @@ UCAR is the University Corporation for Atmospheric Research located in Boulder, 
 
 
 \fullcite{Chastang2013}
-** Teaching Experience
+* Teaching Experience
 I instruct yearly at the Unidata summer and fall training workshops.
-** Related Professional Skills
+* Related Professional Skills
 I specialize in scientific data, metadata, analysis and visualization using a variety of programming languages and technologies.
-** Languages
+* Languages
 Fluent in English and French
