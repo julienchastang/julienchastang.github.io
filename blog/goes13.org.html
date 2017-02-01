@@ -18,11 +18,6 @@
         /* font-lock-comment-delimiter-face */
         color: #8D8D84;
       }
-      .default {
-        /* default */
-        color: #333333;
-        background-color: #F6F6EF;
-      }
       .keyword {
         /* font-lock-keyword-face */
         color: #0000FF;
@@ -183,7 +178,7 @@ root group (NETCDF3_CLASSIC data model, file format DAP2):
     DODS.strlen: 80
     DODS.dimName: auditSize
     dimensions(sizes): auditCount(3), maxStrlen64(64), time(1), xc(1304), yc(676)
-     variables(dimensions): int32 &#27;[4mversion&#27;[0m(), int32 &#27;[4msensorID&#27;[0m(), int32 &#27;[4mimageDate&#27;[0m(), int32 &#27;[4mimageTime&#27;[0m(), int32 &#27;[4mstartLine&#27;[0m(), int32 &#27;[4mstartElem&#27;[0m(), int32 &#27;[4mtime&#27;[0m(time), int32 &#27;[4mdataWidth&#27;[0m(), int32 &#27;[4mlineRes&#27;[0m(), int32 &#27;[4melemRes&#27;[0m(), int32 &#27;[4mprefixSize&#27;[0m(), int32 &#27;[4mcrDate&#27;[0m(), int32 &#27;[4mcrTime&#27;[0m(), int32 &#27;[4mbands&#27;[0m(), |S1 &#27;[4mauditTrail&#27;[0m(auditCount,maxStrlen64), float32 &#27;[4mdata&#27;[0m(time,yc,xc), float32 &#27;[4mlat&#27;[0m(yc,xc), float32 &#27;[4mlon&#27;[0m(yc,xc)
+    variables(dimensions): int32 </span><span class="org-block"><span class="underline">version</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">sensorID</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">imageDate</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">imageTime</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">startLine</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">startElem</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">time</span></span><span class="org-block">(time), int32 </span><span class="org-block"><span class="underline">dataWidth</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">lineRes</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">elemRes</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">prefixSize</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">crDate</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">crTime</span></span><span class="org-block">(), int32 </span><span class="org-block"><span class="underline">bands</span></span><span class="org-block">(), |S1 </span><span class="org-block"><span class="underline">auditTrail</span></span><span class="org-block">(auditCount,maxStrlen64), float32 </span><span class="org-block"><span class="underline">data</span></span><span class="org-block">(time,yc,xc), float32 </span><span class="org-block"><span class="underline">lat</span></span><span class="org-block">(yc,xc), float32 </span><span class="org-block"><span class="underline">lon</span></span><span class="org-block">(yc,xc)
     groups: 
  
 </span><span class="org-block-end-line">#+end_example
@@ -254,28 +249,28 @@ Before we make use of our mask, let's get the <span class="org-code">~lon~</span
 :     coordinates: lon lat
 : unlimited dimensions: 
 : current shape = (1, 676, 1304)
-: filling off&#57344;&#57345;&#57345;
- : &#57344;&#57345;&#57345;
-</span>&#57344;&#57345;&#57345;
-The <span class="org-code">~data~</span> variable contains satellite brightness temperature in a range of values between <span class="org-code">~0~</span> and <span class="org-code">~255~</span>. Note the shape of the <span class="org-code">~data~</span> variable is the same as the <span class="org-code">~lat~</span> and <span class="org-code">~lon~</span> but with an additional time dimension of length one. Let's now employ our <span class="org-code">~datamask~</span> described earlier. For the <span class="org-code">~data~</span> variable, we will retrieve the first and only time step (<span class="org-code">~data[0]~</span>) before masking.&#57344;&#57345;
-&#57344;&#57345;&#57345;
-<span class="org-block-begin-line">#+BEGIN_SRC ipython :session  :results silent&#57344;&#57345;&#57345;
-</span>  <span class="variable-name">datam</span> = ma.masked_array<span class="rainbow-delimiters-depth-1">(</span>data<span class="rainbow-delimiters-depth-2">[</span>0<span class="rainbow-delimiters-depth-2">]</span>, datamask.mask<span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-  <span class="variable-name">latm</span> = ma.masked_array<span class="rainbow-delimiters-depth-1">(</span>lat, datamask.mask<span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-  <span class="variable-name">lonm</span> = ma.masked_array<span class="rainbow-delimiters-depth-1">(</span>lon, datamask.mask<span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-<span class="org-block-end-line">#+END_SRC&#57344;&#57345;&#57345;
-</span>&#57344;&#57345;&#57345;
- At this point, all we have to do is plot up the data with the help of the <span class="org-link"><a href="http://scitools.org.uk/cartopy/index.html">Cartopy API</a></span>.&#57344;&#57345;
-<span class="org-block-begin-line">#+BEGIN_SRC ipython :session :file ../../static/goes.png :exports both&#57344;&#57345;&#57345;
-</span>   plt.figure<span class="rainbow-delimiters-depth-1">(</span>figsize=<span class="rainbow-delimiters-depth-2">(</span>7, 7<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-  <span class="variable-name">ax</span> = plt.axes<span class="rainbow-delimiters-depth-1">(</span>projection=ccrs.PlateCarree<span class="rainbow-delimiters-depth-2">()</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
-  plt.contourf<span class="rainbow-delimiters-depth-1">(</span>lonm, latm, datam, 60, cmap=<span class="string">'bone'</span>, transform=ccrs.PlateCarree<span class="rainbow-delimiters-depth-2">()</span><span class="rainbow-delimiters-depth-1">)</span>&#57345;
-  ax.coastlines<span class="rainbow-delimiters-depth-1">()</span>&#57344;&#57345;&#57345;
-  plt.show<span class="rainbow-delimiters-depth-1">()</span>&#57344;&#57345;&#57345;
-<span class="org-block-end-line">#+END_SRC&#57344;&#57345;&#57345;
-</span>&#57344;&#57345;&#57345;
+: filling off
+ : 
+</span>
+The <span class="org-code">~data~</span> variable contains satellite brightness temperature in a range of values between <span class="org-code">~0~</span> and <span class="org-code">~255~</span>. Note the shape of the <span class="org-code">~data~</span> variable is the same as the <span class="org-code">~lat~</span> and <span class="org-code">~lon~</span> but with an additional time dimension of length one. Let's now employ our <span class="org-code">~datamask~</span> described earlier. For the <span class="org-code">~data~</span> variable, we will retrieve the first and only time step (<span class="org-code">~data[0]~</span>) before masking.
+
+<span class="org-block-begin-line">#+BEGIN_SRC ipython :session  :results silent
+</span>  <span class="variable-name">datam</span> = ma.masked_array<span class="rainbow-delimiters-depth-1">(</span>data<span class="rainbow-delimiters-depth-2">[</span>0<span class="rainbow-delimiters-depth-2">]</span>, datamask.mask<span class="rainbow-delimiters-depth-1">)</span>
+  <span class="variable-name">latm</span> = ma.masked_array<span class="rainbow-delimiters-depth-1">(</span>lat, datamask.mask<span class="rainbow-delimiters-depth-1">)</span>
+  <span class="variable-name">lonm</span> = ma.masked_array<span class="rainbow-delimiters-depth-1">(</span>lon, datamask.mask<span class="rainbow-delimiters-depth-1">)</span>
+<span class="org-block-end-line">#+END_SRC
+</span>
+ At this point, all we have to do is plot up the data with the help of the <span class="org-link"><a href="http://scitools.org.uk/cartopy/index.html">Cartopy API</a></span>.
+<span class="org-block-begin-line">#+BEGIN_SRC ipython :session :file ../../static/goes.png :exports both
+</span>   plt.figure<span class="rainbow-delimiters-depth-1">(</span>figsize=<span class="rainbow-delimiters-depth-2">(</span>7, 7<span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+  <span class="variable-name">ax</span> = plt.axes<span class="rainbow-delimiters-depth-1">(</span>projection=ccrs.PlateCarree<span class="rainbow-delimiters-depth-2">()</span><span class="rainbow-delimiters-depth-1">)</span>
+  plt.contourf<span class="rainbow-delimiters-depth-1">(</span>lonm, latm, datam, 60, cmap=<span class="string">'bone'</span>, transform=ccrs.PlateCarree<span class="rainbow-delimiters-depth-2">()</span><span class="rainbow-delimiters-depth-1">)</span>
+  ax.coastlines<span class="rainbow-delimiters-depth-1">()</span>
+  plt.show<span class="rainbow-delimiters-depth-1">()</span>
+<span class="org-block-end-line">#+END_SRC
+</span>
 <span class="org-meta-line">#+RESULTS:</span>
-<img src="../../static/goes.png" alt="file:../../static/goes.png" />
+<span class="org-link"><a href="file:../../static/goes.png">file:../../static/goes.png</a></span>
 
  
 </pre>

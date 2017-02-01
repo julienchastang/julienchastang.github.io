@@ -1,4 +1,4 @@
-# Created 2017-02-01 Wed 17:00
+# Created 2017-02-01 Wed 18:49
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -50,7 +50,7 @@ root group (NETCDF3_CLASSIC data model, file format DAP2):
     DODS.strlen: 80
     DODS.dimName: auditSize
     dimensions(sizes): auditCount(3), maxStrlen64(64), time(1), xc(1304), yc(676)
-    variables(dimensions): int32 [4mversion[0m(), int32 [4msensorID[0m(), int32 [4mimageDate[0m(), int32 [4mimageTime[0m(), int32 [4mstartLine[0m(), int32 [4mstartElem[0m(), int32 [4mtime[0m(time), int32 [4mdataWidth[0m(), int32 [4mlineRes[0m(), int32 [4melemRes[0m(), int32 [4mprefixSize[0m(), int32 [4mcrDate[0m(), int32 [4mcrTime[0m(), int32 [4mbands[0m(), |S1 [4mauditTrail[0m(auditCount,maxStrlen64), float32 [4mdata[0m(time,yc,xc), float32 [4mlat[0m(yc,xc), float32 [4mlon[0m(yc,xc)
+    variables(dimensions): int32 version(), int32 sensorID(), int32 imageDate(), int32 imageTime(), int32 startLine(), int32 startElem(), int32 time(time), int32 dataWidth(), int32 lineRes(), int32 elemRes(), int32 prefixSize(), int32 crDate(), int32 crTime(), int32 bands(), |S1 auditTrail(auditCount,maxStrlen64), float32 data(time,yc,xc), float32 lat(yc,xc), float32 lon(yc,xc)
     groups: 
 #+END_EXAMPLE
 
