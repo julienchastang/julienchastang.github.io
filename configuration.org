@@ -1,4 +1,4 @@
-# Created 2016-12-17 Sat 06:13
+# Created 2017-02-01 Wed 00:01
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -209,11 +209,11 @@ This website heavily borrows from the work of [[http://explog.in/][Kunal Bhalla]
    org-publish-project-alist
    `(,@(create-project-configuration
         "jc-notes"
-        "~/git/julienchastang/src/org/"
-        "~/git/julienchastang/publish/julienchastang.github.io/")
+        "../../src/org/"
+        "../../publish/julienchastang.github.io/")
      ("jc-static"
-      :base-directory "~/git/julienchastang/src/static/"
-      :publishing-directory "~/git/julienchastang/publish/julienchastang.github.io/static/"
+      :base-directory "../../src/static/"
+      :publishing-directory "../../publish/julienchastang.github.io/static/"
       :base-extension any
       :recursive t
       :publishing-function org-publish-attachment)
@@ -230,6 +230,6 @@ This website heavily borrows from the work of [[http://explog.in/][Kunal Bhalla]
    (kbd "C-c c")
    (lambda ()
      (interactive)
-     (org-babel-load-file "~/git/julienchastang/src/org/configuration.org")))
+     (org-babel-load-file "../../src/org/configuration.org")))
   ; (org-babel-execute-buffer)
 #+END_SRC

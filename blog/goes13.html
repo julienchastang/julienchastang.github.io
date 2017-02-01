@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-02-01 Wed 00:06 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Exploring GOES 13 Satellite Data with Python and Emacs</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Julien Chastang" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+    <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400i,700' rel='stylesheet' />
+    <style type='text/css'>
+      body {
+        color: #111;
+        font-family: 'Gentium Book Basic', serif;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 auto;
+        max-width: 672px;
+        padding: 0 32px;
+      }
+      
+      a:link,
+      a:visited {
+        background-color: #eee;
+        border-bottom: solid #333 1px;
+        color: #111;
+        padding: 0 .2em;
+        text-decoration: none;
+      }
+      
+      a:hover {
+        background-color: #333;
+        color: #eee;
+      }
+      
+      a:active {
+        border-bottom: solid #f00 1px;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'helvetica neue', 'arial', sans-serif;
+        font-weight: normal;
+        line-height: 1.2em;
+      }
+      
+      h1.title {
+        border-bottom: solid #d4d4d4 1px;
+        padding-bottom: .2em;
+        text-align: left;
+      }
+      
+      .figure p {
+        text-align: left;
+      }
+      
+      #postamble {
+        border-top: solid #d4d4d4 1px;
+        color: #999;
+        font-style: italic;
+        text-align: right;
+        margin-top: 1em;
+      }
+      
+      #postamble a.source-link:link,
+      #postamble a.source-link:visited {
+        color: #000;
+        float: left;
+        font-family: monospace;
+        font-style: normal;
+        text-transform: lowercase;
+      }
+      
+      #postamble a.source-link:hover,
+      #postamble a.source-link:active {
+        background-color: #000;
+        color: #fff;
+      }
+      
+      #postamble a:link, #postamble a:visited {
+        background-color: transparent;
+        border-bottom: none;
+        color: #999;
+      }
+      
+      #postamble a:hover {
+        background-color: #777;
+        color: #fff;
+      }
+      
+      #postamble a:active {
+       border-bottom: solid 1px #f00;
+      }
+      
+      code {
+        background-color: #eee;
+        border-top: solid #d4d4d4 1px;
+        border-bottom: solid #d4d4d4 1px;
+        padding: 0 .2em;
+      }
+      
+      pre.src, pre.example {
+        background-color: #eee;
+        border-top: solid #d4d4d4 1px;
+        border-bottom: solid #d4d4d4 1px;
+        border-left: none;
+        border-right: none;
+        box-shadow: none;
+        font-size: 14px;
+        line-height: 20px;
+        padding: 1em;
+        margin: 0;
+        overflow: auto;
+        max-width: 100%;
+      }
+      
+      pre.src:before {
+        background-color: transparent;
+        border: none;
+        top: 0;
+        right: 0;
+      }
+      
+      sup {
+        line-height: 0;
+      }
+      
+      hr {
+        border-top: solid 1px #d4d4d4;
+        border-bottom: none;
+      }
+      
+      li p {
+        margin: 0;
+      }
+      
+      .footpara {
+        margin: 0;
+      }
+      
+      .footnotes {
+        margin-top: 1em;
+      }
+    </style>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Exploring GOES 13 Satellite Data with Python and Emacs</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-30 Mon&gt;</span></span></a></li>
+</ul>
+</div>
+</div>
+<div class="menu">
+ ( 
+   <a href="../index.html">home</a> | 
+   <a href="../about.html">about</a> | 
+   <a href="../configuration.html">configuration</a> | 
+   <a href="../dotemacs.html">.emacs</a> 
+ )
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-30 Mon&gt;</span></span></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I recently came across some <a href="https://en.wikipedia.org/wiki/GOES_13">GOES 13</a> satellite data (<a href="http://jetstream.unidata.ucar.edu/repository/entry/show?entryid=5c36288d-208d-46f4-a8c7-228127a6e0f2">available here</a>) I wanted to visualize. In order to do that, we can make use of the <a href="emacs-docker.html">Emacs Docker container I wrote about previously</a> that has a full-fledged Scientific Python environment. The data in question are in <a href="http://www.unidata.ucar.edu/software/netcdf/">netCDF format</a>. Everything that follows could be done with a <a href="http://jupyter.org/">Jupyter notebook</a>, but it's often best to keep our workflows within Emacs and org-mode whenever possible.
+</p>
+
+<p>
+In order to crack open and visualize the data, we will need our usual suite of Scientific Python APIs.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ipython"><span style="color: #0000FF;">import</span> numpy <span style="color: #0000FF;">as</span> np
+<span style="color: #0000FF;">import</span> numpy.ma <span style="color: #0000FF;">as</span> ma
+<span style="color: #0000FF;">import</span> matplotlib.pyplot <span style="color: #0000FF;">as</span> plt
+<span style="color: #0000FF;">import</span> netCDF4
+<span style="color: #0000FF;">from</span> cartopy <span style="color: #0000FF;">import</span> config
+<span style="color: #0000FF;">import</span> cartopy.crs <span style="color: #0000FF;">as</span> ccrs
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">for inlining plots</span>
+%matplotlib inline
+</pre>
+</div>
+
+<p>
+Now, open the data via OpenDAP with the netcdf4-python API and print the header:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ipython"><span style="color: #BA36A5;">opendapurl</span> = <span style="color: #008000;">"http://jetstream.unidata.ucar.edu/repository/opendap/5c36288d-208d-46f4-a8c7-228127a6e0f2/entry.das"</span> 
+<span style="color: #BA36A5;">nc</span> = netCDF4.Dataset<span style="color: #707183;">(</span>opendapurl<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">if opening as a local file</span>
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">nc = netCDF4.Dataset("goes13.2017.001.114518.BAND_04.nc")</span>
+nc
+</pre>
+</div>
+
+<p>
+The header information reveals we are dealing with a <a href="https://www.ssec.wisc.edu/mcidas/doc/prog_man/2015/formats-1.html">McIDAS Area File</a> that has been converted to netCDF. It has no coordinate variables. The <code>Satellite Sensor</code> global attribute hints that we have <a href="https://en.wikipedia.org/wiki/GOES_13">GOES-13</a> satellite data. Many of the variables (e.g., <code>elemRes</code>) refer to Area file metadata. The most interesting variables are probably <code>lat</code>, <code>lon</code> and <code>data</code>. Let's look at the <code>lat</code> variable in more detail:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ipython"><span style="color: #BA36A5;">ncvars</span> = nc.variables
+<span style="color: #BA36A5;">lat</span> = ncvars<span style="color: #707183;">[</span><span style="color: #008000;">'lat'</span><span style="color: #707183;">]</span>
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">print the variable attributes</span>
+lat
+</pre>
+</div>
+
+<p>
+<code>lat</code> variable contains:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ipython">lat<span style="color: #707183;">[</span>:<span style="color: #707183;">]</span>
+</pre>
+</div>
+
+<p>
+Even though the variable metadata indicates no fill value, we've probably stumbled upon one with the <code>2.14328934e+09</code> repeated values. Let's create a numpy mask that will mask out that part of the two-dimensional array:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ipython"><span style="color: #BA36A5;">datamask</span> = ma.masked_values<span style="color: #707183;">(</span>lat<span style="color: #7388D6;">[</span>:<span style="color: #7388D6;">]</span>, 2.14328934e+09<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+Before we make use of our mask, let's get the <code>lon</code> and <code>data</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ipython"><span style="color: #BA36A5;">lon</span> = ncvars<span style="color: #707183;">[</span><span style="color: #008000;">'lon'</span><span style="color: #707183;">]</span>
+<span style="color: #BA36A5;">data</span> = ncvars<span style="color: #707183;">[</span><span style="color: #008000;">'data'</span><span style="color: #707183;">]</span>
+data
+</pre>
+</div>
+
+<p>
+The <code>data</code> variable contains satellite brightness temperature in a range of values between <code>0</code> and <code>255</code>. Note the shape of the <code>data</code> variable is the same as the <code>lat</code> and <code>lon</code> but with an additional time dimension of length one. Let's now employ our <code>datamask</code> described earlier. For the <code>data</code> variable, we will retrieve the first and only time step (<code>data[0]</code>) before masking.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ipython"><span style="color: #BA36A5;">datam</span> = ma.masked_array<span style="color: #707183;">(</span>data<span style="color: #7388D6;">[</span>0<span style="color: #7388D6;">]</span>, datamask.mask<span style="color: #707183;">)</span>
+<span style="color: #BA36A5;">latm</span> = ma.masked_array<span style="color: #707183;">(</span>lat, datamask.mask<span style="color: #707183;">)</span>
+<span style="color: #BA36A5;">lonm</span> = ma.masked_array<span style="color: #707183;">(</span>lon, datamask.mask<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+At this point, all we have to do is plot up the data with the help of the <a href="http://scitools.org.uk/cartopy/index.html">Cartopy API</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ipython">plt.figure<span style="color: #707183;">(</span>figsize=<span style="color: #7388D6;">(</span>6, 6<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #BA36A5;">ax</span> = plt.axes<span style="color: #707183;">(</span>projection=ccrs.PlateCarree<span style="color: #7388D6;">()</span><span style="color: #707183;">)</span>
+plt.contourf<span style="color: #707183;">(</span>lonm, latm, datam, 60, cmap=<span style="color: #008000;">'bone'</span>, transform=ccrs.PlateCarree<span style="color: #7388D6;">()</span><span style="color: #707183;">)</span>
+ax.coastlines<span style="color: #707183;">()</span>
+plt.show<span style="color: #707183;">()</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../static/goes.png" alt="goes.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<a class='source-link' href='./goes13.org.html'>Source</a>Last updated on Wed Feb  1 00:06:37 2017 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
+</div>
+</body>
+</html>

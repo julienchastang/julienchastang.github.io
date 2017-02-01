@@ -151,16 +151,16 @@
 
 This website heavily borrows from the work of <span class="org-link"><a href="http://explog.in/">Kunal Bhalla</a></span> and can be found on <span class="org-link"><a href="https://github.com/julienchastang/julienchastang.com">github</a></span>. 
 
- 
-<span class="org-level-1"> * Org Export Set up (Internal Only)                                </span><span class="org-tag"><span class="org-level-1">:noexport:</span></span>
- 
-<span class="comment"> # org-mode stuff. Don't want confirmation for babel exec, nor should babel block be evaluated during export.</span>
- 
-<span class="org-block-begin-line"> #+BEGIN_SRC emacs-lisp :results silent :exports none 
-</span>   <span class="rainbow-delimiters-depth-1">(</span>setq org-confirm-babel-evaluate nil<span class="rainbow-delimiters-depth-1">)</span>
-   <span class="rainbow-delimiters-depth-1">(</span>setq org-export-babel-evaluate nil<span class="rainbow-delimiters-depth-1">)</span>
-<span class="org-block-end-line"> #+END_SRC
-</span> 
+
+<span class="org-level-1">* Org Export Set up (Internal Only)                                </span><span class="org-tag"><span class="org-level-1">:noexport:</span></span>
+
+<span class="comment"># org-mode stuff. Don't want confirmation for babel exec, nor should babel block be evaluated during export.</span>
+
+<span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp :results silent :exports none 
+</span>  <span class="rainbow-delimiters-depth-1">(</span>setq org-confirm-babel-evaluate nil<span class="rainbow-delimiters-depth-1">)</span>
+  <span class="rainbow-delimiters-depth-1">(</span>setq org-export-babel-evaluate nil<span class="rainbow-delimiters-depth-1">)</span>
+<span class="org-block-end-line">#+END_SRC
+</span>
 <span class="org-level-1">* Imports</span>
 <span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp :results none
 </span>  <span class="rainbow-delimiters-depth-1">(</span><span class="keyword">require</span> '<span class="constant">ob-css</span><span class="rainbow-delimiters-depth-1">)</span>
@@ -207,11 +207,11 @@ This website heavily borrows from the work of <span class="org-link"><a href="ht
 <span class="css-selector">  h1.title </span>{
     <span class="css-property">border-bottom</span>: solid #d4d4d4 1px;
     <span class="css-property">padding-bottom</span>: .2em;
-     <span class="css-property">text-align</span>: left;
-   }
- 
-<span class="css-selector">   .figure p </span>{
-     <span class="css-property">text-align</span>: left;
+    <span class="css-property">text-align</span>: left;
+  }
+
+<span class="css-selector">  .figure p </span>{
+    <span class="css-property">text-align</span>: left;
   }
 
 <span class="css-selector">  #postamble </span>{
@@ -280,15 +280,15 @@ This website heavily borrows from the work of <span class="org-link"><a href="ht
     <span class="css-property">top</span>: 0;
     <span class="css-property">right</span>: 0;
   }
-
-<span class="css-selector">  sup </span>{
-    <span class="css-property">line-height</span>: 0;
-  }
-
-<span class="css-selector">  hr </span>{
-    <span class="css-property">border-top</span>: solid 1px #d4d4d4;
-    <span class="css-property">border-bottom</span>: none;
-  }
+&#57344;&#57345;&#57345;
+<span class="css-selector">  sup </span>{&#57344;&#57345;&#57345;
+    <span class="css-property">line-height</span>: 0;&#57344;&#57345;&#57345;
+  }&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+<span class="css-selector">  hr </span>{&#57344;&#57345;&#57345;
+    <span class="css-property">border-top</span>: solid 1px #d4d4d4;&#57344;&#57345;&#57345;
+    <span class="css-property">border-bottom</span>: none;&#57344;&#57345;&#57345;
+  }&#57344;&#57345;&#57345;
 &#57344;&#57345;&#57345;
 <span class="css-selector">  li p </span>{&#57344;&#57345;&#57345;
     <span class="css-property">margin</span>: 0;&#57344;&#57345;&#57345;
@@ -321,23 +321,23 @@ This website heavily borrows from the work of <span class="org-link"><a href="ht
     <span class="rainbow-delimiters-depth-2">(</span><span class="keyword">let</span> <span class="rainbow-delimiters-depth-3">(</span><span class="rainbow-delimiters-depth-4">(</span>input-file <span class="rainbow-delimiters-depth-5">(</span>plist-get options <span class="builtin">:input-file</span><span class="rainbow-delimiters-depth-5">)</span><span class="rainbow-delimiters-depth-4">)</span><span class="rainbow-delimiters-depth-3">)</span>&#57344;&#57345;&#57345;
       <span class="rainbow-delimiters-depth-3">(</span>concat&#57344;&#57345;&#57345;
        <span class="string">"&lt;a class='source-link' href='"</span>&#57344;&#57345;&#57345;
-       <span class="rainbow-delimiters-depth-4">(</span>create-source-link input-file<span class="rainbow-delimiters-depth-4">)</span>
-       <span class="string">"'&gt;Source&lt;/a&gt;"</span>
-       <span class="string">"Last updated on "</span>
-       <span class="rainbow-delimiters-depth-4">(</span>current-time-string<span class="rainbow-delimiters-depth-4">)</span>
-       <span class="string">" &amp;bullet; &lt;a href='http://julienchastang.com'&gt;julienchastang.com&lt;/a&gt;"</span>
-       <span class="string">" by &lt;a href='http://julienchastang.com'&gt;Julien Chastang&lt;/a&gt;"</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
-
-  <span class="rainbow-delimiters-depth-1">(</span><span class="keyword">defun</span> <span class="function-name">create-project-configuration</span> <span class="rainbow-delimiters-depth-2">(</span>title base-dir publishing-dir<span class="rainbow-delimiters-depth-2">)</span>
-    `<span class="rainbow-delimiters-depth-2">(</span><span class="rainbow-delimiters-depth-3">(</span>,<span class="rainbow-delimiters-depth-4">(</span>concat title <span class="string">"-source"</span><span class="rainbow-delimiters-depth-4">)</span>
-       <span class="builtin">:base-directory</span> ,base-dir
-       <span class="builtin">:publishing-directory</span> ,publishing-dir
-       <span class="builtin">:base-extension</span> <span class="string">"org"</span>
-       <span class="builtin">:recursive</span> t
-       <span class="builtin">:htmlized-source</span> t
-       <span class="builtin">:publishing-function</span> org-org-publish-to-org<span class="rainbow-delimiters-depth-3">)</span>
-      <span class="rainbow-delimiters-depth-3">(</span>,title
-       <span class="builtin">:base-directory</span> ,base-dir
+       <span class="rainbow-delimiters-depth-4">(</span>create-source-link input-file<span class="rainbow-delimiters-depth-4">)</span>&#57344;&#57345;&#57345;
+       <span class="string">"'&gt;Source&lt;/a&gt;"</span>&#57344;&#57345;&#57345;
+       <span class="string">"Last updated on "</span>&#57344;&#57345;&#57345;
+       <span class="rainbow-delimiters-depth-4">(</span>current-time-string<span class="rainbow-delimiters-depth-4">)</span>&#57344;&#57345;&#57345;
+       <span class="string">" &amp;bullet; &lt;a href='http://julienchastang.com'&gt;julienchastang.com&lt;/a&gt;"</span>&#57344;&#57345;&#57345;
+       <span class="string">" by &lt;a href='http://julienchastang.com'&gt;Julien Chastang&lt;/a&gt;"</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  <span class="rainbow-delimiters-depth-1">(</span><span class="keyword">defun</span> <span class="function-name">create-project-configuration</span> <span class="rainbow-delimiters-depth-2">(</span>title base-dir publishing-dir<span class="rainbow-delimiters-depth-2">)</span>&#57344;&#57345;&#57345;
+    `<span class="rainbow-delimiters-depth-2">(</span><span class="rainbow-delimiters-depth-3">(</span>,<span class="rainbow-delimiters-depth-4">(</span>concat title <span class="string">"-source"</span><span class="rainbow-delimiters-depth-4">)</span>&#57344;&#57345;&#57345;
+       <span class="builtin">:base-directory</span> ,base-dir&#57344;&#57345;&#57345;
+       <span class="builtin">:publishing-directory</span> ,publishing-dir&#57344;&#57345;&#57345;
+       <span class="builtin">:base-extension</span> <span class="string">"org"</span>&#57344;&#57345;&#57345;
+       <span class="builtin">:recursive</span> t&#57344;&#57345;&#57345;
+       <span class="builtin">:htmlized-source</span> t&#57344;&#57345;&#57345;
+       <span class="builtin">:publishing-function</span> org-org-publish-to-org<span class="rainbow-delimiters-depth-3">)</span>&#57344;&#57345;&#57345;
+      <span class="rainbow-delimiters-depth-3">(</span>,title&#57344;&#57345;&#57345;
+       <span class="builtin">:base-directory</span> ,base-dir&#57344;&#57345;&#57345;
        <span class="builtin">:publishing-directory</span> ,publishing-dir
        <span class="builtin">:base-extension</span> <span class="string">"org"</span>
        <span class="builtin">:recursive</span> t
@@ -357,11 +357,11 @@ This website heavily borrows from the work of <span class="org-link"><a href="ht
    org-publish-project-alist
    `<span class="rainbow-delimiters-depth-2">(</span>,@<span class="rainbow-delimiters-depth-3">(</span>create-project-configuration
         <span class="string">"jc-notes"</span>
-        <span class="string">"~/git/julienchastang/src/org/"</span>
-        <span class="string">"~/git/julienchastang/publish/julienchastang.github.io/"</span><span class="rainbow-delimiters-depth-3">)</span>
+        <span class="string">"../../src/org/"</span>
+        <span class="string">"../../publish/julienchastang.github.io/"</span><span class="rainbow-delimiters-depth-3">)</span>
      <span class="rainbow-delimiters-depth-3">(</span><span class="string">"jc-static"</span>
-      <span class="builtin">:base-directory</span> <span class="string">"~/git/julienchastang/src/static/"</span>
-      <span class="builtin">:publishing-directory</span> <span class="string">"~/git/julienchastang/publish/julienchastang.github.io/static/"</span>
+      <span class="builtin">:base-directory</span> <span class="string">"../../src/static/"</span>
+      <span class="builtin">:publishing-directory</span> <span class="string">"../../publish/julienchastang.github.io/static/"</span>
       <span class="builtin">:base-extension</span> any
       <span class="builtin">:recursive</span> t
       <span class="builtin">:publishing-function</span> org-publish-attachment<span class="rainbow-delimiters-depth-3">)</span>
@@ -378,7 +378,7 @@ This website heavily borrows from the work of <span class="org-link"><a href="ht
    <span class="rainbow-delimiters-depth-2">(</span>kbd <span class="string">"C-c c"</span><span class="rainbow-delimiters-depth-2">)</span>
    <span class="rainbow-delimiters-depth-2">(</span><span class="keyword">lambda</span> <span class="rainbow-delimiters-depth-3">()</span>
      <span class="rainbow-delimiters-depth-3">(</span>interactive<span class="rainbow-delimiters-depth-3">)</span>
-     <span class="rainbow-delimiters-depth-3">(</span>org-babel-load-file <span class="string">"~/git/julienchastang/src/org/configuration.org"</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+     <span class="rainbow-delimiters-depth-3">(</span>org-babel-load-file <span class="string">"../../src/org/configuration.org"</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
   <span class="comment-delimiter">; </span><span class="comment">(org-babel-execute-buffer)
 </span><span class="org-block-end-line">#+END_SRC
 </span></pre>
