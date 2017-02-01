@@ -280,8 +280,8 @@ This website heavily borrows from the work of <span class="org-link"><a href="ht
     <span class="css-property">top</span>: 0;
     <span class="css-property">right</span>: 0;
   }
-&#57344;&#57345;&#57345;
-<span class="css-selector">  sup </span>{&#57344;&#57345;&#57345;
+
+<span class="css-selector">  sup </span>{
     <span class="css-property">line-height</span>: 0;&#57344;&#57345;&#57345;
   }&#57344;&#57345;&#57345;
 &#57344;&#57345;&#57345;
@@ -330,14 +330,14 @@ This website heavily borrows from the work of <span class="org-link"><a href="ht
 &#57344;&#57345;&#57345;
   <span class="rainbow-delimiters-depth-1">(</span><span class="keyword">defun</span> <span class="function-name">create-project-configuration</span> <span class="rainbow-delimiters-depth-2">(</span>title base-dir publishing-dir<span class="rainbow-delimiters-depth-2">)</span>&#57344;&#57345;&#57345;
     `<span class="rainbow-delimiters-depth-2">(</span><span class="rainbow-delimiters-depth-3">(</span>,<span class="rainbow-delimiters-depth-4">(</span>concat title <span class="string">"-source"</span><span class="rainbow-delimiters-depth-4">)</span>&#57344;&#57345;&#57345;
-       <span class="builtin">:base-directory</span> ,base-dir&#57344;&#57345;&#57345;
-       <span class="builtin">:publishing-directory</span> ,publishing-dir&#57344;&#57345;&#57345;
-       <span class="builtin">:base-extension</span> <span class="string">"org"</span>&#57344;&#57345;&#57345;
-       <span class="builtin">:recursive</span> t&#57344;&#57345;&#57345;
-       <span class="builtin">:htmlized-source</span> t&#57344;&#57345;&#57345;
-       <span class="builtin">:publishing-function</span> org-org-publish-to-org<span class="rainbow-delimiters-depth-3">)</span>&#57344;&#57345;&#57345;
-      <span class="rainbow-delimiters-depth-3">(</span>,title&#57344;&#57345;&#57345;
-       <span class="builtin">:base-directory</span> ,base-dir&#57344;&#57345;&#57345;
+       <span class="builtin">:base-directory</span> ,base-dir
+       <span class="builtin">:publishing-directory</span> ,publishing-dir
+       <span class="builtin">:base-extension</span> <span class="string">"org"</span>
+       <span class="builtin">:recursive</span> t
+       <span class="builtin">:htmlized-source</span> t
+       <span class="builtin">:publishing-function</span> org-org-publish-to-org<span class="rainbow-delimiters-depth-3">)</span>
+      <span class="rainbow-delimiters-depth-3">(</span>,title
+       <span class="builtin">:base-directory</span> ,base-dir
        <span class="builtin">:publishing-directory</span> ,publishing-dir
        <span class="builtin">:base-extension</span> <span class="string">"org"</span>
        <span class="builtin">:recursive</span> t
@@ -357,11 +357,11 @@ This website heavily borrows from the work of <span class="org-link"><a href="ht
    org-publish-project-alist
    `<span class="rainbow-delimiters-depth-2">(</span>,@<span class="rainbow-delimiters-depth-3">(</span>create-project-configuration
         <span class="string">"jc-notes"</span>
-        <span class="string">"../../src/org/"</span>
-        <span class="string">"../../publish/julienchastang.github.io/"</span><span class="rainbow-delimiters-depth-3">)</span>
+         <span class="string">"/home/python/work/julienchastang/src/org"</span>
+         <span class="string">"/home/python/work/julienchastang/publish/julienchastang.github.io/"</span><span class="rainbow-delimiters-depth-3">)</span>
      <span class="rainbow-delimiters-depth-3">(</span><span class="string">"jc-static"</span>
-      <span class="builtin">:base-directory</span> <span class="string">"../../src/static/"</span>
-      <span class="builtin">:publishing-directory</span> <span class="string">"../../publish/julienchastang.github.io/static/"</span>
+       <span class="builtin">:base-directory</span> <span class="string">"/home/python/work/julienchastang/src/static/"</span>
+       <span class="builtin">:publishing-directory</span> <span class="string">"/home/python/work/julienchastang/publish/julienchastang.github.io/static/"</span>
       <span class="builtin">:base-extension</span> any
       <span class="builtin">:recursive</span> t
       <span class="builtin">:publishing-function</span> org-publish-attachment<span class="rainbow-delimiters-depth-3">)</span>
@@ -378,7 +378,7 @@ This website heavily borrows from the work of <span class="org-link"><a href="ht
    <span class="rainbow-delimiters-depth-2">(</span>kbd <span class="string">"C-c c"</span><span class="rainbow-delimiters-depth-2">)</span>
    <span class="rainbow-delimiters-depth-2">(</span><span class="keyword">lambda</span> <span class="rainbow-delimiters-depth-3">()</span>
      <span class="rainbow-delimiters-depth-3">(</span>interactive<span class="rainbow-delimiters-depth-3">)</span>
-     <span class="rainbow-delimiters-depth-3">(</span>org-babel-load-file <span class="string">"../../src/org/configuration.org"</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+      <span class="rainbow-delimiters-depth-3">(</span>org-babel-load-file <span class="string">"/home/python/work/julienchastang/src/org/configuration.org"</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
   <span class="comment-delimiter">; </span><span class="comment">(org-babel-execute-buffer)
 </span><span class="org-block-end-line">#+END_SRC
 </span></pre>
