@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-01 Wed 18:49 -->
+<!-- 2017-02-02 Thu 18:39 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exploring GOES 13 Satellite Data with Python and Emacs</title>
@@ -245,6 +245,12 @@
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-02-01 Wed&gt;</span></span></h2>
 <div class="outline-text-2" id="text-orgheadline1">
+
+<div class="figure">
+<p><img src="../../static/goes.png" alt="goes.png" />
+</p>
+</div>
+
 <p>
 I recently came across some <a href="https://en.wikipedia.org/wiki/GOES_13">GOES 13</a> satellite data (<a href="http://jetstream.unidata.ucar.edu/repository/entry/show?entryid=5c36288d-208d-46f4-a8c7-228127a6e0f2">available here</a>) I wanted to visualize. In order to do that, we can make use of the <a href="emacs-docker.html">Emacs Docker container I wrote about previously</a> that has a full-fledged Scientific Python environment. The data in question are in <a href="http://www.unidata.ucar.edu/software/netcdf/">netCDF format</a>. Everything that follows could be done with a <a href="http://jupyter.org/">Jupyter notebook</a>, but it's often best to keep our workflows within Emacs and org-mode whenever possible.
 </p>
@@ -356,7 +362,7 @@ Even though the variable metadata indicates no fill value, we've probably stumbl
 </div>
 
 <p>
-Before we make use of our mask, let's get the <code>lon</code> and <code>data</code>:
+Before we make use of our mask, let's get the <code>lon</code> and <code>data</code> variables:
 </p>
 
 <div class="org-src-container">
@@ -412,7 +418,7 @@ plt.show<span style="color: #707183;">()</span>
 </div>
 </div>
 <div id="postamble" class="status">
-<a class='source-link' href='./goes13.org.html'>Source</a>Last updated on Wed Feb  1 18:49:40 2017 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
+<a class='source-link' href='./goes13.org.html'>Source</a>Last updated on Thu Feb  2 18:39:26 2017 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
 </div>
 </body>
 </html>
