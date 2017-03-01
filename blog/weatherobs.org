@@ -1,10 +1,10 @@
-# Created 2017-03-01 Wed 00:40
+# Created 2017-03-01 Wed 02:33
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
 #+OPTIONS: title:t toc:nil todo:t |:t
 #+TITLE: Plotting Time Series of Weather Observations in Emacs
-#+DATE: <2017-02-25 Sat>
+#+DATE: <2017-03-01 Wed>
 #+AUTHOR: Julien Chastang
 #+LANGUAGE: en
 #+SELECT_TAGS: export
@@ -12,9 +12,9 @@
 #+SETUPFILE: ../../templates/level-1.org
 #+PROPERTY: header-args :exports both
 
-* <2017-02-25 Sat>
+* <2017-03-01 Wed>
 
-[[file:~/git/julienchastang/src/static/weatherobs/timeseries.svg]]
+[[file:../../static/weatherobs/timeseries.svg]]
 
 ** Introduction
 <<intro>>
@@ -163,7 +163,7 @@ At this point, we can finally retrieve our data with the help our noweb paramete
 
 #+NAME: timeseries
 #+BEGIN_SRC http
-  GET http://api.mesowest.net/v2/stations/timeseries?token=demotoken&stid=E3608&start=201702280040&end=201703010040&obtimezone=local&units=metric&vars=air_temp,dew_point_temperature,wind_speed,wind_direction,sea_level_pressure&output=csv
+  GET http://api.mesowest.net/v2/stations/timeseries?token=demotoken&stid=E3608&start=201702280232&end=201703010232&obtimezone=local&units=metric&vars=air_temp,dew_point_temperature,wind_speed,wind_direction,sea_level_pressure&output=csv
 #+END_SRC
 
 *** Post-request cleanup with Emacs Lisp
