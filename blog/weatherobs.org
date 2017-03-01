@@ -1,4 +1,4 @@
-# Created 2017-03-01 Wed 02:33
+# Created 2017-03-01 Wed 15:22
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -41,7 +41,7 @@ Our first job is to find a weather station near our location. We will employ the
 #+BEGIN_EXAMPLE
 {
   "SUMMARY": {
-    "METADATA_RESPONSE_TIME": "0.0970363616943 ms",
+    "METADATA_RESPONSE_TIME": "0.134944915771 ms",
     "RESPONSE_MESSAGE": "OK",
     "RESPONSE_CODE": 1,
     "NUMBER_OF_OBJECTS": 1
@@ -58,7 +58,7 @@ Our first job is to find a weather station near our location. We will employ the
       "NAME": "EW3608 Boulder",
       "ELEVATION": "5430",
       "PERIOD_OF_RECORD": {
-        "end": "2017-02-28T23:58:00Z",
+        "end": "2017-03-01T15:08:00Z",
         "start": "2013-09-25T00:00:00Z"
       },
       "MNET_ID": "65",
@@ -89,12 +89,12 @@ Next, we will be using the [[https://synopticlabs.org/api/mesonet/reference/#sta
 # STATE: CO
 Station_ID,Date_Time,air_temp_set_1
 ,,Celsius
-KDEN,2017-02-28T23:35:00Z,-2.0
-KDEN,2017-02-28T23:40:00Z,-2.0
-KDEN,2017-02-28T23:45:00Z,-2.0
-KDEN,2017-02-28T23:50:00Z,-2.0
-KDEN,2017-02-28T23:53:00Z,-2.2
-KDEN,2017-02-28T23:55:00Z,-2.0
+KDEN,2017-03-01T14:50:00Z,-5.0
+KDEN,2017-03-01T14:53:00Z,-5.0
+KDEN,2017-03-01T14:55:00Z,-5.0
+KDEN,2017-03-01T15:00:00Z,-4.0
+KDEN,2017-03-01T15:05:00Z,-3.0
+KDEN,2017-03-01T15:10:00Z,-3.0
 #+END_EXAMPLE
 
 There are more [[https://synopticlabs.org/api/mesonet/][examples]] of API use as well as the [[https://synopticlabs.org/api/mesonet/reference/#stationstimeseries][API reference]] on SynopticLabs website. 
@@ -108,7 +108,7 @@ For the particular example we are shooting for, we will supply the following URL
 - ~vars~, the [[https://synopticlabs.org/api/mesonet/variables/][sensor variables]]
 - ~obtimezone~, the timezone of the response data (i.e., UTC or local)
 - ~output~, the output format (e.g., csv)
-- ~token~, the request token in this case guest
+- ~token~, the request token, in this case guest
 
 ** Set up Parameterization With noweb
 <<params>>
@@ -117,7 +117,7 @@ We will once again be make use of ob-http to retrieve the data, but, this time, 
 
 *** Start Time
 
-Obtain the start time range will be 24 hours ago. Also set the time zone as UTC since that is what the SynopticLabs API requires.
+The start time range will be 24 hours ago. Also set the time zone as UTC since that is what the SynopticLabs API requires.
 
 #+NAME: starttime
 #+BEGIN_SRC emacs-lisp
@@ -128,7 +128,7 @@ Obtain the start time range will be 24 hours ago. Also set the time zone as UTC 
 #+END_SRC
 
 #+RESULTS: starttime
-: 201702280006
+: 201702281521
 
 *** End Time
 
@@ -140,7 +140,7 @@ The end time will be now.
 #+END_SRC
 
 #+RESULTS: endtime
-: 201703010006
+: 201703011521
 
 *** Station ID
 
@@ -163,7 +163,7 @@ At this point, we can finally retrieve our data with the help our noweb paramete
 
 #+NAME: timeseries
 #+BEGIN_SRC http
-  GET http://api.mesowest.net/v2/stations/timeseries?token=demotoken&stid=E3608&start=201702280232&end=201703010232&obtimezone=local&units=metric&vars=air_temp,dew_point_temperature,wind_speed,wind_direction,sea_level_pressure&output=csv
+  GET http://api.mesowest.net/v2/stations/timeseries?token=demotoken&stid=E3608&start=201702281522&end=201703011522&obtimezone=local&units=metric&vars=air_temp,dew_point_temperature,wind_speed,wind_direction,sea_level_pressure&output=csv
 #+END_SRC
 
 *** Post-request cleanup with Emacs Lisp
@@ -229,40 +229,40 @@ Armed with these functions, we can clean up our data. Also a note about sampling
 
 #+RESULTS: data-table
 :RESULTS:
-| Station | Date Time                | Altimeter | Temperature |      RH |    Wind Speed | Wind Direction | Dew Point | Pressure |       SLP |
-|         |                          |   Pascals |     Celsius |       % | Meters/second |        Degrees |   Celsius |  Pascals |   Pascals |
-| E3608   | 2017-02-27T17:08:00-0700 | 100507.97 |        9.44 |    26.0 |          2.68 |          223.0 |     -9.23 | 82282.05 | 100132.09 |
-| E3608   | 2017-02-27T17:53:00-0700 | 100541.83 |        8.33 |    30.0 |           0.0 |        missing |     -8.37 | 82309.77 | 100241.92 |
-| E3608   | 2017-02-27T18:38:00-0700 | 100643.42 |        7.22 |    34.0 |           0.0 |        missing |     -7.73 | 82392.94 | 100420.05 |
-| E3608   | 2017-02-27T19:23:00-0700 | 100677.29 |        8.33 |    28.0 |          3.13 |          215.0 |     -9.25 | 82420.66 |  100377.0 |
-| E3608   | 2017-02-27T20:08:00-0700 | 100711.15 |        7.22 |    32.0 |          0.45 |          248.0 |     -8.51 | 82448.38 | 100487.64 |
-| E3608   | 2017-02-27T20:53:00-0700 | 100745.01 |         5.0 |    42.0 |          0.45 |          250.0 |     -6.97 |  82476.1 | 100677.22 |
-| E3608   | 2017-02-27T21:38:00-0700 |  100846.6 |        1.11 |    66.0 |          3.13 |           75.0 |     -4.61 | 82559.27 |  101058.6 |
-| E3608   | 2017-02-27T22:23:00-0700 | 101015.92 |        0.56 |    68.0 |          0.45 |          105.0 |     -4.73 | 82697.89 | 101268.63 |
-| E3608   | 2017-02-27T23:08:00-0700 | 101049.79 |         0.0 |    69.0 |           0.9 |          192.0 |     -5.08 | 82725.62 | 101343.86 |
-| E3608   | 2017-02-27T23:53:00-0700 | 101049.79 |         0.0 |    71.0 |           0.9 |          133.0 |     -4.69 | 82725.62 | 101343.85 |
-| E3608   | 2017-02-28T00:38:00-0700 | 101049.79 |       -0.56 |    72.0 |          0.45 |          173.0 |     -5.05 | 82725.62 | 101385.31 |
-| E3608   | 2017-02-28T01:23:00-0700 | 101083.65 |       -0.56 |    71.0 |          0.45 |          144.0 |     -5.23 | 82753.33 | 101419.28 |
-| E3608   | 2017-02-28T02:08:00-0700 | 101083.65 |       -0.56 |    71.0 |          1.34 |          184.0 |     -5.23 | 82753.33 | 101419.28 |
-| E3608   | 2017-02-28T02:53:00-0700 | 101015.92 |       -1.11 |    74.0 |          1.34 |          188.0 |     -5.21 | 82697.89 | 101392.21 |
-| E3608   | 2017-02-28T03:38:00-0700 | 101015.92 |       -0.56 |    70.0 |          1.34 |          161.0 |     -5.42 | 82697.89 | 101351.34 |
-| E3608   | 2017-02-28T04:23:00-0700 | 101015.92 |       -0.56 |    66.0 |           0.9 |          190.0 |      -6.2 | 82697.89 | 101351.37 |
-| E3608   | 2017-02-28T05:08:00-0700 | 101049.79 |       -0.56 |    66.0 |          0.45 |          184.0 |      -6.2 | 82725.62 | 101385.36 |
-| E3608   | 2017-02-28T05:53:00-0700 | 101049.79 |       -1.11 |    68.0 |           0.0 |        missing |     -6.33 | 82725.62 | 101426.25 |
-| E3608   | 2017-02-28T06:38:00-0700 | 101049.79 |       -1.11 |    71.0 |           0.0 |        missing |     -5.76 | 82725.62 | 101426.23 |
-| E3608   | 2017-02-28T07:23:00-0700 | 101049.79 |     missing | missing |       missing |        missing |   missing | 82725.62 |           |
-| E3608   | 2017-02-28T08:08:00-0700 | 101049.79 |         0.0 |    67.0 |          0.45 |          184.0 |     -5.47 | 82725.62 | 101343.88 |
-| E3608   | 2017-02-28T08:53:00-0700 | 101015.92 |        0.56 |    61.0 |           0.0 |        missing |     -6.18 | 82697.89 | 101268.68 |
-| E3608   | 2017-02-28T09:38:00-0700 | 100982.06 |        2.22 |    51.0 |          1.34 |          136.0 |     -6.98 | 82670.17 | 101113.58 |
-| E3608   | 2017-02-28T10:23:00-0700 | 101015.92 |        3.33 |    44.0 |           0.9 |          141.0 |     -7.89 | 82697.89 | 101067.33 |
-| E3608   | 2017-02-28T11:08:00-0700 | 100982.06 |        3.33 |    44.0 |          2.23 |          133.0 |     -7.89 | 82670.17 | 101033.45 |
-| E3608   | 2017-02-28T11:53:00-0700 | 101015.92 |        3.33 |    45.0 |          1.79 |           86.0 |     -7.59 | 82697.89 | 101067.32 |
-| E3608   | 2017-02-28T12:38:00-0700 | 100982.06 |        3.33 |    45.0 |          0.45 |          184.0 |     -7.59 | 82670.17 | 101033.44 |
-| E3608   | 2017-02-28T13:23:00-0700 |  100948.2 |        4.44 |    43.0 |          1.34 |           96.0 |     -7.17 | 82642.45 | 100920.11 |
-| E3608   | 2017-02-28T14:08:00-0700 | 100982.06 |         5.0 |    42.0 |           0.9 |          128.0 |     -6.97 | 82670.17 | 100914.12 |
-| E3608   | 2017-02-28T14:53:00-0700 | 101049.79 |        3.33 |    58.0 |          2.23 |          100.0 |     -4.24 | 82725.62 | 101101.09 |
-| E3608   | 2017-02-28T15:38:00-0700 | 101151.38 |        2.78 |    61.0 |          1.34 |           85.0 |     -4.08 | 82808.78 | 101242.41 |
-| E3608   | 2017-02-28T16:28:00-0700 | 101354.56 |        2.22 |    64.0 |          2.23 |          355.0 |     -3.97 | 82975.12 | 101486.45 |
+| Station | Date Time                | Altimeter | Temperature |   RH |    Wind Speed | Wind Direction | Dew Point | Pressure |       SLP |
+|         |                          |   Pascals |     Celsius |    % | Meters/second |        Degrees |   Celsius |  Pascals |   Pascals |
+| E3608   | 2017-02-28T08:23:00-0700 | 101049.79 |         0.0 | 65.0 |           0.9 |          181.0 |     -5.87 | 82725.62 | 101343.89 |
+| E3608   | 2017-02-28T09:08:00-0700 | 101015.92 |        1.67 | 55.0 |          1.79 |          128.0 |      -6.5 | 82697.89 | 101187.46 |
+| E3608   | 2017-02-28T09:53:00-0700 | 101015.92 |        3.33 | 49.0 |           0.9 |           99.0 |     -6.48 | 82697.89 | 101067.28 |
+| E3608   | 2017-02-28T10:38:00-0700 | 101015.92 |        3.89 | 43.0 |          2.23 |           84.0 |     -7.67 | 82697.89 | 101027.13 |
+| E3608   | 2017-02-28T11:23:00-0700 | 101015.92 |        3.33 | 45.0 |          1.34 |           92.0 |     -7.59 | 82697.89 | 101067.32 |
+| E3608   | 2017-02-28T12:08:00-0700 | 100982.06 |        3.89 | 45.0 |          1.34 |           71.0 |     -7.08 | 82670.17 | 100993.25 |
+| E3608   | 2017-02-28T12:53:00-0700 |  100948.2 |        3.89 | 44.0 |          1.79 |           67.0 |     -7.38 | 82642.45 | 100959.39 |
+| E3608   | 2017-02-28T13:38:00-0700 | 100982.06 |        3.89 | 43.0 |           0.9 |           32.0 |     -7.67 | 82670.17 | 100993.27 |
+| E3608   | 2017-02-28T14:23:00-0700 | 101015.92 |        3.89 | 52.0 |          2.68 |          126.0 |     -5.18 | 82697.89 | 101027.04 |
+| E3608   | 2017-02-28T15:08:00-0700 | 101083.65 |        3.33 | 60.0 |          1.79 |           67.0 |     -3.78 | 82753.33 | 101134.93 |
+| E3608   | 2017-02-28T15:58:00-0700 | 101252.97 |        2.22 | 63.0 |          0.45 |           98.0 |     -4.18 | 82891.95 | 101384.73 |
+| E3608   | 2017-02-28T16:43:00-0700 | 101422.29 |        2.78 | 66.0 |          3.58 |           39.0 |     -3.02 | 83030.57 | 101513.53 |
+| E3608   | 2017-02-28T17:28:00-0700 | 101523.88 |        1.11 | 33.0 |          1.79 |          247.0 |    -13.51 | 83113.73 | 101737.56 |
+| E3608   | 2017-02-28T18:13:00-0700 | 101659.34 |        0.56 | 29.0 |          2.23 |          269.0 |    -15.57 | 83224.63 | 101913.95 |
+| E3608   | 2017-02-28T18:58:00-0700 | 101794.79 |         0.0 | 25.0 |          1.79 |          305.0 |    -17.82 | 83335.52 | 102091.36 |
+| E3608   | 2017-02-28T19:43:00-0700 | 101862.52 |       -1.11 | 30.0 |           0.9 |          338.0 |    -16.62 | 83390.97 | 102242.27 |
+| E3608   | 2017-02-28T20:33:00-0700 | 101930.25 |       -1.11 | 28.0 |          1.34 |          309.0 |    -17.44 | 83446.41 | 102310.26 |
+| E3608   | 2017-02-28T21:18:00-0700 | 101997.98 |       -1.11 | 29.0 |           0.9 |          280.0 |    -17.02 | 83501.86 | 102378.24 |
+| E3608   | 2017-02-28T22:03:00-0700 | 102031.84 |       -2.22 | 32.0 |          0.45 |           15.0 |    -16.82 | 83529.58 |  102496.1 |
+| E3608   | 2017-02-28T22:48:00-0700 | 102031.84 |       -1.67 | 32.0 |          0.45 |            5.0 |    -16.34 | 83529.58 | 102454.44 |
+| E3608   | 2017-02-28T23:33:00-0700 |  102065.7 |       -1.67 | 30.0 |          2.23 |          267.0 |    -17.11 |  83557.3 | 102488.45 |
+| E3608   | 2017-03-01T00:18:00-0700 | 102099.57 |       -1.11 | 29.0 |           0.9 |          287.0 |    -17.02 | 83585.03 | 102480.21 |
+| E3608   | 2017-03-01T01:03:00-0700 | 102133.43 |       -1.11 | 29.0 |          1.79 |          304.0 |    -17.02 | 83612.75 |  102514.2 |
+| E3608   | 2017-03-01T01:48:00-0700 |  102167.3 |       -1.11 | 30.0 |           0.9 |          250.0 |    -16.62 | 83640.48 | 102548.19 |
+| E3608   | 2017-03-01T02:33:00-0700 | 102133.43 |       -1.67 | 32.0 |           0.9 |           36.0 |    -16.34 | 83612.75 | 102556.45 |
+| E3608   | 2017-03-01T03:18:00-0700 | 102133.43 |       -1.67 | 32.0 |           0.9 |           89.0 |    -16.34 | 83612.75 | 102556.45 |
+| E3608   | 2017-03-01T04:03:00-0700 |  102167.3 |       -2.22 | 33.0 |          2.23 |          102.0 |    -16.46 | 83640.48 | 102632.18 |
+| E3608   | 2017-03-01T04:53:00-0700 | 102268.89 |       -3.33 | 37.0 |          0.45 |          340.0 |    -16.07 | 83723.65 | 102819.05 |
+| E3608   | 2017-03-01T05:38:00-0700 | 102302.75 |       -3.33 | 39.0 |          0.45 |           95.0 |    -15.43 | 83751.37 | 102853.08 |
+| E3608   | 2017-03-01T06:23:00-0700 | 102336.62 |        -5.0 | 46.0 |           0.0 |        missing |    -14.94 | 83779.09 | 103016.24 |
+| E3608   | 2017-03-01T07:08:00-0700 | 102472.07 |        -5.0 | 48.0 |           0.0 |        missing |    -14.42 | 83889.98 | 103152.58 |
+| E3608   | 2017-03-01T07:53:00-0700 |  102539.8 |       -1.67 | 36.0 |          0.45 |          355.0 |    -14.92 | 83945.43 | 102964.48 |
 :END:
 
 ** Timeseries with Gnuplot
@@ -276,7 +276,7 @@ At this point, we are ready to plot our data table with gnuplot. The following c
 - Wind speed
 - Wind direction
 
-One tricky part, is I had to alternate the Y-axis labeling so that the successive plot labels would not run into one another.
+One tricky part is I had to alternate the Y-axis labeling so that the successive plot labels would not run into one another.
 
 #+BEGIN_SRC gnuplot
   reset
@@ -371,7 +371,7 @@ One tricky part, is I had to alternate the Y-axis labeling so that the successiv
 
 ** Babel
 
-As mentioned in the [[intro][introduction]], to generate the data table and plot, , this entire buffer can be run in literate programming fashion with ~org-babel-execute-buffer~ (~C-c C-v C-b~). You can parameterize the start and end time, and the station ID via [[params][noweb parameters]]. I will leave it as an exercise to the reader to supply additional parameterization for the station variables, for example.
+As mentioned in the [[intro][introduction]], to generate the data table and plot, this entire buffer can be run in literate programming fashion with ~org-babel-execute-buffer~ (~C-c C-v C-b~). You can parameterize the start and end time, and the station ID via [[params][noweb parameters]]. I will leave it as an exercise to the reader to supply additional parameterization for the station variables, for example.
 
 ** Ideas for Improvements
 
