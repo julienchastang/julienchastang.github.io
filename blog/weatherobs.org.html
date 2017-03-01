@@ -22,11 +22,6 @@
         /* font-lock-constant-face */
         color: #D0372D;
       }
-      .default {
-        /* default */
-        color: #333333;
-        background-color: #F6F6EF;
-      }
       .doc {
         /* font-lock-doc-face */
         color: #036A07;
@@ -244,31 +239,31 @@ Our first job is to find a weather station near our location. We will employ the
 <span class="org-meta-line">#+RESULTS:</span>
 <span class="org-block-begin-line">#+begin_example
 </span><span class="org-block">{
-   "SUMMARY": {
-     "METADATA_RESPONSE_TIME": "0.0970363616943 ms",
-     "RESPONSE_MESSAGE": "OK",
-     "RESPONSE_CODE": 1,
-     "NUMBER_OF_OBJECTS": 1
-   },
+  "SUMMARY": {
+    "METADATA_RESPONSE_TIME": "0.0970363616943 ms",
+    "RESPONSE_MESSAGE": "OK",
+    "RESPONSE_CODE": 1,
+    "NUMBER_OF_OBJECTS": 1
+  },
   "STATION": [
     {
-       "ID": "41017",
-       "TIMEZONE": "America\/Denver",
-       "LATITUDE": "40.00133",
-       "STATE": "CO",
-       "LONGITUDE": "-105.23033",
-       "STID": "E3608",
-       "DISTANCE": 0.96,
-       "NAME": "EW3608 Boulder",
-       "ELEVATION": "5430",
+      "ID": "41017",
+      "TIMEZONE": "America\/Denver",
+      "LATITUDE": "40.00133",
+      "STATE": "CO",
+      "LONGITUDE": "-105.23033",
+      "STID": "E3608",
+      "DISTANCE": 0.96,
+      "NAME": "EW3608 Boulder",
+      "ELEVATION": "5430",
       "PERIOD_OF_RECORD": {
-         "end": "2017-02-28T23:58:00Z",
-         "start": "2013-09-25T00:00:00Z"
+        "end": "2017-02-28T23:58:00Z",
+        "start": "2013-09-25T00:00:00Z"
       },
-       "MNET_ID": "65",
-       "STATUS": "ACTIVE"
+      "MNET_ID": "65",
+      "STATUS": "ACTIVE"
     }
-   ]
+  ]
 }
 </span><span class="org-block-end-line">#+end_example
 </span>
@@ -293,12 +288,12 @@ Next, we will be using the <span class="org-link"><a href="https://synopticlabs.
 # STATE: CO
 Station_ID,Date_Time,air_temp_set_1
 ,,Celsius
- KDEN,2017-02-28T23:35:00Z,-2.0
- KDEN,2017-02-28T23:40:00Z,-2.0
- KDEN,2017-02-28T23:45:00Z,-2.0
- KDEN,2017-02-28T23:50:00Z,-2.0
- KDEN,2017-02-28T23:53:00Z,-2.2
- KDEN,2017-02-28T23:55:00Z,-2.0
+KDEN,2017-02-28T23:35:00Z,-2.0
+KDEN,2017-02-28T23:40:00Z,-2.0
+KDEN,2017-02-28T23:45:00Z,-2.0
+KDEN,2017-02-28T23:50:00Z,-2.0
+KDEN,2017-02-28T23:53:00Z,-2.2
+KDEN,2017-02-28T23:55:00Z,-2.0
 </span><span class="org-block-end-line">#+end_example
 </span>
 There are more <span class="org-link"><a href="https://synopticlabs.org/api/mesonet/">examples</a></span> of API use as well as the <span class="org-link"><a href="https://synopticlabs.org/api/mesonet/reference/#stationstimeseries">API reference</a></span> on SynopticLabs website. 
@@ -326,13 +321,13 @@ Obtain the start time range will be 24 hours ago. Also set the time zone as UTC 
 <span class="org-meta-line">#+NAME: starttime</span>
 <span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp
 </span>  <span class="rainbow-delimiters-depth-1">(</span>setenv <span class="string">"TZ"</span> <span class="string">"UTC0"</span><span class="rainbow-delimiters-depth-1">)</span>
-   <span class="rainbow-delimiters-depth-1">(</span>format-time-string <span class="string">"%Y%m%d%H%M"</span> <span class="rainbow-delimiters-depth-2">(</span>time-add
-                                     <span class="rainbow-delimiters-depth-3">(</span>current-time<span class="rainbow-delimiters-depth-3">)</span>
-                                     <span class="rainbow-delimiters-depth-3">(</span>seconds-to-time <span class="rainbow-delimiters-depth-4">(</span>- <span class="rainbow-delimiters-depth-5">(</span>* 1 24 60 60<span class="rainbow-delimiters-depth-5">)</span><span class="rainbow-delimiters-depth-4">)</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
+  <span class="rainbow-delimiters-depth-1">(</span>format-time-string <span class="string">"%Y%m%d%H%M"</span> <span class="rainbow-delimiters-depth-2">(</span>time-add
+                                    <span class="rainbow-delimiters-depth-3">(</span>current-time<span class="rainbow-delimiters-depth-3">)</span>
+                                    <span class="rainbow-delimiters-depth-3">(</span>seconds-to-time <span class="rainbow-delimiters-depth-4">(</span>- <span class="rainbow-delimiters-depth-5">(</span>* 1 24 60 60<span class="rainbow-delimiters-depth-5">)</span><span class="rainbow-delimiters-depth-4">)</span><span class="rainbow-delimiters-depth-3">)</span><span class="rainbow-delimiters-depth-2">)</span><span class="rainbow-delimiters-depth-1">)</span>
 <span class="org-block-end-line">#+END_SRC
 </span>
 <span class="org-meta-line">#+RESULTS: starttime</span>
-<span class="org-code"> : 201702280006
+<span class="org-code">: 201702280006
 </span>
 <span class="org-level-3">*** End Time</span>
 
@@ -344,7 +339,7 @@ The end time will be now.
 <span class="org-block-end-line">#+END_SRC
 </span>
 <span class="org-meta-line">#+RESULTS: endtime</span>
-<span class="org-code"> : 201703010006
+<span class="org-code">: 201703010006
 </span>
 <span class="org-level-3">*** Station ID</span>
 
@@ -433,40 +428,40 @@ Armed with these functions, we can clean up our data. Also a note about sampling
 </span>
 <span class="org-meta-line">#+RESULTS: data-table</span>
 <span class="org-special-keyword">:RESULTS:</span>
-<span class="org-table"> | Station | Date Time                | Altimeter | Temperature |      RH |    Wind Speed | Wind Direction | Dew Point | Pressure |       SLP |</span>
-<span class="org-table"> |         |                          |   Pascals |     Celsius |       % | Meters/second |        Degrees |   Celsius |  Pascals |   Pascals |</span>
-<span class="org-table"> | E3608   | 2017-02-27T17:08:00-0700 | 100507.97 |        9.44 |    26.0 |          2.68 |          223.0 |     -9.23 | 82282.05 | 100132.09 |</span>
-<span class="org-table"> | E3608   | 2017-02-27T17:53:00-0700 | 100541.83 |        8.33 |    30.0 |           0.0 |        missing |     -8.37 | 82309.77 | 100241.92 |</span>
-<span class="org-table"> | E3608   | 2017-02-27T18:38:00-0700 | 100643.42 |        7.22 |    34.0 |           0.0 |        missing |     -7.73 | 82392.94 | 100420.05 |</span>
-<span class="org-table"> | E3608   | 2017-02-27T19:23:00-0700 | 100677.29 |        8.33 |    28.0 |          3.13 |          215.0 |     -9.25 | 82420.66 |  100377.0 |</span>
-<span class="org-table"> | E3608   | 2017-02-27T20:08:00-0700 | 100711.15 |        7.22 |    32.0 |          0.45 |          248.0 |     -8.51 | 82448.38 | 100487.64 |</span>
-<span class="org-table"> | E3608   | 2017-02-27T20:53:00-0700 | 100745.01 |         5.0 |    42.0 |          0.45 |          250.0 |     -6.97 |  82476.1 | 100677.22 |</span>
-<span class="org-table"> | E3608   | 2017-02-27T21:38:00-0700 |  100846.6 |        1.11 |    66.0 |          3.13 |           75.0 |     -4.61 | 82559.27 |  101058.6 |</span>
-<span class="org-table"> | E3608   | 2017-02-27T22:23:00-0700 | 101015.92 |        0.56 |    68.0 |          0.45 |          105.0 |     -4.73 | 82697.89 | 101268.63 |</span>
-<span class="org-table"> | E3608   | 2017-02-27T23:08:00-0700 | 101049.79 |         0.0 |    69.0 |           0.9 |          192.0 |     -5.08 | 82725.62 | 101343.86 |</span>
-<span class="org-table"> | E3608   | 2017-02-27T23:53:00-0700 | 101049.79 |         0.0 |    71.0 |           0.9 |          133.0 |     -4.69 | 82725.62 | 101343.85 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T00:38:00-0700 | 101049.79 |       -0.56 |    72.0 |          0.45 |          173.0 |     -5.05 | 82725.62 | 101385.31 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T01:23:00-0700 | 101083.65 |       -0.56 |    71.0 |          0.45 |          144.0 |     -5.23 | 82753.33 | 101419.28 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T02:08:00-0700 | 101083.65 |       -0.56 |    71.0 |          1.34 |          184.0 |     -5.23 | 82753.33 | 101419.28 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T02:53:00-0700 | 101015.92 |       -1.11 |    74.0 |          1.34 |          188.0 |     -5.21 | 82697.89 | 101392.21 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T03:38:00-0700 | 101015.92 |       -0.56 |    70.0 |          1.34 |          161.0 |     -5.42 | 82697.89 | 101351.34 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T04:23:00-0700 | 101015.92 |       -0.56 |    66.0 |           0.9 |          190.0 |      -6.2 | 82697.89 | 101351.37 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T05:08:00-0700 | 101049.79 |       -0.56 |    66.0 |          0.45 |          184.0 |      -6.2 | 82725.62 | 101385.36 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T05:53:00-0700 | 101049.79 |       -1.11 |    68.0 |           0.0 |        missing |     -6.33 | 82725.62 | 101426.25 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T06:38:00-0700 | 101049.79 |       -1.11 |    71.0 |           0.0 |        missing |     -5.76 | 82725.62 | 101426.23 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T07:23:00-0700 | 101049.79 |     missing | missing |       missing |        missing |   missing | 82725.62 |           |</span>
-<span class="org-table"> | E3608   | 2017-02-28T08:08:00-0700 | 101049.79 |         0.0 |    67.0 |          0.45 |          184.0 |     -5.47 | 82725.62 | 101343.88 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T08:53:00-0700 | 101015.92 |        0.56 |    61.0 |           0.0 |        missing |     -6.18 | 82697.89 | 101268.68 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T09:38:00-0700 | 100982.06 |        2.22 |    51.0 |          1.34 |          136.0 |     -6.98 | 82670.17 | 101113.58 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T10:23:00-0700 | 101015.92 |        3.33 |    44.0 |           0.9 |          141.0 |     -7.89 | 82697.89 | 101067.33 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T11:08:00-0700 | 100982.06 |        3.33 |    44.0 |          2.23 |          133.0 |     -7.89 | 82670.17 | 101033.45 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T11:53:00-0700 | 101015.92 |        3.33 |    45.0 |          1.79 |           86.0 |     -7.59 | 82697.89 | 101067.32 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T12:38:00-0700 | 100982.06 |        3.33 |    45.0 |          0.45 |          184.0 |     -7.59 | 82670.17 | 101033.44 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T13:23:00-0700 |  100948.2 |        4.44 |    43.0 |          1.34 |           96.0 |     -7.17 | 82642.45 | 100920.11 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T14:08:00-0700 | 100982.06 |         5.0 |    42.0 |           0.9 |          128.0 |     -6.97 | 82670.17 | 100914.12 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T14:53:00-0700 | 101049.79 |        3.33 |    58.0 |          2.23 |          100.0 |     -4.24 | 82725.62 | 101101.09 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T15:38:00-0700 | 101151.38 |        2.78 |    61.0 |          1.34 |           85.0 |     -4.08 | 82808.78 | 101242.41 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T16:28:00-0700 | 101354.56 |        2.22 |    64.0 |          2.23 |          355.0 |     -3.97 | 82975.12 | 101486.45 |</span>
+<span class="org-table">| Station | Date Time                | Altimeter | Temperature |      RH |    Wind Speed | Wind Direction | Dew Point | Pressure |       SLP |</span>
+<span class="org-table">|         |                          |   Pascals |     Celsius |       % | Meters/second |        Degrees |   Celsius |  Pascals |   Pascals |</span>
+<span class="org-table">| E3608   | 2017-02-27T17:08:00-0700 | 100507.97 |        9.44 |    26.0 |          2.68 |          223.0 |     -9.23 | 82282.05 | 100132.09 |</span>
+<span class="org-table">| E3608   | 2017-02-27T17:53:00-0700 | 100541.83 |        8.33 |    30.0 |           0.0 |        missing |     -8.37 | 82309.77 | 100241.92 |</span>
+<span class="org-table">| E3608   | 2017-02-27T18:38:00-0700 | 100643.42 |        7.22 |    34.0 |           0.0 |        missing |     -7.73 | 82392.94 | 100420.05 |</span>
+<span class="org-table">| E3608   | 2017-02-27T19:23:00-0700 | 100677.29 |        8.33 |    28.0 |          3.13 |          215.0 |     -9.25 | 82420.66 |  100377.0 |</span>
+<span class="org-table">| E3608   | 2017-02-27T20:08:00-0700 | 100711.15 |        7.22 |    32.0 |          0.45 |          248.0 |     -8.51 | 82448.38 | 100487.64 |</span>
+<span class="org-table">| E3608   | 2017-02-27T20:53:00-0700 | 100745.01 |         5.0 |    42.0 |          0.45 |          250.0 |     -6.97 |  82476.1 | 100677.22 |</span>
+<span class="org-table">| E3608   | 2017-02-27T21:38:00-0700 |  100846.6 |        1.11 |    66.0 |          3.13 |           75.0 |     -4.61 | 82559.27 |  101058.6 |</span>
+<span class="org-table">| E3608   | 2017-02-27T22:23:00-0700 | 101015.92 |        0.56 |    68.0 |          0.45 |          105.0 |     -4.73 | 82697.89 | 101268.63 |</span>
+<span class="org-table">| E3608   | 2017-02-27T23:08:00-0700 | 101049.79 |         0.0 |    69.0 |           0.9 |          192.0 |     -5.08 | 82725.62 | 101343.86 |</span>
+<span class="org-table">| E3608   | 2017-02-27T23:53:00-0700 | 101049.79 |         0.0 |    71.0 |           0.9 |          133.0 |     -4.69 | 82725.62 | 101343.85 |</span>
+<span class="org-table">| E3608   | 2017-02-28T00:38:00-0700 | 101049.79 |       -0.56 |    72.0 |          0.45 |          173.0 |     -5.05 | 82725.62 | 101385.31 |</span>
+<span class="org-table">| E3608   | 2017-02-28T01:23:00-0700 | 101083.65 |       -0.56 |    71.0 |          0.45 |          144.0 |     -5.23 | 82753.33 | 101419.28 |</span>
+<span class="org-table">| E3608   | 2017-02-28T02:08:00-0700 | 101083.65 |       -0.56 |    71.0 |          1.34 |          184.0 |     -5.23 | 82753.33 | 101419.28 |</span>
+<span class="org-table">| E3608   | 2017-02-28T02:53:00-0700 | 101015.92 |       -1.11 |    74.0 |          1.34 |          188.0 |     -5.21 | 82697.89 | 101392.21 |</span>
+<span class="org-table">| E3608   | 2017-02-28T03:38:00-0700 | 101015.92 |       -0.56 |    70.0 |          1.34 |          161.0 |     -5.42 | 82697.89 | 101351.34 |</span>
+<span class="org-table">| E3608   | 2017-02-28T04:23:00-0700 | 101015.92 |       -0.56 |    66.0 |           0.9 |          190.0 |      -6.2 | 82697.89 | 101351.37 |</span>
+<span class="org-table">| E3608   | 2017-02-28T05:08:00-0700 | 101049.79 |       -0.56 |    66.0 |          0.45 |          184.0 |      -6.2 | 82725.62 | 101385.36 |</span>
+<span class="org-table">| E3608   | 2017-02-28T05:53:00-0700 | 101049.79 |       -1.11 |    68.0 |           0.0 |        missing |     -6.33 | 82725.62 | 101426.25 |</span>
+<span class="org-table">| E3608   | 2017-02-28T06:38:00-0700 | 101049.79 |       -1.11 |    71.0 |           0.0 |        missing |     -5.76 | 82725.62 | 101426.23 |</span>
+<span class="org-table">| E3608   | 2017-02-28T07:23:00-0700 | 101049.79 |     missing | missing |       missing |        missing |   missing | 82725.62 |           |</span>
+<span class="org-table">| E3608   | 2017-02-28T08:08:00-0700 | 101049.79 |         0.0 |    67.0 |          0.45 |          184.0 |     -5.47 | 82725.62 | 101343.88 |</span>
+<span class="org-table">| E3608   | 2017-02-28T08:53:00-0700 | 101015.92 |        0.56 |    61.0 |           0.0 |        missing |     -6.18 | 82697.89 | 101268.68 |</span>
+<span class="org-table">| E3608   | 2017-02-28T09:38:00-0700 | 100982.06 |        2.22 |    51.0 |          1.34 |          136.0 |     -6.98 | 82670.17 | 101113.58 |</span>
+<span class="org-table">| E3608   | 2017-02-28T10:23:00-0700 | 101015.92 |        3.33 |    44.0 |           0.9 |          141.0 |     -7.89 | 82697.89 | 101067.33 |</span>
+<span class="org-table">| E3608   | 2017-02-28T11:08:00-0700 | 100982.06 |        3.33 |    44.0 |          2.23 |          133.0 |     -7.89 | 82670.17 | 101033.45 |</span>
+<span class="org-table">| E3608   | 2017-02-28T11:53:00-0700 | 101015.92 |        3.33 |    45.0 |          1.79 |           86.0 |     -7.59 | 82697.89 | 101067.32 |</span>
+<span class="org-table">| E3608   | 2017-02-28T12:38:00-0700 | 100982.06 |        3.33 |    45.0 |          0.45 |          184.0 |     -7.59 | 82670.17 | 101033.44 |</span>
+<span class="org-table">| E3608   | 2017-02-28T13:23:00-0700 |  100948.2 |        4.44 |    43.0 |          1.34 |           96.0 |     -7.17 | 82642.45 | 100920.11 |</span>
+<span class="org-table">| E3608   | 2017-02-28T14:08:00-0700 | 100982.06 |         5.0 |    42.0 |           0.9 |          128.0 |     -6.97 | 82670.17 | 100914.12 |</span>
+<span class="org-table">| E3608   | 2017-02-28T14:53:00-0700 | 101049.79 |        3.33 |    58.0 |          2.23 |          100.0 |     -4.24 | 82725.62 | 101101.09 |</span>
+<span class="org-table">| E3608   | 2017-02-28T15:38:00-0700 | 101151.38 |        2.78 |    61.0 |          1.34 |           85.0 |     -4.08 | 82808.78 | 101242.41 |</span>
+<span class="org-table">| E3608   | 2017-02-28T16:28:00-0700 | 101354.56 |        2.22 |    64.0 |          2.23 |          355.0 |     -3.97 | 82975.12 | 101486.45 |</span>
 <span class="org-special-keyword">:END:</span>
 
 <span class="org-level-2">** Timeseries with Gnuplot</span>
@@ -497,7 +492,7 @@ One tricky part, is I had to alternate the Y-axis labeling so that the successiv
 <span class="org-block-begin-line">#+begin_src gnuplot :var data=data-table :noweb yes :file ../../static/weatherobs/timeseries.svg
 </span>  <span class="constant">reset</span>
 
-  <span class="constant">set</span> terminal svg size 800, 800 enhanced truecolor font 'Verdana,13'
+  <span class="constant">set</span> terminal svg size 800, 800 enhanced truecolor font <span class="string">'Verdana,13'</span>
 
   <span class="constant">set</span> multiplot layout 5,1 rowsfirst
 
@@ -505,20 +500,20 @@ One tricky part, is I had to alternate the Y-axis labeling so that the successiv
   <span class="constant">set</span> lmargin 12
   <span class="constant">set</span> rmargin 8
 
-  <span class="constant">set</span> style line 1 lc rgb '#000000' <span class="type">lt</span> 1 <span class="type">lw</span> 2 <span class="type">pt</span> 9 <span class="type">ps</span> 1.0
-  <span class="constant">set</span> style line 2 lc rgb '#dd181f' <span class="type">lt</span> 1 <span class="type">lw</span> 2 <span class="type">pt</span> 7 <span class="type">ps</span> 1.0
-  <span class="constant">set</span> style line 3 lc rgb '#0060ad' <span class="type">lt</span> 1 <span class="type">lw</span> 2 <span class="type">pt</span> 7 <span class="type">ps</span> 0.75
-  <span class="constant">set</span> style line 4 lc rgb '#00ff00' <span class="type">lt</span> 1 <span class="type">lw</span> 2 <span class="type">pt</span> 7 <span class="type">ps</span> 1
-  <span class="constant">set</span> style line 5 lc rgb '#00ff00' <span class="type">lt</span> 1 <span class="type">lw</span> 2 <span class="type">pt</span> 5 <span class="type">ps</span> 0.75
+  <span class="constant">set</span> style line 1 lc rgb <span class="string">'#000000'</span> <span class="type">lt</span> 1 <span class="type">lw</span> 2 <span class="type">pt</span> 9 <span class="type">ps</span> 1.0
+  <span class="constant">set</span> style line 2 lc rgb <span class="string">'#dd181f'</span> <span class="type">lt</span> 1 <span class="type">lw</span> 2 <span class="type">pt</span> 7 <span class="type">ps</span> 1.0
+  <span class="constant">set</span> style line 3 lc rgb <span class="string">'#0060ad'</span> <span class="type">lt</span> 1 <span class="type">lw</span> 2 <span class="type">pt</span> 7 <span class="type">ps</span> 0.75
+  <span class="constant">set</span> style line 4 lc rgb <span class="string">'#00ff00'</span> <span class="type">lt</span> 1 <span class="type">lw</span> 2 <span class="type">pt</span> 7 <span class="type">ps</span> 1
+  <span class="constant">set</span> style line 5 lc rgb <span class="string">'#00ff00'</span> <span class="type">lt</span> 1 <span class="type">lw</span> 2 <span class="type">pt</span> 5 <span class="type">ps</span> 0.75
 
-  <span class="constant">set</span> <span class="type">title</span> "Weather for &lt;&lt;station-id()&gt;&gt;"
+  <span class="constant">set</span> <span class="type">title</span> <span class="string">"Weather for &lt;&lt;station-id()&gt;&gt;"</span>
 
   <span class="constant">set</span> xdata time
-  <span class="constant">set</span> timefmt "%Y-%m-%dT%H:%M:%SZ"
-  <span class="constant">set</span> format x " " 
+  <span class="constant">set</span> timefmt <span class="string">"%Y-%m-%dT%H:%M:%SZ"</span>
+  <span class="constant">set</span> format x <span class="string">" "</span> 
 
   <span class="constant">set</span> yrange [<span class="constant">:*</span>]
-  <span class="constant">set</span> ylabel "Pascals" offset 0
+  <span class="constant">set</span> ylabel <span class="string">"Pascals"</span> offset 0
 
   <span class="constant">set</span> bmargin 0
   <span class="constant">set</span> offsets graph 0, 0, 500, 10
@@ -526,13 +521,13 @@ One tricky part, is I had to alternate the Y-axis labeling so that the successiv
   <span class="constant">set</span> size 1,0.24
   <span class="constant">set</span> origin 0.0,0.76
 
-  <span class="keyword">plot</span> data <span class="type">using</span> " Date Time":"SLP" <span class="type">with</span> <span class="function-name">linespoints</span> <span class="type">ls</span> 1 <span class="type">title</span> 'Sea Level Pressure'
+  <span class="keyword">plot</span> data <span class="type">using</span> <span class="string">" Date Time"</span>:<span class="string">"SLP"</span> <span class="type">with</span> <span class="function-name">linespoints</span> <span class="type">ls</span> 1 <span class="type">title</span> <span class="string">'Sea Level Pressure'</span>
 
-  <span class="constant">set</span> <span class="type">title</span> " "
+  <span class="constant">set</span> <span class="type">title</span> <span class="string">" "</span>
 
   <span class="constant">set</span> yrange [<span class="constant">:*</span>]
   <span class="constant">set</span> ytics offset 80,0
-  <span class="constant">set</span> ylabel "Celsius" offset 88
+  <span class="constant">set</span> ylabel <span class="string">"Celsius"</span> offset 88
 
   <span class="constant">set</span> tmargin 0
   <span class="constant">set</span> offsets graph 0, 0, 10, 1
@@ -540,50 +535,50 @@ One tricky part, is I had to alternate the Y-axis labeling so that the successiv
   <span class="constant">set</span> size 1,0.17
   <span class="constant">set</span> origin 0.0,0.59
 
-  <span class="keyword">plot</span> data <span class="type">using</span> "Date Time":"Temperature" <span class="type">with</span> <span class="function-name">linespoints</span> <span class="type">ls</span> 2 <span class="type">title</span> 'Temperature',\
-       data <span class="type">using</span> "Date Time":"Dew Point" <span class="type">with</span> <span class="function-name">linespoints</span> <span class="type">ls</span> 3 <span class="type">title</span> 'Dewpoint'
+  <span class="keyword">plot</span> data <span class="type">using</span> <span class="string">"Date Time"</span>:<span class="string">"Temperature"</span> <span class="type">with</span> <span class="function-name">linespoints</span> <span class="type">ls</span> 2 <span class="type">title</span> <span class="string">'Temperature'</span>,\
+       data <span class="type">using</span> <span class="string">"Date Time"</span>:<span class="string">"Dew Point"</span> <span class="type">with</span> <span class="function-name">linespoints</span> <span class="type">ls</span> 3 <span class="type">title</span> <span class="string">'Dewpoint'</span>
 
   <span class="constant">set</span> yrange [<span class="constant">0:100</span>]
   <span class="constant">set</span> ytics offset 0,0
-  <span class="constant">set</span> ylabel "%" offset 0
+  <span class="constant">set</span> ylabel <span class="string">"%"</span> offset 0
 
   <span class="constant">set</span> offsets graph 0, 0, 0, 0 
 
   <span class="constant">set</span> size 1,0.17
   <span class="constant">set</span> origin 0.0,0.42
 
-  <span class="keyword">plot</span> data <span class="type">using</span> "Date Time":"RH" <span class="type">with</span> <span class="function-name">linespoints</span> <span class="type">ls</span> 4 <span class="type">title</span> 'RH'
+  <span class="keyword">plot</span> data <span class="type">using</span> <span class="string">"Date Time"</span>:<span class="string">"RH"</span> <span class="type">with</span> <span class="function-name">linespoints</span> <span class="type">ls</span> 4 <span class="type">title</span> <span class="string">'RH'</span>
 
   <span class="constant">set</span> yrange [<span class="constant">0:*</span>]
   <span class="constant">set</span> ytics offset 80,0
-  <span class="constant">set</span> ylabel "Meters per Second" offset 88
+  <span class="constant">set</span> ylabel <span class="string">"Meters per Second"</span> offset 88
 
   <span class="constant">set</span> offsets graph 0, 0, 1, 0
 
   <span class="constant">set</span> size 1,0.17
   <span class="constant">set</span> origin 0.0,0.25
 
-  <span class="keyword">plot</span> data <span class="type">using</span> " Date Time":"Wind Speed" <span class="type">with</span> <span class="function-name">linespoints</span> <span class="type">ls</span> 5 <span class="type">title</span> 'Wind Speed'
+  <span class="keyword">plot</span> data <span class="type">using</span> <span class="string">" Date Time"</span>:<span class="string">"Wind Speed"</span> <span class="type">with</span> <span class="function-name">linespoints</span> <span class="type">ls</span> 5 <span class="type">title</span> <span class="string">'Wind Speed'</span>
 
   <span class="constant">set</span> xtics rotate by -45
-  <span class="constant">set</span> format x "%m/%d %Hh"
+  <span class="constant">set</span> format x <span class="string">"%m/%d %Hh"</span>
 
   <span class="constant">set</span> yrange [<span class="constant">0:360</span>]
-  <span class="constant">set</span> ylabel "Direction" offset 0
-  <span class="constant">set</span> ytics ("N" 0,"NE" 45,"E" 90 ,"SE" 135, "S" 180, "SW" 225, "W" 270, "NW" 315) offset 0,0
+  <span class="constant">set</span> ylabel <span class="string">"Direction"</span> offset 0
+  <span class="constant">set</span> ytics (<span class="string">"N"</span> 0,<span class="string">"NE"</span> 45,<span class="string">"E"</span> 90 ,<span class="string">"SE"</span> 135, <span class="string">"S"</span> 180, <span class="string">"SW"</span> 225, <span class="string">"W"</span> 270, <span class="string">"NW"</span> 315) offset 0,0
 
   <span class="constant">set</span> bmargin 4
 
   <span class="constant">set</span> size 1,0.25
   <span class="constant">set</span> origin 0.0,0
 
-  <span class="keyword">plot</span> data <span class="type">using</span> " Date Time":"Wind Direction" <span class="type">pt</span> 3 <span class="type">ps</span> 1.0 <span class="type">title</span> 'Wind Direction'
+  <span class="keyword">plot</span> data <span class="type">using</span> <span class="string">" Date Time"</span>:<span class="string">"Wind Direction"</span> <span class="type">pt</span> 3 <span class="type">ps</span> 1.0 <span class="type">title</span> <span class="string">'Wind Direction'</span>
 
   <span class="constant">unset</span> multiplot
 <span class="org-block-end-line">#+end_src
 </span>
 <span class="org-meta-line">#+RESULTS:</span>
-<img src="../../static/weatherobs/timeseries.svg" alt="file:../../static/weatherobs/timeseries.svg" />
+<span class="org-link"><a href="file:../../static/weatherobs/timeseries.svg">file:../../static/weatherobs/timeseries.svg</a></span>
 
 <span class="org-level-2">** Babel</span>
 
