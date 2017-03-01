@@ -1,4 +1,4 @@
-# Created 2017-02-02 Thu 18:39
+# Created 2017-03-01 Wed 00:24
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -323,7 +323,7 @@ Clocking commands
 #+END_SRC
 
 Ditaa is a command-line utility that converts diagrams drawn using ASCII art
-into bitmap graphics. Here is the Ditta path:
+into bitmap graphics. Here is the Ditaa path:
 
 #+BEGIN_SRC emacs-lisp
   (cond
@@ -450,6 +450,7 @@ emacs org mode.
 | zoom-window                   | Zoom window like tmux                         |                            |
 | org-gcal                      | Org sync with Google Calendar                 | [[calendar][calendar]]     |
 | gnuplot                       | gnuplot                                       | [[gnuplot][gnuplot]]       |
+| ob-http                       | http request in org-mode babel                | [[http]]                   |
 | ipython                       | ipython for emacs                             | [[python][python]]         |
 | jedi                          | Python auto-completion for Emacs              | [[python][python]]         |
 | elpy                          | Emacs Python Development Environment          | [[python][python]]         |
@@ -467,19 +468,20 @@ In addition, ~elpy~ implicitly grabs these packages so they are unnecessary to i
 |-----------------------+-----------------------------------------+--------------------|
 
 #+NAME: my-packages-unstable
-|---------------+-----------------------------------------+------------------------------|
-| package       | description                             | anchors                      |
-|---------------+-----------------------------------------+------------------------------|
-| ein           | Emacs IPython Notebook                  | [[python][python]]           |
-| ob-ipython    | org-babel IPython                       | [[python][python]]           |
-| org-present   | Minimal presentation mode for emacs     | [[org-present][org-present]] |
-| emms          | The Emacs Multimedia System             | [[emms][emms]]               |
-| restclient    | An interactive HTTP client for Emacs    | [[restclient][restclient]]   |
-| ob-restclient | org-babel functions for restclient-mode | [[restclient][restclient]]   |
-| ox-gfm        | Github Flavored Markdown                | [[markdown][markdown]]       |
-| synonymous    | Thesaurus                               | [[writing][writing]]         |
-| info+         | Extensions to info.el                   | [[info][info]]               |
-|---------------+-----------------------------------------+------------------------------|
+|------------------+-----------------------------------------+--------------------------------|
+| package          | description                             | anchors                        |
+|------------------+-----------------------------------------+--------------------------------|
+| ein              | Emacs IPython Notebook                  | [[python][python]]             |
+| ob-ipython       | org-babel IPython                       | [[python][python]]             |
+| org-present      | Minimal presentation mode for emacs     | [[org-present][org-present]]   |
+| emms             | The Emacs Multimedia System             | [[emms][emms]]                 |
+| restclient       | An interactive HTTP client for Emacs    | [[restclient][restclient]]     |
+| ob-restclient    | org-babel functions for restclient-mode | [[restclient][restclient]]     |
+| ox-gfm           | Github Flavored Markdown                | [[markdown][markdown]]         |
+| synonymous       | Thesaurus                               | [[writing][writing]]           |
+| info+            | Extensions to info.el                   | [[info][info]]                 |
+| multiple-cursors | Multiple cursors for Emacs              | [[multi-cursor][multi-cursor]] |
+|------------------+-----------------------------------------+--------------------------------|
 
 Download the packages we need.
 
@@ -910,6 +912,7 @@ Loading babel supported languages:
      (latex . t)
      (shell . t)
      (clojure . t)
+     (http . t)
      (restclient . t)
      (ein . t)
      (ipython . t)
@@ -1027,12 +1030,26 @@ eldoc for emacs lisp development
   (require 'gnuplot)
 #+END_SRC
 
+** HTTP
+<<http>>
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
+
 ** Taskjuggler
 <<taskjuggler>>
 
 #+BEGIN_SRC emacs-lisp
   (require 'ox-taskjuggler)
 #+END_SRC
+** Multiple-cursors
+<<multi-cursor>>
+
+#+BEGIN_SRC emacs-lisp
+  (require 'multiple-cursors)
+  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+#+END_SRC
+
 * Emacs Shell Settings
 
 Magit

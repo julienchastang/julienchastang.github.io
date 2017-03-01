@@ -1,0 +1,1041 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-03-01 Wed 00:13 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Plotting Time Series of Weather Observations in Emacs</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Julien Chastang" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+    <<header>>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Plotting Time Series of Weather Observations in Emacs</h1>
+<div class="menu">
+ ( 
+   <a href="../index.html">home</a> | 
+   <a href="../about.html">about</a> | 
+   <a href="../configuration.html">configuration</a> | 
+   <a href="../dotemacs.html">.emacs</a> 
+ )
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-02-25 Sat&gt;</span></span></h2>
+<div class="outline-text-2" id="text-orgheadline1">
+
+<div class="figure">
+<p><object type="image/svg+xml" data="file:///home/python/git/julienchastang/src/static/weatherobs/timeseries.svg" >
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">Introduction</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<p>
+<a id="orgtarget1"></a>
+</p>
+
+<p>
+In this post, we will be using Emacs and org-mode to construct a time series of weather observations. If you want the short version of what we will be doing, change the <code>station-id</code> below and run <code>org-babel-execute-buffer</code> (<code>C-c C-v C-b</code>). For the complete version read on. We will be using the following technologies:
+</p>
+<ul class="org-ul">
+<li><a href="http://orgmode.org/">org-mode</a></li>
+<li><a href="https://github.com/zweifisch/ob-http">ob-http</a>, http requests in org Babel</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/org/noweb.html">noweb</a> literate programming</li>
+<li><a href="http://www.gnuplot.info/">gnuplot</a>, the venerable plotting utility</li>
+<li><a href="https://synopticlabs.org/">Mesowest Synoptic Labs API</a></li>
+</ul>
+
+<p>
+The org source for this file is located at the source link at the bottom of the page. Indeed, to follow along carefully you will have to view that source link as the HTML rendering has removed some of the org source from this web page.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Find a Weather Station</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+Our first job is to find a weather station near our location. We will employ the SynopticLabs Mesonet API to identify a station ID near my current location. I live in Boulder, Colorado at roughly these coordinates: 39.99, -105.22. The Mesonet API has a service to find weather stations nearest a given latitude and longitude point. You have to supply a US <code>state</code> (easy to forget) and a <code>radius</code> arguments composed of a latitude, longitude center and a radius distance in miles. In addition, there are a couple of other ancillary arguments including a demo token. Consult the API documentation to ensure you are working within the <a href="https://synopticlabs.org/api/legal/">terms of use</a>. The following URL will provide us a station near by with the help of ob-http:
+</p>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4">ob-http Request and JSON Response</h4>
+<div class="outline-text-4" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-http"><span style="color: #D0372D;">GET</span> http<span style="color: #8D8D84; font-style: italic;">:</span>//api.mesowest.net/v2/stations/metadata<span style="color: #8D8D84; font-style: italic;">?</span><span style="color: #BA36A5;">state</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">co</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">status</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">active</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">radius</span><span style="color: #8D8D84; font-style: italic;">=</span>39.99<span style="color: #8D8D84; font-style: italic;">,</span>-105.22<span style="color: #8D8D84; font-style: italic;">,</span>1<span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">token</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">demotoken</span>
+</pre>
+</div>
+
+<pre class="example">
+{
+  "SUMMARY": {
+    "METADATA_RESPONSE_TIME": "0.0970363616943 ms",
+    "RESPONSE_MESSAGE": "OK",
+    "RESPONSE_CODE": 1,
+    "NUMBER_OF_OBJECTS": 1
+  },
+  "STATION": [
+    {
+      "ID": "41017",
+      "TIMEZONE": "America\/Denver",
+      "LATITUDE": "40.00133",
+      "STATE": "CO",
+      "LONGITUDE": "-105.23033",
+      "STID": "E3608",
+      "DISTANCE": 0.96,
+      "NAME": "EW3608 Boulder",
+      "ELEVATION": "5430",
+      "PERIOD_OF_RECORD": {
+        "end": "2017-02-28T23:58:00Z",
+        "start": "2013-09-25T00:00:00Z"
+      },
+      "MNET_ID": "65",
+      "STATUS": "ACTIVE"
+    }
+  ]
+}
+</pre>
+
+
+<p>
+According to this JSON response, there is the "E3608" weather station not far away. We will work with the data from that instrument.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">Timeseries API</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<p>
+Next, we will be using the <a href="https://synopticlabs.org/api/mesonet/reference/#stationstimeseries">timeseries API</a> to retrieve the station data. For example, the following URL retrieves the air temperature from the KDEN station for the last 30 minutes.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-http"><span style="color: #D0372D;">GET</span> http<span style="color: #8D8D84; font-style: italic;">:</span>//api.mesowest.net/v2/stations/timeseries<span style="color: #8D8D84; font-style: italic;">?&amp;</span><span style="color: #BA36A5;">stid</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">kden</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">recent</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">30</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">token</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">demotoken</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">vars</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">air_temp</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">output</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">csv</span>
+</pre>
+</div>
+
+<pre class="example">
+# STATION: KDEN
+# STATION NAME: Denver, Denver International Airport
+# LATITUDE: 39.84658
+# LONGITUDE: -104.65622
+# ELEVATION [ft]: 5404
+# STATE: CO
+Station_ID,Date_Time,air_temp_set_1
+,,Celsius
+KDEN,2017-02-28T23:35:00Z,-2.0
+KDEN,2017-02-28T23:40:00Z,-2.0
+KDEN,2017-02-28T23:45:00Z,-2.0
+KDEN,2017-02-28T23:50:00Z,-2.0
+KDEN,2017-02-28T23:53:00Z,-2.2
+KDEN,2017-02-28T23:55:00Z,-2.0
+</pre>
+
+<p>
+There are more <a href="https://synopticlabs.org/api/mesonet/">examples</a> of API use as well as the <a href="https://synopticlabs.org/api/mesonet/reference/#stationstimeseries">API reference</a> on SynopticLabs website. 
+</p>
+
+<p>
+For the particular example we are shooting for, we will supply the following URL parameters:
+</p>
+
+<ul class="org-ul">
+<li><code>stid</code>, the station ID that we obtained earlier</li>
+<li><code>start</code>, the start time in UTC (e.g., <code>201702171644</code>)</li>
+<li><code>end</code>, the end time  in UTC (e.g., <code>201702241644</code>)</li>
+<li><code>units</code>, the desired units (i.e., metrics or english)</li>
+<li><code>vars</code>, the <a href="https://synopticlabs.org/api/mesonet/variables/">sensor variables</a></li>
+<li><code>obtimezone</code>, the timezone of the response data (i.e., UTC or local)</li>
+<li><code>output</code>, the output format (e.g., csv)</li>
+<li><code>token</code>, the request token in this case guest</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Set up Parameterization With noweb</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<p>
+<a id="orgtarget2"></a>
+</p>
+
+<p>
+We will once again be make use of ob-http to retrieve the data, but, this time, we will be employing the Emacs noweb facility to parameterize the ob-http code block. (By the way, "noweb", has always struck me as a terrible name as it seems to imply something about the web browsing, the world wide web, or the Internet, but, in fact, refers to a literate programming style.) Let's start defining our noweb parameters with named org-mode and Emacs Lisp code blocks. We will use the names subsequently via noweb.
+</p>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7">Start Time</h4>
+<div class="outline-text-4" id="text-orgheadline7">
+<p>
+Obtain the start time range will be 24 hours ago. Also set the time zone as UTC since that is what the SynopticLabs API requires.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp" id="orgsrcblock1"><span style="color: #707183;">(</span>setenv <span style="color: #008000;">"TZ"</span> <span style="color: #008000;">"UTC0"</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>format-time-string <span style="color: #008000;">"%Y%m%d%H%M"</span> <span style="color: #7388D6;">(</span>time-add
+                                  <span style="color: #909183;">(</span>current-time<span style="color: #909183;">)</span>
+                                  <span style="color: #909183;">(</span>seconds-to-time <span style="color: #709870;">(</span>- <span style="color: #907373;">(</span>* 1 24 60 60<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+201702280006
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8">End Time</h4>
+<div class="outline-text-4" id="text-orgheadline8">
+<p>
+The end time will be now.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp" id="orgsrcblock2"><span style="color: #707183;">(</span>format-time-string <span style="color: #008000;">"%Y%m%d%H%M"</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+201703010006
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9">Station ID</h4>
+<div class="outline-text-4" id="text-orgheadline9">
+<p>
+The station ID we found earlier.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp" id="orgsrcblock3"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">"KBJC"</span>
+<span style="color: #008000;">"E3608"</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">"E7829"</span>
+</pre>
+</div>
+
+<pre class="example">
+E3608
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12">Retrieve the Weather Observations</h3>
+<div class="outline-text-3" id="text-orgheadline12">
+</div><div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10">Retrieve Data</h4>
+<div class="outline-text-4" id="text-orgheadline10">
+<p>
+At this point, we can finally retrieve our data with the help our noweb parameters. For example, <code>&lt;&lt;starttime()&gt;&gt;</code> will invoke the <code>starttime</code> code block defined above and insert the result into the http address below. The same is true for <code>station-id</code> and <code>endtime</code>. See the source link at the bottom to see the noweb parameterization.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-http" id="orgsrcblock4"><span style="color: #D0372D;">GET</span> http<span style="color: #8D8D84; font-style: italic;">:</span>//api.mesowest.net/v2/stations/timeseries<span style="color: #8D8D84; font-style: italic;">?</span><span style="color: #BA36A5;">token</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">demotoken</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">stid</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">E3608</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">start</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">201702280013</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">end</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">201703010013</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">obtimezone</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">local</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">units</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">metric</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">vars</span><span style="color: #8D8D84; font-style: italic;">=</span>air_temp<span style="color: #8D8D84; font-style: italic;">,</span>dew_point_temperature<span style="color: #8D8D84; font-style: italic;">,</span>wind_speed<span style="color: #8D8D84; font-style: italic;">,</span>wind_direction<span style="color: #8D8D84; font-style: italic;">,</span>sea_level_pressure<span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">output</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">csv</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11">Post-request cleanup with Emacs Lisp</h4>
+<div class="outline-text-4" id="text-orgheadline11">
+<p>
+At this point, we have to write some Emacs Lisp to clean up the response data and make it more org-mode friendly. We will need four helper functions:
+</p>
+
+<ul class="org-ul">
+<li><code>take-nth</code> is a function to sample data at certain intervals from a list.</li>
+<li>gnuplot does not like empty org-table cells so the <code>fix-missing</code> function replaces empty cells with the "missing" string.</li>
+<li>The <code>find-header</code> function locates where the header and actual data are located in the CSV http response.</li>
+<li>The <code>clean-header</code> function replaces cryptic columns names with ones that are easier to understand.</li>
+</ul>
+
+<p>
+Armed with these functions, we can clean up our data. Also a note about sampling: large org-tables tend to bog down Emacs so I'm limiting the table size to 30 samples via a Babel header argument, and the <code>take-nth</code> helper function.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp" id="orgsrcblock5"><span style="color: #707183;">(</span><span style="color: #0000FF;">defun</span> <span style="color: #006699;">take-nth</span> <span style="color: #7388D6;">(</span>n list <span style="color: #7388D6;">)</span>
+  <span style="color: #036A07;">"Returns a list of every nth item in the list."</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">if</span> <span style="color: #909183;">(</span>&lt;= n 1<span style="color: #909183;">)</span> list
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">when</span> list
+      <span style="color: #709870;">(</span>cons <span style="color: #907373;">(</span>car list<span style="color: #907373;">)</span>
+            <span style="color: #907373;">(</span>take-nth n <span style="color: #6276BA;">(</span>nthcdr n list<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defun</span> <span style="color: #006699;">fix-missing</span> <span style="color: #7388D6;">(</span>s<span style="color: #7388D6;">)</span>
+  <span style="color: #036A07;">"Replace missing CSV values with 'missing' to avoid empty cells in org-tables."</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">if</span> <span style="color: #909183;">(</span>string-match-p <span style="color: #008000;">",\s*,"</span> s<span style="color: #909183;">)</span>
+      <span style="color: #909183;">(</span>fix-missing <span style="color: #709870;">(</span>replace-regexp-in-string <span style="color: #008000;">",\s*,"</span> <span style="color: #008000;">",missing,"</span> s<span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    s<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defun</span> <span style="color: #006699;">find-header</span> <span style="color: #7388D6;">(</span>list<span style="color: #7388D6;">)</span>
+  <span style="color: #036A07;">"Find row in the CSV data where the column header info starts."</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">when</span> list
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">if</span> <span style="color: #709870;">(</span>string-prefix-p <span style="color: #008000;">"Station_ID"</span> <span style="color: #907373;">(</span>car list<span style="color: #907373;">)</span> <span style="color: #709870;">)</span>
+        list 
+      <span style="color: #709870;">(</span>find-header <span style="color: #907373;">(</span>cdr list<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defun</span> <span style="color: #006699;">clean-header</span> <span style="color: #7388D6;">(</span>header<span style="color: #7388D6;">)</span>
+  <span style="color: #036A07;">"Provide better names for column headers provided by the API."</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">(</span>col-map '<span style="color: #907373;">(</span><span style="color: #6276BA;">(</span><span style="color: #008000;">"Station_ID"</span> . <span style="color: #008000;">"Station"</span><span style="color: #6276BA;">)</span>
+                    <span style="color: #6276BA;">(</span><span style="color: #008000;">"Date_Time"</span> . <span style="color: #008000;">"Date Time"</span><span style="color: #6276BA;">)</span>
+                    <span style="color: #6276BA;">(</span><span style="color: #008000;">"altimeter_set_1"</span> . <span style="color: #008000;">"Altimeter"</span><span style="color: #6276BA;">)</span>
+                    <span style="color: #6276BA;">(</span><span style="color: #008000;">"air_temp_set_1"</span> . <span style="color: #008000;">"Temperature"</span><span style="color: #6276BA;">)</span>
+                    <span style="color: #6276BA;">(</span><span style="color: #008000;">"relative_humidity_set_1"</span> . <span style="color: #008000;">"RH"</span><span style="color: #6276BA;">)</span>
+                    <span style="color: #6276BA;">(</span><span style="color: #008000;">"wind_speed_set_1"</span> . <span style="color: #008000;">"Wind Speed"</span><span style="color: #6276BA;">)</span>
+                    <span style="color: #6276BA;">(</span><span style="color: #008000;">"wind_direction_set_1"</span> . <span style="color: #008000;">"Wind Direction"</span><span style="color: #6276BA;">)</span>
+                    <span style="color: #6276BA;">(</span><span style="color: #008000;">"dew_point_temperature_set_1d"</span> . <span style="color: #008000;">"Dew Point"</span><span style="color: #6276BA;">)</span>
+                    <span style="color: #6276BA;">(</span><span style="color: #008000;">"pressure_set_1d"</span> . <span style="color: #008000;">"Pressure"</span><span style="color: #6276BA;">)</span>
+                    <span style="color: #6276BA;">(</span><span style="color: #008000;">"sea_level_pressure_set_1d"</span> . <span style="color: #008000;">"SLP"</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>mapcar <span style="color: #709870;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #907373;">(</span>x<span style="color: #907373;">)</span> <span style="color: #907373;">(</span>cdr <span style="color: #6276BA;">(</span>assoc x col-map<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+            <span style="color: #709870;">(</span>split-string header <span style="color: #008000;">","</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let*</span> <span style="color: #7388D6;">(</span><span style="color: #909183;">(</span>string-data <span style="color: #709870;">(</span>split-string data<span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+       <span style="color: #909183;">(</span>rows <span style="color: #709870;">(</span>find-header string-data<span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+       <span style="color: #909183;">(</span>col-hdrs <span style="color: #709870;">(</span>clean-header <span style="color: #907373;">(</span>car rows<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+       <span style="color: #909183;">(</span>units <span style="color: #709870;">(</span>split-string <span style="color: #907373;">(</span>cadr rows<span style="color: #907373;">)</span> <span style="color: #008000;">","</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+       <span style="color: #909183;">(</span>d <span style="color: #709870;">(</span>take-nth <span style="color: #907373;">(</span>/ <span style="color: #6276BA;">(</span>length rows<span style="color: #6276BA;">)</span> samples<span style="color: #907373;">)</span> <span style="color: #907373;">(</span>cddr rows<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span>cons col-hdrs
+        <span style="color: #909183;">(</span>cons units
+              <span style="color: #709870;">(</span><span style="color: #0000FF;">cl-loop</span> for s in d
+                       collect
+                       <span style="color: #907373;">(</span><span style="color: #0000FF;">let</span> <span style="color: #6276BA;">(</span><span style="color: #858580;">(</span>row <span style="color: #80A880;">(</span>fix-missing s<span style="color: #80A880;">)</span><span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+                         <span style="color: #6276BA;">(</span>split-string row <span style="color: #008000;">","</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Station</td>
+<td class="org-left">Date Time</td>
+<td class="org-right">Altimeter</td>
+<td class="org-right">Temperature</td>
+<td class="org-right">RH</td>
+<td class="org-right">Wind Speed</td>
+<td class="org-right">Wind Direction</td>
+<td class="org-right">Dew Point</td>
+<td class="org-right">Pressure</td>
+<td class="org-right">SLP</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">Pascals</td>
+<td class="org-right">Celsius</td>
+<td class="org-right">%</td>
+<td class="org-right">Meters/second</td>
+<td class="org-right">Degrees</td>
+<td class="org-right">Celsius</td>
+<td class="org-right">Pascals</td>
+<td class="org-right">Pascals</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-27T17:08:00-0700</td>
+<td class="org-right">100507.97</td>
+<td class="org-right">9.44</td>
+<td class="org-right">26.0</td>
+<td class="org-right">2.68</td>
+<td class="org-right">223.0</td>
+<td class="org-right">-9.23</td>
+<td class="org-right">82282.05</td>
+<td class="org-right">100132.09</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-27T17:53:00-0700</td>
+<td class="org-right">100541.83</td>
+<td class="org-right">8.33</td>
+<td class="org-right">30.0</td>
+<td class="org-right">0.0</td>
+<td class="org-right">missing</td>
+<td class="org-right">-8.37</td>
+<td class="org-right">82309.77</td>
+<td class="org-right">100241.92</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-27T18:38:00-0700</td>
+<td class="org-right">100643.42</td>
+<td class="org-right">7.22</td>
+<td class="org-right">34.0</td>
+<td class="org-right">0.0</td>
+<td class="org-right">missing</td>
+<td class="org-right">-7.73</td>
+<td class="org-right">82392.94</td>
+<td class="org-right">100420.05</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-27T19:23:00-0700</td>
+<td class="org-right">100677.29</td>
+<td class="org-right">8.33</td>
+<td class="org-right">28.0</td>
+<td class="org-right">3.13</td>
+<td class="org-right">215.0</td>
+<td class="org-right">-9.25</td>
+<td class="org-right">82420.66</td>
+<td class="org-right">100377.0</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-27T20:08:00-0700</td>
+<td class="org-right">100711.15</td>
+<td class="org-right">7.22</td>
+<td class="org-right">32.0</td>
+<td class="org-right">0.45</td>
+<td class="org-right">248.0</td>
+<td class="org-right">-8.51</td>
+<td class="org-right">82448.38</td>
+<td class="org-right">100487.64</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-27T20:53:00-0700</td>
+<td class="org-right">100745.01</td>
+<td class="org-right">5.0</td>
+<td class="org-right">42.0</td>
+<td class="org-right">0.45</td>
+<td class="org-right">250.0</td>
+<td class="org-right">-6.97</td>
+<td class="org-right">82476.1</td>
+<td class="org-right">100677.22</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-27T21:38:00-0700</td>
+<td class="org-right">100846.6</td>
+<td class="org-right">1.11</td>
+<td class="org-right">66.0</td>
+<td class="org-right">3.13</td>
+<td class="org-right">75.0</td>
+<td class="org-right">-4.61</td>
+<td class="org-right">82559.27</td>
+<td class="org-right">101058.6</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-27T22:23:00-0700</td>
+<td class="org-right">101015.92</td>
+<td class="org-right">0.56</td>
+<td class="org-right">68.0</td>
+<td class="org-right">0.45</td>
+<td class="org-right">105.0</td>
+<td class="org-right">-4.73</td>
+<td class="org-right">82697.89</td>
+<td class="org-right">101268.63</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-27T23:08:00-0700</td>
+<td class="org-right">101049.79</td>
+<td class="org-right">0.0</td>
+<td class="org-right">69.0</td>
+<td class="org-right">0.9</td>
+<td class="org-right">192.0</td>
+<td class="org-right">-5.08</td>
+<td class="org-right">82725.62</td>
+<td class="org-right">101343.86</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-27T23:53:00-0700</td>
+<td class="org-right">101049.79</td>
+<td class="org-right">0.0</td>
+<td class="org-right">71.0</td>
+<td class="org-right">0.9</td>
+<td class="org-right">133.0</td>
+<td class="org-right">-4.69</td>
+<td class="org-right">82725.62</td>
+<td class="org-right">101343.85</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T00:38:00-0700</td>
+<td class="org-right">101049.79</td>
+<td class="org-right">-0.56</td>
+<td class="org-right">72.0</td>
+<td class="org-right">0.45</td>
+<td class="org-right">173.0</td>
+<td class="org-right">-5.05</td>
+<td class="org-right">82725.62</td>
+<td class="org-right">101385.31</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T01:23:00-0700</td>
+<td class="org-right">101083.65</td>
+<td class="org-right">-0.56</td>
+<td class="org-right">71.0</td>
+<td class="org-right">0.45</td>
+<td class="org-right">144.0</td>
+<td class="org-right">-5.23</td>
+<td class="org-right">82753.33</td>
+<td class="org-right">101419.28</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T02:08:00-0700</td>
+<td class="org-right">101083.65</td>
+<td class="org-right">-0.56</td>
+<td class="org-right">71.0</td>
+<td class="org-right">1.34</td>
+<td class="org-right">184.0</td>
+<td class="org-right">-5.23</td>
+<td class="org-right">82753.33</td>
+<td class="org-right">101419.28</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T02:53:00-0700</td>
+<td class="org-right">101015.92</td>
+<td class="org-right">-1.11</td>
+<td class="org-right">74.0</td>
+<td class="org-right">1.34</td>
+<td class="org-right">188.0</td>
+<td class="org-right">-5.21</td>
+<td class="org-right">82697.89</td>
+<td class="org-right">101392.21</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T03:38:00-0700</td>
+<td class="org-right">101015.92</td>
+<td class="org-right">-0.56</td>
+<td class="org-right">70.0</td>
+<td class="org-right">1.34</td>
+<td class="org-right">161.0</td>
+<td class="org-right">-5.42</td>
+<td class="org-right">82697.89</td>
+<td class="org-right">101351.34</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T04:23:00-0700</td>
+<td class="org-right">101015.92</td>
+<td class="org-right">-0.56</td>
+<td class="org-right">66.0</td>
+<td class="org-right">0.9</td>
+<td class="org-right">190.0</td>
+<td class="org-right">-6.2</td>
+<td class="org-right">82697.89</td>
+<td class="org-right">101351.37</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T05:08:00-0700</td>
+<td class="org-right">101049.79</td>
+<td class="org-right">-0.56</td>
+<td class="org-right">66.0</td>
+<td class="org-right">0.45</td>
+<td class="org-right">184.0</td>
+<td class="org-right">-6.2</td>
+<td class="org-right">82725.62</td>
+<td class="org-right">101385.36</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T05:53:00-0700</td>
+<td class="org-right">101049.79</td>
+<td class="org-right">-1.11</td>
+<td class="org-right">68.0</td>
+<td class="org-right">0.0</td>
+<td class="org-right">missing</td>
+<td class="org-right">-6.33</td>
+<td class="org-right">82725.62</td>
+<td class="org-right">101426.25</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T06:38:00-0700</td>
+<td class="org-right">101049.79</td>
+<td class="org-right">-1.11</td>
+<td class="org-right">71.0</td>
+<td class="org-right">0.0</td>
+<td class="org-right">missing</td>
+<td class="org-right">-5.76</td>
+<td class="org-right">82725.62</td>
+<td class="org-right">101426.23</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T07:23:00-0700</td>
+<td class="org-right">101049.79</td>
+<td class="org-right">missing</td>
+<td class="org-right">missing</td>
+<td class="org-right">missing</td>
+<td class="org-right">missing</td>
+<td class="org-right">missing</td>
+<td class="org-right">82725.62</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T08:08:00-0700</td>
+<td class="org-right">101049.79</td>
+<td class="org-right">0.0</td>
+<td class="org-right">67.0</td>
+<td class="org-right">0.45</td>
+<td class="org-right">184.0</td>
+<td class="org-right">-5.47</td>
+<td class="org-right">82725.62</td>
+<td class="org-right">101343.88</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T08:53:00-0700</td>
+<td class="org-right">101015.92</td>
+<td class="org-right">0.56</td>
+<td class="org-right">61.0</td>
+<td class="org-right">0.0</td>
+<td class="org-right">missing</td>
+<td class="org-right">-6.18</td>
+<td class="org-right">82697.89</td>
+<td class="org-right">101268.68</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T09:38:00-0700</td>
+<td class="org-right">100982.06</td>
+<td class="org-right">2.22</td>
+<td class="org-right">51.0</td>
+<td class="org-right">1.34</td>
+<td class="org-right">136.0</td>
+<td class="org-right">-6.98</td>
+<td class="org-right">82670.17</td>
+<td class="org-right">101113.58</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T10:23:00-0700</td>
+<td class="org-right">101015.92</td>
+<td class="org-right">3.33</td>
+<td class="org-right">44.0</td>
+<td class="org-right">0.9</td>
+<td class="org-right">141.0</td>
+<td class="org-right">-7.89</td>
+<td class="org-right">82697.89</td>
+<td class="org-right">101067.33</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T11:08:00-0700</td>
+<td class="org-right">100982.06</td>
+<td class="org-right">3.33</td>
+<td class="org-right">44.0</td>
+<td class="org-right">2.23</td>
+<td class="org-right">133.0</td>
+<td class="org-right">-7.89</td>
+<td class="org-right">82670.17</td>
+<td class="org-right">101033.45</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T11:53:00-0700</td>
+<td class="org-right">101015.92</td>
+<td class="org-right">3.33</td>
+<td class="org-right">45.0</td>
+<td class="org-right">1.79</td>
+<td class="org-right">86.0</td>
+<td class="org-right">-7.59</td>
+<td class="org-right">82697.89</td>
+<td class="org-right">101067.32</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T12:38:00-0700</td>
+<td class="org-right">100982.06</td>
+<td class="org-right">3.33</td>
+<td class="org-right">45.0</td>
+<td class="org-right">0.45</td>
+<td class="org-right">184.0</td>
+<td class="org-right">-7.59</td>
+<td class="org-right">82670.17</td>
+<td class="org-right">101033.44</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T13:23:00-0700</td>
+<td class="org-right">100948.2</td>
+<td class="org-right">4.44</td>
+<td class="org-right">43.0</td>
+<td class="org-right">1.34</td>
+<td class="org-right">96.0</td>
+<td class="org-right">-7.17</td>
+<td class="org-right">82642.45</td>
+<td class="org-right">100920.11</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T14:08:00-0700</td>
+<td class="org-right">100982.06</td>
+<td class="org-right">5.0</td>
+<td class="org-right">42.0</td>
+<td class="org-right">0.9</td>
+<td class="org-right">128.0</td>
+<td class="org-right">-6.97</td>
+<td class="org-right">82670.17</td>
+<td class="org-right">100914.12</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T14:53:00-0700</td>
+<td class="org-right">101049.79</td>
+<td class="org-right">3.33</td>
+<td class="org-right">58.0</td>
+<td class="org-right">2.23</td>
+<td class="org-right">100.0</td>
+<td class="org-right">-4.24</td>
+<td class="org-right">82725.62</td>
+<td class="org-right">101101.09</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T15:38:00-0700</td>
+<td class="org-right">101151.38</td>
+<td class="org-right">2.78</td>
+<td class="org-right">61.0</td>
+<td class="org-right">1.34</td>
+<td class="org-right">85.0</td>
+<td class="org-right">-4.08</td>
+<td class="org-right">82808.78</td>
+<td class="org-right">101242.41</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-02-28T16:28:00-0700</td>
+<td class="org-right">101354.56</td>
+<td class="org-right">2.22</td>
+<td class="org-right">64.0</td>
+<td class="org-right">2.23</td>
+<td class="org-right">355.0</td>
+<td class="org-right">-3.97</td>
+<td class="org-right">82975.12</td>
+<td class="org-right">101486.45</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14">Timeseries with Gnuplot</h3>
+<div class="outline-text-3" id="text-orgheadline14">
+</div><div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13">Gnuplot</h4>
+<div class="outline-text-4" id="text-orgheadline13">
+<p>
+At this point, we are ready to plot our data table with gnuplot. The following code took bit of experimentation to get right as well as studying the <a href="http://gnuplot.sourceforge.net/documentation.html">gnuplot official documentation</a>. But essentially we are plotting in one stacked plot,
+</p>
+
+<ul class="org-ul">
+<li>Sea level pressure</li>
+<li>Temperature and dew point</li>
+<li>Relative humidity</li>
+<li>Wind speed</li>
+<li>Wind direction</li>
+</ul>
+
+<p>
+One tricky part, is I had to alternate the Y-axis labeling so that the successive plot labels would not run into one another.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-gnuplot"><span style="color: #D0372D;">reset</span>
+
+<span style="color: #D0372D;">set</span> terminal svg size 800, 800 enhanced truecolor font <span style="color: #008000;">'Verdana,13'</span>
+
+<span style="color: #D0372D;">set</span> multiplot layout 5,1 rowsfirst
+
+<span style="color: #D0372D;">set</span> grid
+<span style="color: #D0372D;">set</span> lmargin 12
+<span style="color: #D0372D;">set</span> rmargin 8
+
+<span style="color: #D0372D;">set</span> style line 1 lc rgb <span style="color: #008000;">'#000000'</span> <span style="color: #6434A3;">lt</span> 1 <span style="color: #6434A3;">lw</span> 2 <span style="color: #6434A3;">pt</span> 9 <span style="color: #6434A3;">ps</span> 1.0
+<span style="color: #D0372D;">set</span> style line 2 lc rgb <span style="color: #008000;">'#dd181f'</span> <span style="color: #6434A3;">lt</span> 1 <span style="color: #6434A3;">lw</span> 2 <span style="color: #6434A3;">pt</span> 7 <span style="color: #6434A3;">ps</span> 1.0
+<span style="color: #D0372D;">set</span> style line 3 lc rgb <span style="color: #008000;">'#0060ad'</span> <span style="color: #6434A3;">lt</span> 1 <span style="color: #6434A3;">lw</span> 2 <span style="color: #6434A3;">pt</span> 7 <span style="color: #6434A3;">ps</span> 0.75
+<span style="color: #D0372D;">set</span> style line 4 lc rgb <span style="color: #008000;">'#00ff00'</span> <span style="color: #6434A3;">lt</span> 1 <span style="color: #6434A3;">lw</span> 2 <span style="color: #6434A3;">pt</span> 7 <span style="color: #6434A3;">ps</span> 1
+<span style="color: #D0372D;">set</span> style line 5 lc rgb <span style="color: #008000;">'#00ff00'</span> <span style="color: #6434A3;">lt</span> 1 <span style="color: #6434A3;">lw</span> 2 <span style="color: #6434A3;">pt</span> 5 <span style="color: #6434A3;">ps</span> 0.75
+
+<span style="color: #D0372D;">set</span> <span style="color: #6434A3;">title</span> <span style="color: #008000;">"Weather for E3608"</span>
+
+<span style="color: #D0372D;">set</span> xdata time
+<span style="color: #D0372D;">set</span> timefmt <span style="color: #008000;">"%Y-%m-%dT%H:%M:%SZ"</span>
+<span style="color: #D0372D;">set</span> format x <span style="color: #008000;">" "</span> 
+
+<span style="color: #D0372D;">set</span> yrange [<span style="color: #D0372D;">:*</span>]
+<span style="color: #D0372D;">set</span> ylabel <span style="color: #008000;">"Pascals"</span> offset 0
+
+<span style="color: #D0372D;">set</span> bmargin 0
+<span style="color: #D0372D;">set</span> offsets graph 0, 0, 500, 10
+
+<span style="color: #D0372D;">set</span> size 1,0.24
+<span style="color: #D0372D;">set</span> origin 0.0,0.76
+
+<span style="color: #0000FF;">plot</span> data <span style="color: #6434A3;">using</span> <span style="color: #008000;">" Date Time"</span>:<span style="color: #008000;">"SLP"</span> <span style="color: #6434A3;">with</span> <span style="color: #006699;">linespoints</span> <span style="color: #6434A3;">ls</span> 1 <span style="color: #6434A3;">title</span> <span style="color: #008000;">'Sea Level Pressure'</span>
+
+<span style="color: #D0372D;">set</span> <span style="color: #6434A3;">title</span> <span style="color: #008000;">" "</span>
+
+<span style="color: #D0372D;">set</span> yrange [<span style="color: #D0372D;">:*</span>]
+<span style="color: #D0372D;">set</span> ytics offset 80,0
+<span style="color: #D0372D;">set</span> ylabel <span style="color: #008000;">"Celsius"</span> offset 88
+
+<span style="color: #D0372D;">set</span> tmargin 0
+<span style="color: #D0372D;">set</span> offsets graph 0, 0, 10, 1
+
+<span style="color: #D0372D;">set</span> size 1,0.17
+<span style="color: #D0372D;">set</span> origin 0.0,0.59
+
+<span style="color: #0000FF;">plot</span> data <span style="color: #6434A3;">using</span> <span style="color: #008000;">"Date Time"</span>:<span style="color: #008000;">"Temperature"</span> <span style="color: #6434A3;">with</span> <span style="color: #006699;">linespoints</span> <span style="color: #6434A3;">ls</span> 2 <span style="color: #6434A3;">title</span> <span style="color: #008000;">'Temperature'</span>,\
+     data <span style="color: #6434A3;">using</span> <span style="color: #008000;">"Date Time"</span>:<span style="color: #008000;">"Dew Point"</span> <span style="color: #6434A3;">with</span> <span style="color: #006699;">linespoints</span> <span style="color: #6434A3;">ls</span> 3 <span style="color: #6434A3;">title</span> <span style="color: #008000;">'Dewpoint'</span>
+
+<span style="color: #D0372D;">set</span> yrange [<span style="color: #D0372D;">0:100</span>]
+<span style="color: #D0372D;">set</span> ytics offset 0,0
+<span style="color: #D0372D;">set</span> ylabel <span style="color: #008000;">"%"</span> offset 0
+
+<span style="color: #D0372D;">set</span> offsets graph 0, 0, 0, 0 
+
+<span style="color: #D0372D;">set</span> size 1,0.17
+<span style="color: #D0372D;">set</span> origin 0.0,0.42
+
+<span style="color: #0000FF;">plot</span> data <span style="color: #6434A3;">using</span> <span style="color: #008000;">"Date Time"</span>:<span style="color: #008000;">"RH"</span> <span style="color: #6434A3;">with</span> <span style="color: #006699;">linespoints</span> <span style="color: #6434A3;">ls</span> 4 <span style="color: #6434A3;">title</span> <span style="color: #008000;">'RH'</span>
+
+<span style="color: #D0372D;">set</span> yrange [<span style="color: #D0372D;">0:*</span>]
+<span style="color: #D0372D;">set</span> ytics offset 80,0
+<span style="color: #D0372D;">set</span> ylabel <span style="color: #008000;">"Meters per Second"</span> offset 88
+
+<span style="color: #D0372D;">set</span> offsets graph 0, 0, 1, 0
+
+<span style="color: #D0372D;">set</span> size 1,0.17
+<span style="color: #D0372D;">set</span> origin 0.0,0.25
+
+<span style="color: #0000FF;">plot</span> data <span style="color: #6434A3;">using</span> <span style="color: #008000;">" Date Time"</span>:<span style="color: #008000;">"Wind Speed"</span> <span style="color: #6434A3;">with</span> <span style="color: #006699;">linespoints</span> <span style="color: #6434A3;">ls</span> 5 <span style="color: #6434A3;">title</span> <span style="color: #008000;">'Wind Speed'</span>
+
+<span style="color: #D0372D;">set</span> xtics rotate by -45
+<span style="color: #D0372D;">set</span> format x <span style="color: #008000;">"%m/%d %Hh"</span>
+
+<span style="color: #D0372D;">set</span> yrange [<span style="color: #D0372D;">0:360</span>]
+<span style="color: #D0372D;">set</span> ylabel <span style="color: #008000;">"Direction"</span> offset 0
+<span style="color: #D0372D;">set</span> ytics (<span style="color: #008000;">"N"</span> 0,<span style="color: #008000;">"NE"</span> 45,<span style="color: #008000;">"E"</span> 90 ,<span style="color: #008000;">"SE"</span> 135, <span style="color: #008000;">"S"</span> 180, <span style="color: #008000;">"SW"</span> 225, <span style="color: #008000;">"W"</span> 270, <span style="color: #008000;">"NW"</span> 315) offset 0,0
+
+<span style="color: #D0372D;">set</span> bmargin 4
+
+<span style="color: #D0372D;">set</span> size 1,0.25
+<span style="color: #D0372D;">set</span> origin 0.0,0
+
+<span style="color: #0000FF;">plot</span> data <span style="color: #6434A3;">using</span> <span style="color: #008000;">" Date Time"</span>:<span style="color: #008000;">"Wind Direction"</span> <span style="color: #6434A3;">pt</span> 3 <span style="color: #6434A3;">ps</span> 1.0 <span style="color: #6434A3;">title</span> <span style="color: #008000;">'Wind Direction'</span>
+
+<span style="color: #D0372D;">unset</span> multiplot
+</pre>
+</div>
+
+
+<div class="figure">
+<p><object type="image/svg+xml" data="../../static/weatherobs/timeseries.svg" >
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15">Babel</h3>
+<div class="outline-text-3" id="text-orgheadline15">
+<p>
+As mentioned in the <a href="#orgtarget1">introduction</a>, to generate the data table and plot, , this entire buffer can be run in literate programming fashion with <code>org-babel-execute-buffer</code> (<code>C-c C-v C-b</code>). You can parameterize the start and end time, and the station ID via <a href="#orgtarget2">noweb parameters</a>. I will leave it as an exercise to the reader to supply additional parameterization for the station variables, for example.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16">Ideas for Improvements</h3>
+<div class="outline-text-3" id="text-orgheadline16">
+<p>
+In the future, I would like to incorporate more information in the plot. Specifically,
+</p>
+
+<ul class="org-ul">
+<li>Replace the wind and direction time series with wind barbs.</li>
+<li><a href="http://www.wpc.ncep.noaa.gov/html/stationplot.shtml">Station plot weather symbols</a></li>
+<li>Add precipitation data</li>
+</ul>
+
+<p>
+I'll have to learn more about gnuplot in order to achieve the first two bullet items.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<a class='source-link' href='./weatherobs.org.html'>Source</a>Last updated on Wed Mar  1 00:13:08 2017 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
+</div>
+</body>
+</html>
