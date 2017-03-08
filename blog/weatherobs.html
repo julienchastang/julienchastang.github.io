@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-08 Wed 01:30 -->
+<!-- 2017-03-08 Wed 01:35 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Plotting Time Series of Weather Observations in Emacs</title>
@@ -473,7 +473,7 @@ At this point, we can finally retrieve our data with the help our noweb paramete
 
 <div class="org-src-container">
 
-<pre class="src src-http" id="orgsrcblock4"><span style="color: #D0372D;">GET</span> http<span style="color: #8D8D84; font-style: italic;">:</span>//api.mesowest.net/v2/stations/timeseries<span style="color: #8D8D84; font-style: italic;">?</span><span style="color: #BA36A5;">token</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">demotoken</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">stid</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">E3608</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">start</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">201703070130</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">end</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">201703080130</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">obtimezone</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">local</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">units</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">metric</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">vars</span><span style="color: #8D8D84; font-style: italic;">=</span>air_temp<span style="color: #8D8D84; font-style: italic;">,</span>dew_point_temperature<span style="color: #8D8D84; font-style: italic;">,</span>wind_speed<span style="color: #8D8D84; font-style: italic;">,</span>wind_direction<span style="color: #8D8D84; font-style: italic;">,</span>sea_level_pressure<span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">output</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">csv</span>
+<pre class="src src-http" id="orgsrcblock4"><span style="color: #D0372D;">GET</span> http<span style="color: #8D8D84; font-style: italic;">:</span>//api.mesowest.net/v2/stations/timeseries<span style="color: #8D8D84; font-style: italic;">?</span><span style="color: #BA36A5;">token</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">demotoken</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">stid</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">E3608</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">start</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">201703070135</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">end</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">201703080135</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">obtimezone</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">local</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">units</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">metric</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">vars</span><span style="color: #8D8D84; font-style: italic;">=</span>air_temp<span style="color: #8D8D84; font-style: italic;">,</span>dew_point_temperature<span style="color: #8D8D84; font-style: italic;">,</span>wind_speed<span style="color: #8D8D84; font-style: italic;">,</span>wind_direction<span style="color: #8D8D84; font-style: italic;">,</span>sea_level_pressure<span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">output</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">csv</span>
 </pre>
 </div>
 </div>
@@ -1137,7 +1137,7 @@ One tricky part is I had to alternate the Y-axis labeling so that the successive
 <p><object type="image/svg+xml" data="../../static/weatherobs/timeseries.svg" >
 Sorry, your browser does not support SVG.</object>
 </p>
-<p><span class="figure-number">Figure 2:</span> Time series of Time Series of Weather Observations</p>
+<p><span class="figure-number">Figure 2:</span> Time Series of Weather Observations</p>
 </div>
 </div>
 </div>
@@ -1173,7 +1173,7 @@ I'll have to learn more about gnuplot in order to achieve the first two bullet i
 </div>
 </div>
 <div id="postamble" class="status">
-<a class='source-link' href='./weatherobs.org.html'>Source</a>Last updated on Wed Mar  8 01:30:16 2017 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
+<a class='source-link' href='./weatherobs.org.html'>Source</a>Last updated on Wed Mar  8 01:35:34 2017 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
 </div>
 </body>
 </html>
