@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-02 Thu 15:48 -->
+<!-- 2017-03-08 Wed 02:01 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>.emacs</title>
@@ -228,6 +228,10 @@
       .footnotes {
         margin-top: 1em;
       }
+      
+      table, td, th {
+        border: 1px solid black;
+      } 
     </style>
 </head>
 <body>
@@ -2157,9 +2161,55 @@ Clear buffer
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgheadline42" class="outline-2">
+<h2 id="orgheadline42">Org-mode Header UUIDs</h2>
+<div class="outline-text-2" id="text-orgheadline42">
+<p>
+<a href="https://writequit.org/articles/emacs-org-mode-generate-ids.html">UUID headline anchors</a> from Lee, of course.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #707183;">(</span><span style="color: #0000FF;">require</span> '<span style="color: #D0372D;">org-id</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span>setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id<span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defun</span> <span style="color: #006699;">jc/org-custom-id-get</span> <span style="color: #7388D6;">(</span><span style="color: #6434A3;">&amp;optional</span> pom create prefix<span style="color: #7388D6;">)</span>
+  <span style="color: #036A07;">"Get the CUSTOM_ID property of the entry at point-or-marker POM.  If POM is</span>
+<span style="color: #036A07;">   nil, refer to the entry at point. If the entry does not have an CUSTOM_ID,</span>
+<span style="color: #036A07;">   the function returns nil. However, when CREATE is non nil, create a CUSTOM_ID</span>
+<span style="color: #036A07;">   if none is present already. PREFIX will be passed through to `</span><span style="color: #036A07;">org-id-new</span><span style="color: #036A07;">'. In</span>
+<span style="color: #036A07;">   any case, the CUSTOM_ID of the entry is returned."</span>
+  <span style="color: #7388D6;">(</span>interactive<span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span>org-with-point-at pom
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span>id <span style="color: #6276BA;">(</span>org-entry-get nil <span style="color: #008000;">"CUSTOM_ID"</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">cond</span>
+       <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>and id <span style="color: #858580;">(</span>stringp id<span style="color: #858580;">)</span> <span style="color: #858580;">(</span>string-match <span style="color: #008000;">"\\S-"</span> id<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+        id<span style="color: #907373;">)</span>
+       <span style="color: #907373;">(</span>create
+        <span style="color: #6276BA;">(</span>setq id <span style="color: #858580;">(</span>org-id-new <span style="color: #80A880;">(</span>concat prefix <span style="color: #008000;">"h"</span><span style="color: #80A880;">)</span><span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+        <span style="color: #6276BA;">(</span>org-entry-put pom <span style="color: #008000;">"CUSTOM_ID"</span> <span style="color: #858580;">(</span>substring id 0 10<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+        <span style="color: #6276BA;">(</span>org-id-add-location id <span style="color: #858580;">(</span>buffer-file-name <span style="color: #80A880;">(</span>buffer-base-buffer<span style="color: #80A880;">)</span><span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+        id<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defun</span> <span style="color: #006699;">jc/org-add-ids-to-headlines-in-file</span> <span style="color: #7388D6;">()</span>
+  <span style="color: #036A07;">"Add CUSTOM_ID properties to all headlines in the current file which do not</span>
+<span style="color: #036A07;">   already have one. Only adds ids if the `</span><span style="color: #036A07;">auto-id</span><span style="color: #036A07;">' option is set to `t' in the</span>
+<span style="color: #036A07;">   file somewher, i.e., #+OPTIONS: auto-id:t"</span>
+  <span style="color: #7388D6;">(</span>interactive<span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">save-excursion</span>
+    <span style="color: #909183;">(</span>widen<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>goto-char <span style="color: #709870;">(</span>point-min<span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">when</span> <span style="color: #709870;">(</span>re-search-forward <span style="color: #008000;">"^#\\+OPTIONS:.*auto-id:t"</span> <span style="color: #907373;">(</span>point-max<span style="color: #907373;">)</span> t<span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span>org-map-entries <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">()</span> <span style="color: #6276BA;">(</span>jc/org-custom-id-get <span style="color: #858580;">(</span>point<span style="color: #858580;">)</span> 'create<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<a class='source-link' href='./dotemacs.org.html'>Source</a>Last updated on Thu Mar  2 15:48:41 2017 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
+<a class='source-link' href='./dotemacs.org.html'>Source</a>Last updated on Wed Mar  8 02:01:19 2017 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
 </div>
 </body>
 </html>
