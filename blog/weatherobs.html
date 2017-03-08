@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-02 Thu 15:48 -->
+<!-- 2017-03-08 Wed 01:30 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Plotting Time Series of Weather Observations in Emacs</title>
@@ -228,6 +228,10 @@
       .footnotes {
         margin-top: 1em;
       }
+      
+      table, td, th {
+        border: 1px solid black;
+      } 
     </style>
 </head>
 <body>
@@ -250,6 +254,7 @@
 <p><object type="image/svg+xml" data="../../static/weatherobs/timeseries.svg" >
 Sorry, your browser does not support SVG.</object>
 </p>
+<p><span class="figure-number">Figure 1:</span> Time Series of Weather Observations</p>
 </div>
 </div>
 
@@ -296,7 +301,7 @@ Our first job is to find a weather station near our location. We will employ the
 <pre class="example">
 {
   "SUMMARY": {
-    "METADATA_RESPONSE_TIME": "0.112056732178 ms",
+    "METADATA_RESPONSE_TIME": "0.123023986816 ms",
     "RESPONSE_MESSAGE": "OK",
     "RESPONSE_CODE": 1,
     "NUMBER_OF_OBJECTS": 1
@@ -313,7 +318,7 @@ Our first job is to find a weather station near our location. We will employ the
       "NAME": "EW3608 Boulder",
       "ELEVATION": "5430",
       "PERIOD_OF_RECORD": {
-        "end": "2017-03-02T15:03:00Z",
+        "end": "2017-03-07T23:53:00Z",
         "start": "2013-09-25T00:00:00Z"
       },
       "MNET_ID": "65",
@@ -353,11 +358,11 @@ Next, we will be using the <a href="https://synopticlabs.org/api/mesonet/referen
 # STATE: CO
 Station_ID,Date_Time,air_temp_set_1
 ,,Celsius
-KDEN,2017-03-02T15:15:00Z,2.0
-KDEN,2017-03-02T15:20:00Z,2.0
-KDEN,2017-03-02T15:25:00Z,2.0
-KDEN,2017-03-02T15:30:00Z,2.0
-KDEN,2017-03-02T15:35:00Z,3.0
+KDEN,2017-03-08T01:00:00Z,8.0
+KDEN,2017-03-08T01:05:00Z,8.0
+KDEN,2017-03-08T01:10:00Z,8.0
+KDEN,2017-03-08T01:15:00Z,8.0
+KDEN,2017-03-08T01:20:00Z,8.0
 </pre>
 
 <p>
@@ -410,7 +415,7 @@ The start time range will be 24 hours ago. Also set the time zone as UTC since t
 </div>
 
 <pre class="example">
-201703011546
+201703070128
 </pre>
 </div>
 </div>
@@ -429,7 +434,7 @@ The end time will be now.
 </div>
 
 <pre class="example">
-201703021546
+201703080128
 </pre>
 </div>
 </div>
@@ -468,7 +473,7 @@ At this point, we can finally retrieve our data with the help our noweb paramete
 
 <div class="org-src-container">
 
-<pre class="src src-http" id="orgsrcblock4"><span style="color: #D0372D;">GET</span> http<span style="color: #8D8D84; font-style: italic;">:</span>//api.mesowest.net/v2/stations/timeseries<span style="color: #8D8D84; font-style: italic;">?</span><span style="color: #BA36A5;">token</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">demotoken</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">stid</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">E3608</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">start</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">201703011548</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">end</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">201703021548</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">obtimezone</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">local</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">units</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">metric</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">vars</span><span style="color: #8D8D84; font-style: italic;">=</span>air_temp<span style="color: #8D8D84; font-style: italic;">,</span>dew_point_temperature<span style="color: #8D8D84; font-style: italic;">,</span>wind_speed<span style="color: #8D8D84; font-style: italic;">,</span>wind_direction<span style="color: #8D8D84; font-style: italic;">,</span>sea_level_pressure<span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">output</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">csv</span>
+<pre class="src src-http" id="orgsrcblock4"><span style="color: #D0372D;">GET</span> http<span style="color: #8D8D84; font-style: italic;">:</span>//api.mesowest.net/v2/stations/timeseries<span style="color: #8D8D84; font-style: italic;">?</span><span style="color: #BA36A5;">token</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">demotoken</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">stid</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">E3608</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">start</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">201703070130</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">end</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">201703080130</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">obtimezone</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">local</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">units</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">metric</span><span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">vars</span><span style="color: #8D8D84; font-style: italic;">=</span>air_temp<span style="color: #8D8D84; font-style: italic;">,</span>dew_point_temperature<span style="color: #8D8D84; font-style: italic;">,</span>wind_speed<span style="color: #8D8D84; font-style: italic;">,</span>wind_direction<span style="color: #8D8D84; font-style: italic;">,</span>sea_level_pressure<span style="color: #8D8D84; font-style: italic;">&amp;</span><span style="color: #BA36A5;">output</span><span style="color: #8D8D84; font-style: italic;">=</span><span style="color: #008000;">csv</span>
 </pre>
 </div>
 </div>
@@ -596,418 +601,418 @@ Armed with these functions, we can clean up our data. Also a note about sampling
 
 <tr>
 <td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T08:48:00-0700</td>
-<td class="org-right">102607.53</td>
-<td class="org-right">1.11</td>
+<td class="org-left">2017-03-06T18:28:00-0700</td>
+<td class="org-right">101659.34</td>
+<td class="org-right">-1.11</td>
+<td class="org-right">34.0</td>
+<td class="org-right">2.68</td>
+<td class="org-right">248.0</td>
+<td class="org-right">-15.11</td>
+<td class="org-right">83224.63</td>
+<td class="org-right">102038.3</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-06T19:13:00-0700</td>
+<td class="org-right">101727.07</td>
+<td class="org-right">-1.67</td>
+<td class="org-right">39.0</td>
+<td class="org-right">1.79</td>
+<td class="org-right">268.0</td>
+<td class="org-right">-13.94</td>
+<td class="org-right">83280.08</td>
+<td class="org-right">102148.36</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-06T19:58:00-0700</td>
+<td class="org-right">101828.66</td>
+<td class="org-right">-1.67</td>
+<td class="org-right">36.0</td>
+<td class="org-right">1.79</td>
+<td class="org-right">319.0</td>
+<td class="org-right">-14.92</td>
+<td class="org-right">83363.25</td>
+<td class="org-right">102250.4</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-06T20:43:00-0700</td>
+<td class="org-right">101896.38</td>
+<td class="org-right">-1.67</td>
+<td class="org-right">37.0</td>
+<td class="org-right">2.68</td>
+<td class="org-right">265.0</td>
+<td class="org-right">-14.58</td>
+<td class="org-right">83418.69</td>
+<td class="org-right">102318.39</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-06T21:28:00-0700</td>
+<td class="org-right">101964.11</td>
+<td class="org-right">-1.67</td>
+<td class="org-right">33.0</td>
+<td class="org-right">2.23</td>
+<td class="org-right">251.0</td>
+<td class="org-right">-15.97</td>
+<td class="org-right">83474.13</td>
+<td class="org-right">102386.42</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-06T22:13:00-0700</td>
+<td class="org-right">101997.98</td>
+<td class="org-right">-2.22</td>
+<td class="org-right">42.0</td>
+<td class="org-right">2.68</td>
+<td class="org-right">234.0</td>
+<td class="org-right">-13.52</td>
+<td class="org-right">83501.86</td>
+<td class="org-right">102462.02</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-06T22:58:00-0700</td>
+<td class="org-right">101997.98</td>
+<td class="org-right">-1.67</td>
+<td class="org-right">34.0</td>
+<td class="org-right">0.45</td>
+<td class="org-right">279.0</td>
+<td class="org-right">-15.61</td>
+<td class="org-right">83501.86</td>
+<td class="org-right">102420.42</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-06T23:43:00-0700</td>
+<td class="org-right">101964.11</td>
+<td class="org-right">-1.11</td>
+<td class="org-right">26.0</td>
+<td class="org-right">2.23</td>
+<td class="org-right">254.0</td>
+<td class="org-right">-18.31</td>
+<td class="org-right">83474.13</td>
+<td class="org-right">102344.26</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T00:33:00-0700</td>
+<td class="org-right">102031.84</td>
+<td class="org-right">-1.11</td>
+<td class="org-right">28.0</td>
+<td class="org-right">2.23</td>
+<td class="org-right">229.0</td>
+<td class="org-right">-17.44</td>
+<td class="org-right">83529.58</td>
+<td class="org-right">102412.23</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T01:18:00-0700</td>
+<td class="org-right">102065.7</td>
+<td class="org-right">-1.67</td>
+<td class="org-right">29.0</td>
+<td class="org-right">1.79</td>
+<td class="org-right">266.0</td>
+<td class="org-right">-17.51</td>
+<td class="org-right">83557.3</td>
+<td class="org-right">102488.46</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T02:03:00-0700</td>
+<td class="org-right">102065.7</td>
+<td class="org-right">-1.11</td>
+<td class="org-right">28.0</td>
+<td class="org-right">3.13</td>
+<td class="org-right">257.0</td>
+<td class="org-right">-17.44</td>
+<td class="org-right">83557.3</td>
+<td class="org-right">102446.22</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T02:48:00-0700</td>
+<td class="org-right">102065.7</td>
+<td class="org-right">-1.11</td>
+<td class="org-right">29.0</td>
+<td class="org-right">0.9</td>
+<td class="org-right">245.0</td>
+<td class="org-right">-17.02</td>
+<td class="org-right">83557.3</td>
+<td class="org-right">102446.21</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T03:33:00-0700</td>
+<td class="org-right">102065.7</td>
+<td class="org-right">-1.11</td>
+<td class="org-right">26.0</td>
+<td class="org-right">3.13</td>
+<td class="org-right">267.0</td>
+<td class="org-right">-18.31</td>
+<td class="org-right">83557.3</td>
+<td class="org-right">102446.23</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T04:18:00-0700</td>
+<td class="org-right">102099.57</td>
+<td class="org-right">-1.11</td>
 <td class="org-right">28.0</td>
 <td class="org-right">1.79</td>
-<td class="org-right">81.0</td>
-<td class="org-right">-15.51</td>
-<td class="org-right">84000.88</td>
-<td class="org-right">102823.55</td>
+<td class="org-right">243.0</td>
+<td class="org-right">-17.44</td>
+<td class="org-right">83585.03</td>
+<td class="org-right">102480.22</td>
 </tr>
 
 <tr>
 <td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T09:33:00-0700</td>
-<td class="org-right">102607.53</td>
-<td class="org-right">2.22</td>
-<td class="org-right">21.0</td>
-<td class="org-right">1.34</td>
-<td class="org-right">194.0</td>
-<td class="org-right">-17.98</td>
-<td class="org-right">84000.88</td>
-<td class="org-right">102741.43</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T10:18:00-0700</td>
-<td class="org-right">102607.53</td>
-<td class="org-right">3.89</td>
-<td class="org-right">20.0</td>
-<td class="org-right">0.9</td>
-<td class="org-right">9.0</td>
-<td class="org-right">-17.16</td>
-<td class="org-right">84000.88</td>
-<td class="org-right">102619.14</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T11:03:00-0700</td>
-<td class="org-right">102607.53</td>
-<td class="org-right">4.44</td>
-<td class="org-right">21.0</td>
-<td class="org-right">1.34</td>
-<td class="org-right">203.0</td>
-<td class="org-right">-16.12</td>
-<td class="org-right">84000.88</td>
-<td class="org-right">102579.2</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T11:48:00-0700</td>
-<td class="org-right">102607.53</td>
-<td class="org-right">5.56</td>
-<td class="org-right">20.0</td>
+<td class="org-left">2017-03-07T05:03:00-0700</td>
+<td class="org-right">102099.57</td>
+<td class="org-right">-0.56</td>
+<td class="org-right">27.0</td>
 <td class="org-right">2.23</td>
-<td class="org-right">225.0</td>
-<td class="org-right">-15.76</td>
-<td class="org-right">84000.88</td>
-<td class="org-right">102498.43</td>
+<td class="org-right">233.0</td>
+<td class="org-right">-17.39</td>
+<td class="org-right">83585.03</td>
+<td class="org-right">102438.9</td>
 </tr>
 
 <tr>
 <td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T12:33:00-0700</td>
-<td class="org-right">102573.66</td>
-<td class="org-right">6.67</td>
-<td class="org-right">18.0</td>
-<td class="org-right">0.9</td>
-<td class="org-right">236.0</td>
-<td class="org-right">-16.1</td>
-<td class="org-right">83973.15</td>
-<td class="org-right">102385.26</td>
+<td class="org-left">2017-03-07T05:48:00-0700</td>
+<td class="org-right">102133.43</td>
+<td class="org-right">0.0</td>
+<td class="org-right">28.0</td>
+<td class="org-right">4.47</td>
+<td class="org-right">291.0</td>
+<td class="org-right">-16.48</td>
+<td class="org-right">83612.75</td>
+<td class="org-right">102430.96</td>
 </tr>
 
 <tr>
 <td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T13:18:00-0700</td>
-<td class="org-right">102505.93</td>
-<td class="org-right">6.67</td>
-<td class="org-right">18.0</td>
-<td class="org-right">0.9</td>
-<td class="org-right">263.0</td>
-<td class="org-right">-16.1</td>
-<td class="org-right">83917.7</td>
-<td class="org-right">102317.65</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T14:03:00-0700</td>
-<td class="org-right">102539.8</td>
-<td class="org-right">6.67</td>
-<td class="org-right">17.0</td>
-<td class="org-right">1.34</td>
-<td class="org-right">247.0</td>
-<td class="org-right">-16.77</td>
-<td class="org-right">83945.43</td>
-<td class="org-right">102351.48</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T14:48:00-0700</td>
-<td class="org-right">102539.8</td>
-<td class="org-right">5.56</td>
-<td class="org-right">19.0</td>
+<td class="org-left">2017-03-07T06:33:00-0700</td>
+<td class="org-right">102099.57</td>
+<td class="org-right">0.0</td>
+<td class="org-right">29.0</td>
 <td class="org-right">1.79</td>
-<td class="org-right">331.0</td>
-<td class="org-right">-16.37</td>
-<td class="org-right">83945.43</td>
-<td class="org-right">102430.78</td>
+<td class="org-right">13.0</td>
+<td class="org-right">-16.06</td>
+<td class="org-right">83585.03</td>
+<td class="org-right">102396.99</td>
 </tr>
 
 <tr>
 <td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T15:33:00-0700</td>
-<td class="org-right">102573.66</td>
-<td class="org-right">5.56</td>
-<td class="org-right">22.0</td>
-<td class="org-right">4.92</td>
-<td class="org-right">259.0</td>
-<td class="org-right">-14.62</td>
-<td class="org-right">83973.15</td>
-<td class="org-right">102464.57</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T16:18:00-0700</td>
-<td class="org-right">102641.39</td>
-<td class="org-right">6.11</td>
-<td class="org-right">24.0</td>
+<td class="org-left">2017-03-07T07:18:00-0700</td>
+<td class="org-right">102201.16</td>
+<td class="org-right">0.56</td>
+<td class="org-right">30.0</td>
 <td class="org-right">3.58</td>
-<td class="org-right">251.0</td>
-<td class="org-right">-13.09</td>
-<td class="org-right">84028.6</td>
-<td class="org-right">102492.78</td>
+<td class="org-right">277.0</td>
+<td class="org-right">-15.16</td>
+<td class="org-right">83668.2</td>
+<td class="org-right">102457.13</td>
 </tr>
 
 <tr>
 <td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T17:03:00-0700</td>
-<td class="org-right">102641.39</td>
-<td class="org-right">5.56</td>
+<td class="org-left">2017-03-07T08:03:00-0700</td>
+<td class="org-right">102268.89</td>
+<td class="org-right">0.56</td>
+<td class="org-right">30.0</td>
+<td class="org-right">3.13</td>
+<td class="org-right">309.0</td>
+<td class="org-right">-15.16</td>
+<td class="org-right">83723.65</td>
+<td class="org-right">102525.03</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T08:48:00-0700</td>
+<td class="org-right">102302.75</td>
+<td class="org-right">2.22</td>
+<td class="org-right">28.0</td>
+<td class="org-right">5.37</td>
+<td class="org-right">271.0</td>
+<td class="org-right">-14.55</td>
+<td class="org-right">83751.37</td>
+<td class="org-right">102436.19</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T09:33:00-0700</td>
+<td class="org-right">102336.62</td>
+<td class="org-right">2.78</td>
+<td class="org-right">25.0</td>
+<td class="org-right">4.92</td>
+<td class="org-right">315.0</td>
+<td class="org-right">-15.44</td>
+<td class="org-right">83779.09</td>
+<td class="org-right">102429.04</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T10:18:00-0700</td>
+<td class="org-right">102370.48</td>
+<td class="org-right">3.33</td>
 <td class="org-right">25.0</td>
 <td class="org-right">4.47</td>
-<td class="org-right">226.0</td>
-<td class="org-right">-13.06</td>
-<td class="org-right">84028.6</td>
-<td class="org-right">102532.2</td>
+<td class="org-right">278.0</td>
+<td class="org-right">-14.97</td>
+<td class="org-right">83806.81</td>
+<td class="org-right">102422.75</td>
 </tr>
 
 <tr>
 <td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T17:48:00-0700</td>
-<td class="org-right">102675.25</td>
+<td class="org-left">2017-03-07T11:03:00-0700</td>
+<td class="org-right">102370.48</td>
 <td class="org-right">4.44</td>
-<td class="org-right">27.0</td>
+<td class="org-right">23.0</td>
+<td class="org-right">2.23</td>
+<td class="org-right">275.0</td>
+<td class="org-right">-15.03</td>
+<td class="org-right">83806.81</td>
+<td class="org-right">102342.19</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T11:48:00-0700</td>
+<td class="org-right">102370.48</td>
+<td class="org-right">5.56</td>
+<td class="org-right">22.0</td>
+<td class="org-right">7.15</td>
+<td class="org-right">237.0</td>
+<td class="org-right">-14.62</td>
+<td class="org-right">83806.81</td>
+<td class="org-right">102261.6</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T12:33:00-0700</td>
+<td class="org-right">102302.75</td>
+<td class="org-right">6.67</td>
+<td class="org-right">20.0</td>
+<td class="org-right">6.26</td>
+<td class="org-right">290.0</td>
+<td class="org-right">-14.83</td>
+<td class="org-right">83751.37</td>
+<td class="org-right">102114.83</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T13:18:00-0700</td>
+<td class="org-right">102268.89</td>
+<td class="org-right">7.78</td>
+<td class="org-right">19.0</td>
 <td class="org-right">4.47</td>
-<td class="org-right">225.0</td>
-<td class="org-right">-13.07</td>
-<td class="org-right">84056.32</td>
-<td class="org-right">102646.84</td>
+<td class="org-right">291.0</td>
+<td class="org-right">-14.53</td>
+<td class="org-right">83723.65</td>
+<td class="org-right">102002.6</td>
 </tr>
 
 <tr>
 <td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T18:33:00-0700</td>
-<td class="org-right">102675.25</td>
-<td class="org-right">3.89</td>
-<td class="org-right">28.0</td>
-<td class="org-right">4.02</td>
-<td class="org-right">246.0</td>
-<td class="org-right">-13.1</td>
-<td class="org-right">84056.32</td>
-<td class="org-right">102686.79</td>
+<td class="org-left">2017-03-07T14:03:00-0700</td>
+<td class="org-right">102133.43</td>
+<td class="org-right">8.89</td>
+<td class="org-right">17.0</td>
+<td class="org-right">2.23</td>
+<td class="org-right">273.0</td>
+<td class="org-right">-14.95</td>
+<td class="org-right">83612.75</td>
+<td class="org-right">101789.84</td>
 </tr>
 
 <tr>
 <td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T19:18:00-0700</td>
-<td class="org-right">102742.98</td>
-<td class="org-right">3.33</td>
-<td class="org-right">27.0</td>
+<td class="org-left">2017-03-07T14:48:00-0700</td>
+<td class="org-right">102065.7</td>
+<td class="org-right">9.44</td>
+<td class="org-right">17.0</td>
+<td class="org-right">4.92</td>
+<td class="org-right">338.0</td>
+<td class="org-right">-14.5</td>
+<td class="org-right">83557.3</td>
+<td class="org-right">101684.12</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T15:33:00-0700</td>
+<td class="org-right">102167.3</td>
+<td class="org-right">10.0</td>
+<td class="org-right">16.0</td>
+<td class="org-right">3.58</td>
+<td class="org-right">355.0</td>
+<td class="org-right">-14.77</td>
+<td class="org-right">83640.48</td>
+<td class="org-right">101746.57</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T16:18:00-0700</td>
+<td class="org-right">102133.43</td>
+<td class="org-right">10.0</td>
+<td class="org-right">17.0</td>
+<td class="org-right">1.79</td>
+<td class="org-right">40.0</td>
+<td class="org-right">-14.04</td>
+<td class="org-right">83612.75</td>
+<td class="org-right">101712.82</td>
+</tr>
+
+<tr>
+<td class="org-left">E3608</td>
+<td class="org-left">2017-03-07T17:03:00-0700</td>
+<td class="org-right">102167.3</td>
+<td class="org-right">10.0</td>
+<td class="org-right">17.0</td>
 <td class="org-right">0.9</td>
-<td class="org-right">265.0</td>
-<td class="org-right">-14.03</td>
-<td class="org-right">84111.77</td>
-<td class="org-right">102795.43</td>
+<td class="org-right">165.0</td>
+<td class="org-right">-14.04</td>
+<td class="org-right">83640.48</td>
+<td class="org-right">101746.56</td>
 </tr>
 
 <tr>
 <td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T20:03:00-0700</td>
-<td class="org-right">102776.85</td>
-<td class="org-right">2.78</td>
-<td class="org-right">29.0</td>
-<td class="org-right">0.0</td>
-<td class="org-right">missing</td>
-<td class="org-right">-13.63</td>
-<td class="org-right">84139.49</td>
-<td class="org-right">102869.64</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T20:48:00-0700</td>
-<td class="org-right">102810.71</td>
-<td class="org-right">3.33</td>
-<td class="org-right">30.0</td>
+<td class="org-left">2017-03-07T17:48:00-0700</td>
+<td class="org-right">102235.02</td>
+<td class="org-right">8.89</td>
+<td class="org-right">19.0</td>
 <td class="org-right">0.9</td>
-<td class="org-right">261.0</td>
-<td class="org-right">-12.74</td>
-<td class="org-right">84167.21</td>
-<td class="org-right">102863.16</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T21:33:00-0700</td>
-<td class="org-right">102878.44</td>
-<td class="org-right">1.11</td>
-<td class="org-right">34.0</td>
-<td class="org-right">0.0</td>
-<td class="org-right">missing</td>
-<td class="org-right">-13.15</td>
-<td class="org-right">84222.66</td>
-<td class="org-right">103094.97</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T22:18:00-0700</td>
-<td class="org-right">102878.44</td>
-<td class="org-right">0.56</td>
-<td class="org-right">36.0</td>
-<td class="org-right">0.9</td>
-<td class="org-right">330.0</td>
-<td class="org-right">-12.93</td>
-<td class="org-right">84222.66</td>
-<td class="org-right">103136.05</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T23:03:00-0700</td>
-<td class="org-right">102946.16</td>
-<td class="org-right">1.11</td>
-<td class="org-right">34.0</td>
-<td class="org-right">0.0</td>
-<td class="org-right">missing</td>
-<td class="org-right">-13.15</td>
-<td class="org-right">84278.1</td>
-<td class="org-right">103162.84</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-01T23:48:00-0700</td>
-<td class="org-right">102946.16</td>
-<td class="org-right">-0.56</td>
-<td class="org-right">41.0</td>
-<td class="org-right">0.45</td>
-<td class="org-right">246.0</td>
-<td class="org-right">-12.32</td>
-<td class="org-right">84278.1</td>
-<td class="org-right">103288.2</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-02T00:33:00-0700</td>
-<td class="org-right">102946.16</td>
-<td class="org-right">-2.22</td>
-<td class="org-right">46.0</td>
-<td class="org-right">0.0</td>
-<td class="org-right">missing</td>
-<td class="org-right">-12.4</td>
-<td class="org-right">84278.1</td>
-<td class="org-right">103414.49</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-02T01:18:00-0700</td>
-<td class="org-right">102980.03</td>
-<td class="org-right">-2.78</td>
-<td class="org-right">49.0</td>
-<td class="org-right">0.9</td>
-<td class="org-right">153.0</td>
-<td class="org-right">-12.12</td>
-<td class="org-right">84305.83</td>
-<td class="org-right">103491.51</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-02T02:03:00-0700</td>
-<td class="org-right">102980.03</td>
-<td class="org-right">-1.67</td>
-<td class="org-right">43.0</td>
-<td class="org-right">0.45</td>
-<td class="org-right">153.0</td>
-<td class="org-right">-12.73</td>
-<td class="org-right">84305.83</td>
-<td class="org-right">103406.49</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-02T02:48:00-0700</td>
-<td class="org-right">103013.89</td>
-<td class="org-right">-2.22</td>
-<td class="org-right">50.0</td>
-<td class="org-right">0.0</td>
-<td class="org-right">missing</td>
-<td class="org-right">-11.35</td>
-<td class="org-right">84333.55</td>
-<td class="org-right">103482.51</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-02T03:33:00-0700</td>
-<td class="org-right">103013.89</td>
-<td class="org-right">-2.78</td>
-<td class="org-right">49.0</td>
-<td class="org-right">0.9</td>
-<td class="org-right">76.0</td>
-<td class="org-right">-12.12</td>
-<td class="org-right">84333.55</td>
-<td class="org-right">103525.54</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-02T04:18:00-0700</td>
-<td class="org-right">103047.76</td>
-<td class="org-right">-3.89</td>
-<td class="org-right">52.0</td>
-<td class="org-right">0.0</td>
-<td class="org-right">missing</td>
-<td class="org-right">-12.41</td>
-<td class="org-right">84361.28</td>
-<td class="org-right">103645.44</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-02T05:03:00-0700</td>
-<td class="org-right">103115.48</td>
-<td class="org-right">-3.89</td>
-<td class="org-right">52.0</td>
-<td class="org-right">0.45</td>
-<td class="org-right">84.0</td>
-<td class="org-right">-12.41</td>
-<td class="org-right">84416.72</td>
-<td class="org-right">103713.55</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-02T05:48:00-0700</td>
-<td class="org-right">103183.21</td>
-<td class="org-right">-4.44</td>
-<td class="org-right">56.0</td>
-<td class="org-right">0.0</td>
-<td class="org-right">missing</td>
-<td class="org-right">-11.99</td>
-<td class="org-right">84472.16</td>
-<td class="org-right">103824.54</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-02T06:33:00-0700</td>
-<td class="org-right">103250.94</td>
-<td class="org-right">-4.44</td>
-<td class="org-right">57.0</td>
-<td class="org-right">0.0</td>
-<td class="org-right">missing</td>
-<td class="org-right">-11.77</td>
-<td class="org-right">84527.61</td>
-<td class="org-right">103892.68</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-02T07:18:00-0700</td>
-<td class="org-right">103284.8</td>
-<td class="org-right">-3.89</td>
-<td class="org-right">60.0</td>
-<td class="org-right">0.0</td>
-<td class="org-right">missing</td>
-<td class="org-right">-10.6</td>
-<td class="org-right">84555.33</td>
-<td class="org-right">103883.8</td>
-</tr>
-
-<tr>
-<td class="org-left">E3608</td>
-<td class="org-left">2017-03-02T08:03:00-0700</td>
-<td class="org-right">103318.67</td>
-<td class="org-right">1.11</td>
-<td class="org-right">45.0</td>
-<td class="org-right">0.0</td>
-<td class="org-right">missing</td>
-<td class="org-right">-9.62</td>
-<td class="org-right">84583.06</td>
-<td class="org-right">103536.04</td>
+<td class="org-right">329.0</td>
+<td class="org-right">-13.61</td>
+<td class="org-right">83695.92</td>
+<td class="org-right">101891.07</td>
 </tr>
 </tbody>
 </table>
@@ -1113,7 +1118,7 @@ One tricky part is I had to alternate the Y-axis labeling so that the successive
 <span style="color: #D0372D;">set</span> format x <span style="color: #008000;">"%m/%d %Hh"</span>
 
 <span style="color: #D0372D;">set</span> yrange [<span style="color: #D0372D;">0:360</span>]
-<span style="color: #D0372D;">set</span> ylabel <span style="color: #008000;">"Direction"</span> offset 0
+<span style="color: #D0372D;">set</span> ylabel <span style="color: #008000;">"Direction From"</span> offset 0
 <span style="color: #D0372D;">set</span> ytics (<span style="color: #008000;">"N"</span> 0,<span style="color: #008000;">"NE"</span> 45,<span style="color: #008000;">"E"</span> 90 ,<span style="color: #008000;">"SE"</span> 135, <span style="color: #008000;">"S"</span> 180, <span style="color: #008000;">"SW"</span> 225, <span style="color: #008000;">"W"</span> 270, <span style="color: #008000;">"NW"</span> 315) offset 0,0
 
 <span style="color: #D0372D;">set</span> bmargin 4
@@ -1132,6 +1137,7 @@ One tricky part is I had to alternate the Y-axis labeling so that the successive
 <p><object type="image/svg+xml" data="../../static/weatherobs/timeseries.svg" >
 Sorry, your browser does not support SVG.</object>
 </p>
+<p><span class="figure-number">Figure 2:</span> Time series of Time Series of Weather Observations</p>
 </div>
 </div>
 </div>
@@ -1167,7 +1173,7 @@ I'll have to learn more about gnuplot in order to achieve the first two bullet i
 </div>
 </div>
 <div id="postamble" class="status">
-<a class='source-link' href='./weatherobs.org.html'>Source</a>Last updated on Thu Mar  2 15:48:46 2017 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
+<a class='source-link' href='./weatherobs.org.html'>Source</a>Last updated on Wed Mar  8 01:30:16 2017 &bullet; <a href='http://julienchastang.com'>julienchastang.com</a> by <a href='http://julienchastang.com'>Julien Chastang</a>
 </div>
 </body>
 </html>

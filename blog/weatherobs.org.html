@@ -218,7 +218,8 @@
 </span>
 <span class="org-level-1">* </span><span class="org-date">&lt;2017-03-01 Wed&gt;</span>
 
-<span class="org-link"><a href="file:../../static/weatherobs/timeseries.svg">file:../../static/weatherobs/timeseries.svg</a></span>
+<span class="org-meta-line">#+CAPTION:</span> <span class="org-block">Time Series of Weather Observations
+</span><span class="org-link"><a href="file:../../static/weatherobs/timeseries.svg">file:../../static/weatherobs/timeseries.svg</a></span>
 
 <span class="org-level-2">** Introduction</span>
 <span class="org-target">&lt;&lt;intro&gt;&gt;</span>
@@ -245,7 +246,7 @@ Our first job is to find a weather station near our location. We will employ the
 <span class="org-block-begin-line">#+begin_example
 </span><span class="org-block">{
    "SUMMARY": {
-     "METADATA_RESPONSE_TIME": "0.134944915771 ms",
+     "METADATA_RESPONSE_TIME": "0.156879425049 ms",
      "RESPONSE_MESSAGE": "OK",
      "RESPONSE_CODE": 1,
      "NUMBER_OF_OBJECTS": 1
@@ -262,7 +263,7 @@ Our first job is to find a weather station near our location. We will employ the
        "NAME": "EW3608 Boulder",
        "ELEVATION": "5430",
       "PERIOD_OF_RECORD": {
-         "end": "2017-03-01T15:08:00Z",
+         "end": "2017-03-07T23:33:00Z",
          "start": "2013-09-25T00:00:00Z"
       },
        "MNET_ID": "65",
@@ -293,12 +294,12 @@ Next, we will be using the <span class="org-link"><a href="https://synopticlabs.
 # STATE: CO
 Station_ID,Date_Time,air_temp_set_1
 ,,Celsius
- KDEN,2017-03-01T14:50:00Z,-5.0
- KDEN,2017-03-01T14:53:00Z,-5.0
- KDEN,2017-03-01T14:55:00Z,-5.0
- KDEN,2017-03-01T15:00:00Z,-4.0
- KDEN,2017-03-01T15:05:00Z,-3.0
- KDEN,2017-03-01T15:10:00Z,-3.0
+ KDEN,2017-03-07T23:15:00Z,12.0
+ KDEN,2017-03-07T23:20:00Z,11.0
+ KDEN,2017-03-07T23:25:00Z,11.0
+ KDEN,2017-03-07T23:30:00Z,11.0
+ KDEN,2017-03-07T23:35:00Z,11.0
+ KDEN,2017-03-07T23:40:00Z,11.0
 </span><span class="org-block-end-line">#+end_example
 </span>
 There are more <span class="org-link"><a href="https://synopticlabs.org/api/mesonet/">examples</a></span> of API use as well as the <span class="org-link"><a href="https://synopticlabs.org/api/mesonet/reference/#stationstimeseries">API reference</a></span> on SynopticLabs website. 
@@ -312,7 +313,7 @@ For the particular example we are shooting for, we will supply the following URL
   - <span class="org-code">~vars~</span>, the <span class="org-link"><a href="https://synopticlabs.org/api/mesonet/variables/">sensor variables</a></span>
   - <span class="org-code">~obtimezone~</span>, the timezone of the response data (i.e., UTC or local)
   - <span class="org-code">~output~</span>, the output format (e.g., csv) 
-   - <span class="org-code">~token~</span>, the request token, in this case guest
+  - <span class="org-code">~token~</span>, the request token, in this case guest
 
 <span class="org-level-2">** Set up Parameterization With noweb</span>
 <span class="org-target">&lt;&lt;params&gt;&gt;</span>
@@ -321,7 +322,7 @@ We will once again be make use of ob-http to retrieve the data, but, this time, 
 
 <span class="org-level-3">*** Start Time</span>
 
- The start time range will be 24 hours ago. Also set the time zone as UTC since that is what the SynopticLabs API requires.
+The start time range will be 24 hours ago. Also set the time zone as UTC since that is what the SynopticLabs API requires.
 
 <span class="org-meta-line">#+NAME: starttime</span>
 <span class="org-block-begin-line">#+BEGIN_SRC emacs-lisp
@@ -332,7 +333,7 @@ We will once again be make use of ob-http to retrieve the data, but, this time, 
 <span class="org-block-end-line">#+END_SRC
 </span>
 <span class="org-meta-line">#+RESULTS: starttime</span>
-<span class="org-code"> : 201702281521
+<span class="org-code"> : 201703070016
 </span>
 <span class="org-level-3">*** End Time</span>
 
@@ -344,7 +345,7 @@ The end time will be now.
 <span class="org-block-end-line">#+END_SRC
 </span>
 <span class="org-meta-line">#+RESULTS: endtime</span>
-<span class="org-code"> : 201703011521
+<span class="org-code"> : 201703080016
 </span>
 <span class="org-level-3">*** Station ID</span>
 
@@ -435,38 +436,38 @@ Armed with these functions, we can clean up our data. Also a note about sampling
 <span class="org-special-keyword">:RESULTS:</span>
 <span class="org-table"> | Station | Date Time                | Altimeter | Temperature |   RH |    Wind Speed | Wind Direction | Dew Point | Pressure |       SLP |</span>
 <span class="org-table"> |         |                          |   Pascals |     Celsius |    % | Meters/second |        Degrees |   Celsius |  Pascals |   Pascals |</span>
-<span class="org-table"> | E3608   | 2017-02-28T08:23:00-0700 | 101049.79 |         0.0 | 65.0 |           0.9 |          181.0 |     -5.87 | 82725.62 | 101343.89 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T09:08:00-0700 | 101015.92 |        1.67 | 55.0 |          1.79 |          128.0 |      -6.5 | 82697.89 | 101187.46 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T09:53:00-0700 | 101015.92 |        3.33 | 49.0 |           0.9 |           99.0 |     -6.48 | 82697.89 | 101067.28 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T10:38:00-0700 | 101015.92 |        3.89 | 43.0 |          2.23 |           84.0 |     -7.67 | 82697.89 | 101027.13 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T11:23:00-0700 | 101015.92 |        3.33 | 45.0 |          1.34 |           92.0 |     -7.59 | 82697.89 | 101067.32 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T12:08:00-0700 | 100982.06 |        3.89 | 45.0 |          1.34 |           71.0 |     -7.08 | 82670.17 | 100993.25 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T12:53:00-0700 |  100948.2 |        3.89 | 44.0 |          1.79 |           67.0 |     -7.38 | 82642.45 | 100959.39 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T13:38:00-0700 | 100982.06 |        3.89 | 43.0 |           0.9 |           32.0 |     -7.67 | 82670.17 | 100993.27 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T14:23:00-0700 | 101015.92 |        3.89 | 52.0 |          2.68 |          126.0 |     -5.18 | 82697.89 | 101027.04 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T15:08:00-0700 | 101083.65 |        3.33 | 60.0 |          1.79 |           67.0 |     -3.78 | 82753.33 | 101134.93 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T15:58:00-0700 | 101252.97 |        2.22 | 63.0 |          0.45 |           98.0 |     -4.18 | 82891.95 | 101384.73 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T16:43:00-0700 | 101422.29 |        2.78 | 66.0 |          3.58 |           39.0 |     -3.02 | 83030.57 | 101513.53 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T17:28:00-0700 | 101523.88 |        1.11 | 33.0 |          1.79 |          247.0 |    -13.51 | 83113.73 | 101737.56 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T18:13:00-0700 | 101659.34 |        0.56 | 29.0 |          2.23 |          269.0 |    -15.57 | 83224.63 | 101913.95 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T18:58:00-0700 | 101794.79 |         0.0 | 25.0 |          1.79 |          305.0 |    -17.82 | 83335.52 | 102091.36 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T19:43:00-0700 | 101862.52 |       -1.11 | 30.0 |           0.9 |          338.0 |    -16.62 | 83390.97 | 102242.27 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T20:33:00-0700 | 101930.25 |       -1.11 | 28.0 |          1.34 |          309.0 |    -17.44 | 83446.41 | 102310.26 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T21:18:00-0700 | 101997.98 |       -1.11 | 29.0 |           0.9 |          280.0 |    -17.02 | 83501.86 | 102378.24 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T22:03:00-0700 | 102031.84 |       -2.22 | 32.0 |          0.45 |           15.0 |    -16.82 | 83529.58 |  102496.1 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T22:48:00-0700 | 102031.84 |       -1.67 | 32.0 |          0.45 |            5.0 |    -16.34 | 83529.58 | 102454.44 |</span>
-<span class="org-table"> | E3608   | 2017-02-28T23:33:00-0700 |  102065.7 |       -1.67 | 30.0 |          2.23 |          267.0 |    -17.11 |  83557.3 | 102488.45 |</span>
-<span class="org-table"> | E3608   | 2017-03-01T00:18:00-0700 | 102099.57 |       -1.11 | 29.0 |           0.9 |          287.0 |    -17.02 | 83585.03 | 102480.21 |</span>
-<span class="org-table"> | E3608   | 2017-03-01T01:03:00-0700 | 102133.43 |       -1.11 | 29.0 |          1.79 |          304.0 |    -17.02 | 83612.75 |  102514.2 |</span>
-<span class="org-table"> | E3608   | 2017-03-01T01:48:00-0700 |  102167.3 |       -1.11 | 30.0 |           0.9 |          250.0 |    -16.62 | 83640.48 | 102548.19 |</span>
-<span class="org-table"> | E3608   | 2017-03-01T02:33:00-0700 | 102133.43 |       -1.67 | 32.0 |           0.9 |           36.0 |    -16.34 | 83612.75 | 102556.45 |</span>
-<span class="org-table"> | E3608   | 2017-03-01T03:18:00-0700 | 102133.43 |       -1.67 | 32.0 |           0.9 |           89.0 |    -16.34 | 83612.75 | 102556.45 |</span>
-<span class="org-table"> | E3608   | 2017-03-01T04:03:00-0700 |  102167.3 |       -2.22 | 33.0 |          2.23 |          102.0 |    -16.46 | 83640.48 | 102632.18 |</span>
-<span class="org-table"> | E3608   | 2017-03-01T04:53:00-0700 | 102268.89 |       -3.33 | 37.0 |          0.45 |          340.0 |    -16.07 | 83723.65 | 102819.05 |</span>
-<span class="org-table"> | E3608   | 2017-03-01T05:38:00-0700 | 102302.75 |       -3.33 | 39.0 |          0.45 |           95.0 |    -15.43 | 83751.37 | 102853.08 |</span>
-<span class="org-table"> | E3608   | 2017-03-01T06:23:00-0700 | 102336.62 |        -5.0 | 46.0 |           0.0 |        missing |    -14.94 | 83779.09 | 103016.24 |</span>
-<span class="org-table"> | E3608   | 2017-03-01T07:08:00-0700 | 102472.07 |        -5.0 | 48.0 |           0.0 |        missing |    -14.42 | 83889.98 | 103152.58 |</span>
-<span class="org-table"> | E3608   | 2017-03-01T07:53:00-0700 |  102539.8 |       -1.67 | 36.0 |          0.45 |          355.0 |    -14.92 | 83945.43 | 102964.48 |</span>
+<span class="org-table"> | E3608   | 2017-03-06T16:53:00-0700 | 101422.29 |        1.11 | 18.0 |          1.79 |          333.0 |    -20.69 | 83030.57 | 101635.89 |</span>
+<span class="org-table"> | E3608   | 2017-03-06T17:38:00-0700 | 101490.02 |       -0.56 | 24.0 |          1.34 |          314.0 |    -18.78 | 83086.01 | 101827.34 |</span>
+<span class="org-table"> | E3608   | 2017-03-06T18:23:00-0700 | 101625.47 |       -0.56 | 32.0 |          2.68 |          308.0 |    -15.36 |  83196.9 | 101963.18 |</span>
+<span class="org-table"> | E3608   | 2017-03-06T19:08:00-0700 | 101727.07 |       -1.67 | 39.0 |           0.9 |          289.0 |    -13.94 | 83280.08 | 102148.36 |</span>
+<span class="org-table"> | E3608   | 2017-03-06T19:53:00-0700 | 101828.66 |       -1.67 | 36.0 |          2.23 |          294.0 |    -14.92 | 83363.25 |  102250.4 |</span>
+<span class="org-table"> | E3608   | 2017-03-06T20:38:00-0700 | 101896.38 |       -1.67 | 37.0 |          3.58 |          245.0 |    -14.58 | 83418.69 | 102318.39 |</span>
+<span class="org-table"> | E3608   | 2017-03-06T21:23:00-0700 | 101964.11 |       -1.67 | 33.0 |          2.68 |          268.0 |    -15.97 | 83474.13 | 102386.42 |</span>
+<span class="org-table"> | E3608   | 2017-03-06T22:08:00-0700 | 101997.98 |       -2.22 | 47.0 |          1.34 |          220.0 |    -12.13 | 83501.86 | 102461.99 |</span>
+<span class="org-table"> | E3608   | 2017-03-06T22:53:00-0700 | 101997.98 |       -1.67 | 36.0 |          1.34 |          280.0 |    -14.92 | 83501.86 | 102420.41 |</span>
+<span class="org-table"> | E3608   | 2017-03-06T23:38:00-0700 | 101997.98 |       -1.11 | 26.0 |          2.23 |          259.0 |    -18.31 | 83501.86 | 102378.26 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T00:28:00-0700 | 102031.84 |       -1.11 | 27.0 |          3.13 |          267.0 |    -17.87 | 83529.58 | 102412.24 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T01:13:00-0700 |  102065.7 |       -1.67 | 29.0 |           0.9 |          262.0 |    -17.51 |  83557.3 | 102488.46 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T01:58:00-0700 |  102065.7 |       -1.11 | 28.0 |          2.23 |          256.0 |    -17.44 |  83557.3 | 102446.22 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T02:43:00-0700 |  102065.7 |       -1.11 | 29.0 |          2.23 |          236.0 |    -17.02 |  83557.3 | 102446.21 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T03:28:00-0700 |  102065.7 |       -1.11 | 26.0 |          3.13 |          227.0 |    -18.31 |  83557.3 | 102446.23 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T04:13:00-0700 | 102099.57 |       -1.11 | 28.0 |          1.34 |          270.0 |    -17.44 | 83585.03 | 102480.22 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T04:58:00-0700 | 102099.57 |       -0.56 | 27.0 |          0.45 |          202.0 |    -17.39 | 83585.03 |  102438.9 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T05:43:00-0700 | 102099.57 |         0.0 | 27.0 |          2.68 |          268.0 |    -16.91 | 83585.03 | 102397.01 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T06:28:00-0700 | 102099.57 |         0.0 | 29.0 |          1.79 |           51.0 |    -16.06 | 83585.03 | 102396.99 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T07:13:00-0700 | 102201.16 |        0.56 | 30.0 |          5.37 |          281.0 |    -15.16 |  83668.2 | 102457.13 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T07:58:00-0700 | 102235.02 |        0.56 | 31.0 |          4.47 |          254.0 |    -14.76 | 83695.92 | 102491.06 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T08:43:00-0700 | 102336.62 |        2.22 | 29.0 |          3.58 |          269.0 |    -14.12 | 83779.09 | 102470.09 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T09:28:00-0700 | 102336.62 |        2.78 | 26.0 |          5.81 |          215.0 |    -14.96 | 83779.09 | 102429.03 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T10:13:00-0700 | 102336.62 |        3.33 | 25.0 |          4.92 |          227.0 |    -14.97 | 83779.09 | 102388.87 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T10:58:00-0700 | 102336.62 |        4.44 | 22.0 |          4.47 |          287.0 |    -15.56 | 83779.09 | 102308.35 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T11:43:00-0700 | 102370.48 |        5.56 | 23.0 |          3.58 |          238.0 |    -14.08 | 83806.81 | 102261.59 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T12:28:00-0700 | 102302.75 |        6.67 | 21.0 |          5.81 |          271.0 |    -14.24 | 83751.37 | 102114.82 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T13:13:00-0700 | 102268.89 |        7.78 | 18.0 |          4.47 |          291.0 |    -15.18 | 83723.65 | 102002.61 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T13:58:00-0700 |  102167.3 |        8.89 | 18.0 |          1.79 |          222.0 |    -14.26 | 83640.48 | 101823.59 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T14:43:00-0700 | 102133.43 |        9.44 | 17.0 |          2.23 |            0.0 |     -14.5 | 83612.75 |  101751.6 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T15:28:00-0700 | 102133.43 |        9.44 | 17.0 |          4.92 |          196.0 |     -14.5 | 83612.75 |  101751.6 |</span>
+<span class="org-table"> | E3608   | 2017-03-07T16:13:00-0700 | 102099.57 |        10.0 | 17.0 |          3.13 |          257.0 |    -14.04 | 83585.03 |  101679.1 |</span>
 <span class="org-special-keyword">:END:</span>
 
 <span class="org-level-2">** Timeseries with Gnuplot</span>
@@ -492,12 +493,12 @@ At this point, we are ready to plot our data table with gnuplot. The following c
   - Wind speed
   - Wind direction
 
- One tricky part is I had to alternate the Y-axis labeling so that the successive plot labels would not run into one another.
+One tricky part is I had to alternate the Y-axis labeling so that the successive plot labels would not run into one another.
 
-<span class="org-block-begin-line">#+begin_src gnuplot :var data=data-table :noweb yes :file ../../static/weatherobs/timeseries.svg
+<span class="org-block-begin-line">#+BEGIN_SRC gnuplot :var data=data-table :noweb yes :file ../../static/weatherobs/timeseries.svg
 </span>  <span class="constant">reset</span>
 
-  <span class="constant">set</span> terminal svg size 800, 800 enhanced truecolor font 'Verdana,13'
+  <span class="constant">set</span> terminal svg size 600, 800 enhanced truecolor font 'Verdana,13'
 
   <span class="constant">set</span> multiplot layout 5,1 rowsfirst
 
@@ -531,8 +532,8 @@ At this point, we are ready to plot our data table with gnuplot. The following c
   <span class="constant">set</span> <span class="type">title</span> " "
 
   <span class="constant">set</span> yrange [<span class="constant">:*</span>]
-  <span class="constant">set</span> ytics offset 80,0
-  <span class="constant">set</span> ylabel "Celsius" offset 88
+  <span class="constant">set</span> ytics offset 56,0
+  <span class="constant">set</span> ylabel "Celsius" offset 63
 
   <span class="constant">set</span> tmargin 0
   <span class="constant">set</span> offsets graph 0, 0, 10, 1
@@ -555,8 +556,8 @@ At this point, we are ready to plot our data table with gnuplot. The following c
   <span class="keyword">plot</span> data <span class="type">using</span> "Date Time":"RH" <span class="type">with</span> <span class="function-name">linespoints</span> <span class="type">ls</span> 4 <span class="type">title</span> 'RH'
 
   <span class="constant">set</span> yrange [<span class="constant">0:*</span>]
-  <span class="constant">set</span> ytics offset 80,0
-  <span class="constant">set</span> ylabel "Meters per Second" offset 88
+  <span class="constant">set</span> ytics offset 55,0
+  <span class="constant">set</span> ylabel "Meters per Second" offset 63
 
   <span class="constant">set</span> offsets graph 0, 0, 1, 0
 
@@ -569,7 +570,7 @@ At this point, we are ready to plot our data table with gnuplot. The following c
   <span class="constant">set</span> format x "%m/%d %Hh"
 
   <span class="constant">set</span> yrange [<span class="constant">0:360</span>]
-  <span class="constant">set</span> ylabel "Direction" offset 0
+  <span class="constant">set</span> ylabel "Direction From" offset 0
   <span class="constant">set</span> ytics ("N" 0,"NE" 45,"E" 90 ,"SE" 135, "S" 180, "SW" 225, "W" 270, "NW" 315) offset 0,0
 
   <span class="constant">set</span> bmargin 4
@@ -580,14 +581,15 @@ At this point, we are ready to plot our data table with gnuplot. The following c
   <span class="keyword">plot</span> data <span class="type">using</span> " Date Time":"Wind Direction" <span class="type">pt</span> 3 <span class="type">ps</span> 1.0 <span class="type">title</span> 'Wind Direction'
 
   <span class="constant">unset</span> multiplot
-<span class="org-block-end-line">#+end_src
+<span class="org-block-end-line">#+END_SRC
 </span>
-<span class="org-meta-line">#+RESULTS:</span>
+<span class="org-meta-line">#+CAPTION:</span> <span class="org-block">Time series of Time Series of Weather Observations
+</span><span class="org-meta-line">#+RESULTS:</span>
 <img src="../../static/weatherobs/timeseries.svg" alt="file:../../static/weatherobs/timeseries.svg" />
 
 <span class="org-level-2">** Babel</span>
 
- As mentioned in the <span class="org-link"><a href="intro">introduction</a></span>, to generate the data table and plot, this entire buffer can be run in literate programming fashion with <span class="org-code">~org-babel-execute-buffer~</span> (<span class="org-code">~C-c C-v C-b~</span>). You can parameterize the start and end time, and the station ID via <span class="org-link"><a href="params">noweb parameters</a></span>. I will leave it as an exercise to the reader to supply additional parameterization for the station variables, for example.
+As mentioned in the <span class="org-link"><a href="intro">introduction</a></span>, to generate the data table and plot, this entire buffer can be run in literate programming fashion with <span class="org-code">~org-babel-execute-buffer~</span> (<span class="org-code">~C-c C-v C-b~</span>). You can parameterize the start and end time, and the station ID via <span class="org-link"><a href="params">noweb parameters</a></span>. I will leave it as an exercise to the reader to supply additional parameterization for the station variables, for example.
 
 <span class="org-level-2">** Ideas for Improvements</span>
 
