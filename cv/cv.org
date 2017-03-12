@@ -1,4 +1,4 @@
-# Created 2017-02-02 Thu 18:39
+# Created 2017-03-12 Sun 04:53
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:nil c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:nil e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -8,7 +8,6 @@
 #+LANGUAGE: en
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
-#+SETUPFILE: ../../templates/level-1.org
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [onecolumn,12pt]
 
@@ -20,7 +19,7 @@
 #+LATEX_HEADER: \setlength{\parindent}{0em}
 
 #+LATEX_HEADER: \usepackage[backend=bibtex]{biblatex}
-#+LATEX_HEADER: \bibliography{julienchastang.bib}
+#+LATEX_HEADER: \bibliography{../../static/julienchastang.bib}
 
 | Unidata Program Center  |
 | UCAR Community Programs |
@@ -53,7 +52,8 @@ UCAR is the University Corporation for Atmospheric Research located in Boulder, 
 | 2009 | UCAR Special Recognition Award                                     |
 | 2014 | UCAR Special Recognition Award                                     |
 * Grants
-| $20,000 | 2016 | Microsoft Azure for Research cloud computing grant |
+| $20,000  | 2016 | Microsoft Azure for Research cloud computing grant | Principal Investigator |
+| $425,000 | 2016 | XSEDE cloud computing research grant               | Allocation Manager     |
 * Conference Presentations
 \fullcite{Chastang2017a}\\
 
@@ -71,6 +71,20 @@ UCAR is the University Corporation for Atmospheric Research located in Boulder, 
 * Teaching Experience
 I instruct yearly at the Unidata summer and fall training workshops.
 * Related Professional Skills
-I specialize in scientific data, metadata, analysis and visualization using a variety of programming languages and technologies.
+I specialize in scientific data, metadata, analysis and visualization using a variety of programming languages and open source technologies.
+* Selected Blog Entries
+\fullcite{Chastang:2014:Online}\\
+
+\fullcite{Chastang:2017a:Online}\\
+
+\fullcite{Chastang:2017b:Online}
+
+* Selected Open Source Repositories
+| Unidata/unidata-python-workshop | [[https://github.com/Unidata/unidata-python-workshop]] |
+| Unidata/online-python-training  | [[https://github.com/Unidata/online-python-training]]  |
+| julienchastang/charts4j         | [[https://github.com/julienchastang/charts4j]]         |
+| Unidata/ldm-docker              | [[https://github.com/Unidata/ldm-docker]]              |
+| Unidata/thredds-docker          | [[https://github.com/Unidata/thredds-docker]]          |
+| Unidata/ramadda-docker          | [[https://github.com/Unidata/ramadda-docker]]          |
 * Languages
 Fluent in English and French
