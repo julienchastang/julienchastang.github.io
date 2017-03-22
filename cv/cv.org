@@ -1,4 +1,4 @@
-# Created 2017-03-22 Wed 02:23
+# Created 2017-03-22 Wed 05:02
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:nil c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:nil e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -21,11 +21,11 @@
 #+LATEX_HEADER: \usepackage[backend=bibtex]{biblatex}
 #+LATEX_HEADER: \bibliography{../../static/julienchastang.bib}
 
-| Unidata Program Center  |
-| UCAR Community Programs |
-| 1850 Table Mesa Drive   |
-| Boulder, CO 80305       |
-| USA                     |
+| Unidata Program Center |
+| UCAR Community Program |
+| 3300 Mitchell Lane     |
+| Boulder, CO 80301      |
+| USA                    |
 * Contact
 | phone       | +1.303.497.2825               |
 | email       | chastang@ucar.edu             |
@@ -84,6 +84,7 @@ I specialize in scientific data, metadata, analysis and visualization using a va
 \fullcite{Chastang:2013:Online}\\
 
 * Selected Open Source Repositories
+| Unidata/xsede-jetstream         | [[https://github.com/Unidata/xsede-jetstream]]         |
 | Unidata/unidata-python-workshop | [[https://github.com/Unidata/unidata-python-workshop]] |
 | Unidata/online-python-training  | [[https://github.com/Unidata/online-python-training]]  |
 | julienchastang/charts4j         | [[https://github.com/julienchastang/charts4j]]         |
