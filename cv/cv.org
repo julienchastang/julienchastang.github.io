@@ -1,4 +1,4 @@
-# Created 2017-03-12 Sun 04:53
+# Created 2017-03-22 Wed 02:23
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:nil c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:nil e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -78,6 +78,10 @@ I specialize in scientific data, metadata, analysis and visualization using a va
 \fullcite{Chastang:2017a:Online}\\
 
 \fullcite{Chastang:2017b:Online}
+
+* Online Videos
+
+\fullcite{Chastang:2013:Online}\\
 
 * Selected Open Source Repositories
 | Unidata/unidata-python-workshop | [[https://github.com/Unidata/unidata-python-workshop]] |
