@@ -1,4 +1,4 @@
-# Created 2017-03-22 Wed 05:02
+# Created 2017-08-15 Tue 22:07
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
 #+OPTIONS: creator:nil d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
 #+OPTIONS: num:nil p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t
@@ -14,10 +14,10 @@
 | Boulder, CO 80301  |
 | USA                |
 * Contact
-| phone       | +1.303.497.2825               |
-| email       | chastang@ucar.edu             |
-| URL         | [[http://julienchastang.com]] |
-| Citizenship | USA and French                |
+| phone       | +1.303.497.2825           |
+| email       | chastang@ucar.edu         |
+| URL         | http://julienchastang.com |
+| Citizenship | USA and French            |
 * Educational Background
 | M. Sc. | University of Colorado | 2000 |
 | B. Sc. | University of Colorado | 1994 |
@@ -42,10 +42,17 @@ UCAR is the University Corporation for Atmospheric Research located in Boulder, 
 | $20,000  | 2016 | Microsoft Azure for Research cloud computing grant | Principal Investigator |
 | $425,000 | 2016 | XSEDE cloud computing research grant               | Allocation Manager     |
 * Conference Presentations
-\fullcite{Chastang2017a}\\
+
+\fullcite{Ramamurthy2017}\\
+
+
+\fullcite{Chastang2017c}\\
 
 
 \fullcite{Chastang2017b}\\
+
+
+\fullcite{Chastang2017a}\\
 
 
 \fullcite{Chastang2016}\\
@@ -71,12 +78,12 @@ I specialize in scientific data, metadata, analysis and visualization using a va
 \fullcite{Chastang:2013:Online}\\
 
 * Selected Open Source Repositories
-| Unidata/xsede-jetstream         | [[https://github.com/Unidata/xsede-jetstream]]         |
-| Unidata/unidata-python-workshop | [[https://github.com/Unidata/unidata-python-workshop]] |
-| Unidata/online-python-training  | [[https://github.com/Unidata/online-python-training]]  |
-| julienchastang/charts4j         | [[https://github.com/julienchastang/charts4j]]         |
-| Unidata/ldm-docker              | [[https://github.com/Unidata/ldm-docker]]              |
-| Unidata/thredds-docker          | [[https://github.com/Unidata/thredds-docker]]          |
-| Unidata/ramadda-docker          | [[https://github.com/Unidata/ramadda-docker]]          |
+| Unidata/xsede-jetstream         | https://github.com/Unidata/xsede-jetstream         |
+| Unidata/unidata-python-workshop | https://github.com/Unidata/unidata-python-workshop |
+| Unidata/online-python-training  | https://github.com/Unidata/online-python-training  |
+| julienchastang/charts4j         | https://github.com/julienchastang/charts4j         |
+| Unidata/ldm-docker              | https://github.com/Unidata/ldm-docker              |
+| Unidata/thredds-docker          | https://github.com/Unidata/thredds-docker          |
+| Unidata/ramadda-docker          | https://github.com/Unidata/ramadda-docker          |
 * Languages
 Fluent in English and French
