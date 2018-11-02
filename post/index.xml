@@ -6,28 +6,18 @@
     <description>Recent content in Posts on  </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 31 Oct 2018 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 02 Nov 2018 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="julienchastang.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Maintaining ssh config with org mode</title>
-      <link>julienchastang.com/post/ssh-config/</link>
-      <pubDate>Wed, 31 Oct 2018 00:00:00 -0600</pubDate>
-      
-      <guid>julienchastang.com/post/ssh-config/</guid>
-      <description>Maintaining ssh config with org mode
-(setq test 42)#+BEGIN_SRC emacs-lisp (setq test 42) #+END_SRC</description>
-    </item>
-    
-    <item>
       <title>Migrating Blog to Hugo</title>
       <link>julienchastang.com/post/blog/</link>
-      <pubDate>Wed, 31 Oct 2018 00:00:00 -0600</pubDate>
+      <pubDate>Fri, 02 Nov 2018 00:00:00 -0600</pubDate>
       
       <guid>julienchastang.com/post/blog/</guid>
-      <description>This is a new blog.</description>
+      <description>Revamping this site. More to come hopefully.</description>
     </item>
     
   </channel>
