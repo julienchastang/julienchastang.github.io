@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on  </title>
+    <link>julienchastang.com/post/</link>
+    <description>Recent content in Posts on  </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 31 Oct 2018 00:00:00 -0600</lastBuildDate>
+    
+	<atom:link href="julienchastang.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Maintaining ssh config with org mode</title>
+      <link>julienchastang.com/post/ssh-config/</link>
+      <pubDate>Wed, 31 Oct 2018 00:00:00 -0600</pubDate>
+      
+      <guid>julienchastang.com/post/ssh-config/</guid>
+      <description>Maintaining ssh config with org mode
+(setq test 42)#+BEGIN_SRC emacs-lisp (setq test 42) #+END_SRC</description>
+    </item>
+    
+    <item>
+      <title>Migrating Blog to Hugo</title>
+      <link>julienchastang.com/post/blog/</link>
+      <pubDate>Wed, 31 Oct 2018 00:00:00 -0600</pubDate>
+      
+      <guid>julienchastang.com/post/blog/</guid>
+      <description>This is a new blog.</description>
+    </item>
+    
+  </channel>
+</rss>

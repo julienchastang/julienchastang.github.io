@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Julien Chastang on  </title>
+    <link>julienchastang.com/</link>
+    <description>Recent content in Julien Chastang on  </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 31 Oct 2018 00:00:00 -0600</lastBuildDate>
+    
+	<atom:link href="julienchastang.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>julienchastang.com/about/</link>
+      <pubDate>Wed, 31 Oct 2018 00:00:00 -0600</pubDate>
+      
+      <guid>julienchastang.com/about/</guid>
+      <description>I am scientific software developer living in beautiful Boulder, Colorado USA. I am passionate about the application of computing technology to science and math. I am currently employed at the Unidata Program Center and have been part of the UCAR organization&amp;nbsp;1 since 1999 when I started here as a student. I specialize in scientific data, metadata, analysis and visualization using a variety of programming languages and technologies.</description>
+    </item>
+    
+    <item>
+      <title>Maintaining ssh config with org mode</title>
+      <link>julienchastang.com/post/ssh-config/</link>
+      <pubDate>Wed, 31 Oct 2018 00:00:00 -0600</pubDate>
+      
+      <guid>julienchastang.com/post/ssh-config/</guid>
+      <description>Maintaining ssh config with org mode
+(setq test 42)#+BEGIN_SRC emacs-lisp (setq test 42) #+END_SRC</description>
+    </item>
+    
+    <item>
+      <title>Migrating Blog to Hugo</title>
+      <link>julienchastang.com/post/blog/</link>
+      <pubDate>Wed, 31 Oct 2018 00:00:00 -0600</pubDate>
+      
+      <guid>julienchastang.com/post/blog/</guid>
+      <description>This is a new blog.</description>
+    </item>
+    
+  </channel>
+</rss>
