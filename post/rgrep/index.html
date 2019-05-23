@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-	<meta name="generator" content="Hugo 0.55.4" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
@@ -10,7 +9,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono" rel="stylesheet">
 
-        <title>Julien Chastang</title>
+        <title>Extending Emacs rgrep for Org Mode Only Search</title>
 
         <link rel="stylesheet" href="/css/stylesheet.css">
     </head>
@@ -27,7 +26,7 @@
 
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="/">Home</a>
+              <a class="nav-item nav-link " href="/">Home</a>
               <a class="nav-item nav-link" href="https://github.com/julienchastang" target="_blank">GitHub</a>
               <a class="nav-item nav-link" href="https://github.com/julienchastang/dotemacs" target="_blank">Emacs</a>
 
@@ -44,44 +43,27 @@
         </section>
 
 
-<section>
-  <ul class="posts_listing">
+<div class="blog-post">
+  <h1>Extending Emacs rgrep for Org Mode Only Search</h1>
+  <div class="blog-post-subheader">
+    <time>23 May 2019</time>
+  </div>
+  <div class="blog-post-content">
+    <p>I recently wanted to extend emacs <code>rgrep</code> to search within org files only. Here is what I came up with:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(<span style="color:#a2f">defun</span> <span style="color:#b8860b">jc/rgrep-org</span> (<span style="color:#b8860b">regexp</span> <span style="color:#b8860b">dir</span>)
+  <span style="color:#b44">&#34;rgrep for org files only&#34;</span>
+  (<span style="color:#a2f">interactive</span>
+   (<span style="color:#a2f">progn</span>
+     (<span style="color:#b8860b">grep-compute-defaults</span>)
+     (<span style="color:#a2f">let*</span> ((<span style="color:#b8860b">regexp</span> (<span style="color:#b8860b">grep-read-regexp</span>))
+            (<span style="color:#b8860b">dir</span> (<span style="color:#b8860b">read-directory-name</span> <span style="color:#b44">&#34;Base directory: &#34;</span>
+                                      <span style="color:#800">nil</span> <span style="color:#b8860b">default-directory</span> <span style="color:#800">t</span>)))
+       (<span style="color:#00a000">list</span> <span style="color:#b8860b">regexp</span> <span style="color:#b8860b">dir</span>))))
+  (<span style="color:#b8860b">rgrep</span> <span style="color:#b8860b">regexp</span> <span style="color:#b44">&#34;*.org&#34;</span> <span style="color:#b8860b">dir</span> <span style="color:#800">nil</span>))</code></pre></div>
+<p>Note that in order to get this <code>jc/rgrep-org</code> function to work, I had to study and borrow from the internals of <code>rgrep</code>. In particular, the <code>interactive</code> form was most inspired  from studying <code>grep.el.gz</code>. <code>M-x find-function rgrep</code> for more details.</p>
 
-    <li>
-      <div class="row" id="posts">
-        <div class="d-none d-sm-block col-sm-3 date-time-title">
-          <time>23 May 2019</time>
-        </div>
-        <div class="col-sm date-time-title post">
-          <a href="/post/rgrep/">Extending Emacs rgrep for Org Mode Only Search</a>
-        </div>
-      </div>
-    </li>
-
-    <li>
-      <div class="row" id="posts">
-        <div class="d-none d-sm-block col-sm-3 date-time-title">
-          <time>01 May 2019</time>
-        </div>
-        <div class="col-sm date-time-title post">
-          <a href="/post/x11/">Installing X11 Emacs with homebrew</a>
-        </div>
-      </div>
-    </li>
-
-    <li>
-      <div class="row" id="posts">
-        <div class="d-none d-sm-block col-sm-3 date-time-title">
-          <time>02 Nov 2018</time>
-        </div>
-        <div class="col-sm date-time-title post">
-          <a href="/post/blog/">Migrating Blog to Hugo</a>
-        </div>
-      </div>
-    </li>
-
-  </ul>
-</section>
+  </div>
+</div>
 
       <footer>
         <hr>
