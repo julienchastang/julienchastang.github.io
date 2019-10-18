@@ -12,6 +12,15 @@
 
 
     <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Fri, 18 Oct 2019 00:00:00 -0600</pubDate>
+
+      <guid>/about/</guid>
+      <description>me  I am scientific software developer living in beautiful Boulder, Colorado USA. I am passionate about the application of computing technology to science and math. I am currently employed at the Unidata Program Center and have been part of the UCAR organization&amp;nbsp;1 since 1999 when I started here as a student. I specialize in scientific data, metadata, analysis and visualization using a variety of programming languages and technologies.</description>
+    </item>
+
+    <item>
       <title>Join lines, vi-style in Emacs</title>
       <link>/post/join-lines/</link>
       <pubDate>Fri, 18 Oct 2019 00:00:00 -0600</pubDate>
@@ -39,15 +48,6 @@
       <description>A while back it was decided that X11 support would be removed from homebrew-core. Taking matters into my own hands and in the spirit of OSS, I now maintain my own version for anyone who wants it. On MacOS, you will find homebrew-core in /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core.
 Once you have the fork brew reinstall emacs --with-x11.
 I only occasionally maintain that branch so if you want something more up-to-date, be sure to rebase against homebrew-core/master.</description>
-    </item>
-
-    <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Fri, 02 Nov 2018 00:00:00 -0600</pubDate>
-
-      <guid>/about/</guid>
-      <description>I am scientific software developer living in beautiful Boulder, Colorado USA. I am passionate about the application of computing technology to science and math. I am currently employed at the Unidata Program Center and have been part of the UCAR organization&amp;nbsp;1 since 1999 when I started here as a student. I specialize in scientific data, metadata, analysis and visualization using a variety of programming languages and technologies.</description>
     </item>
 
     <item>
