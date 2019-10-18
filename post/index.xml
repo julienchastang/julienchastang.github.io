@@ -6,10 +6,19 @@
     <description>Recent content in Posts on  </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 May 2019 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 18 Oct 2019 00:00:00 -0600</lastBuildDate>
 
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
 
+
+    <item>
+      <title>Join lines, vi-style in Emacs</title>
+      <link>/post/join-lines/</link>
+      <pubDate>Fri, 18 Oct 2019 00:00:00 -0600</pubDate>
+
+      <guid>/post/join-lines/</guid>
+      <description>I mostly edit in Emacs but occasionally I like to use vi. vi is often the only editor available in certain computing environments. In Emacs, I find myself missing vi&amp;rsquo;s join line capability. Emacs&amp;rsquo; closest equivalent is M-^ or the unintuitively named delete-indentation function. M-^ is awkward in that it joins the current line to the previous line. This behavior feels unnatural especially when joining many lines in succession where you have to go to the end of the block you want to join and repeatedly type M-^.</description>
+    </item>
 
     <item>
       <title>Extending Emacs rgrep for Org Mode Only Search</title>

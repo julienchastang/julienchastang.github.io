@@ -6,10 +6,19 @@
     <description>Recent content in Julien Chastang on  </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 May 2019 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 18 Oct 2019 00:00:00 -0600</lastBuildDate>
 
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
 
+
+    <item>
+      <title>Join lines, vi-style in Emacs</title>
+      <link>/post/join-lines/</link>
+      <pubDate>Fri, 18 Oct 2019 00:00:00 -0600</pubDate>
+
+      <guid>/post/join-lines/</guid>
+      <description>I mostly edit in Emacs but occasionally I like to use vi. vi is often the only editor available in certain computing environments. In Emacs, I find myself missing vi&amp;rsquo;s join line capability. Emacs&amp;rsquo; closest equivalent is M-^ or the unintuitively named delete-indentation function. M-^ is awkward in that it joins the current line to the previous line. This behavior feels unnatural especially when joining many lines in succession where you have to go to the end of the block you want to join and repeatedly type M-^.</description>
+    </item>
 
     <item>
       <title>Extending Emacs rgrep for Org Mode Only Search</title>
@@ -48,16 +57,6 @@ I only occasionally maintain that branch so if you want something more up-to-dat
 
       <guid>/post/blog/</guid>
       <description>Revamping this site. More to come hopefully.</description>
-    </item>
-
-    <item>
-      <title>Blog</title>
-      <link>/blog/blog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-
-      <guid>/blog/blog/</guid>
-      <description>Maintaining X11 At some point, the homebrew project decided they did not want any X11 dependencies in the core.
-Migrating Blog to Hugo Revamping this site. More to come hopefully.</description>
     </item>
 
   </channel>
