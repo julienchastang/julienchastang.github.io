@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Julien Chastang on  </title>
-    <link>/</link>
-    <description>Recent content in Julien Chastang on  </description>
+    <title>Julien Chastang on julienchastang</title>
+    <link>https://julienchastang.com/</link>
+    <description>Recent content in Julien Chastang on julienchastang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 18 Oct 2019 00:00:00 -0600</lastBuildDate>
 
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://julienchastang.com/index.xml" rel="self" type="application/rss+xml" />
 
 
     <item>
       <title>About</title>
-      <link>/about/</link>
+      <link>https://julienchastang.com/about/</link>
       <pubDate>Fri, 18 Oct 2019 00:00:00 -0600</pubDate>
 
-      <guid>/about/</guid>
+      <guid>https://julienchastang.com/about/</guid>
       <description>me  I am scientific software developer living in beautiful Boulder, Colorado USA. I am passionate about the application of computing technology to science and math. I am currently employed at the Unidata Program Center and have been part of the UCAR organization&amp;nbsp;1 since 1999 when I started here as a student. I specialize in scientific data, metadata, analysis and visualization using a variety of programming languages and technologies.</description>
     </item>
 
     <item>
       <title>Join lines, vi-style in Emacs</title>
-      <link>/post/join-lines/</link>
+      <link>https://julienchastang.com/post/join-lines/</link>
       <pubDate>Fri, 18 Oct 2019 00:00:00 -0600</pubDate>
 
-      <guid>/post/join-lines/</guid>
+      <guid>https://julienchastang.com/post/join-lines/</guid>
       <description>I mostly edit in Emacs but occasionally I like to use vi. vi is often the only editor available in certain computing environments. In Emacs, I find myself missing vi&amp;rsquo;s join line capability. Emacs&amp;rsquo; closest equivalent is M-^ or the unintuitively named delete-indentation function. M-^ is awkward in that it joins the current line to the previous line. This behavior feels unnatural especially when joining many lines in succession where you have to go to the end of the block you want to join and repeatedly type M-^.</description>
     </item>
 
     <item>
       <title>Extending Emacs rgrep for Org Mode Only Search</title>
-      <link>/post/rgrep/</link>
+      <link>https://julienchastang.com/post/rgrep/</link>
       <pubDate>Thu, 23 May 2019 00:00:00 -0600</pubDate>
 
-      <guid>/post/rgrep/</guid>
+      <guid>https://julienchastang.com/post/rgrep/</guid>
       <description>I recently wanted to extend emacs rgrep to search within org files only. Here is what I came up with:
 (defun jc/rgrep-org (regexp dir) &amp;#34;rgrep for org files only&amp;#34; (interactive (progn (grep-compute-defaults) (let* ((regexp (grep-read-regexp)) (dir (read-directory-name &amp;#34;Base directory: &amp;#34; nil default-directory t))) (list regexp dir)))) (rgrep regexp &amp;#34;*.org&amp;#34; dir nil)) Note that in order to get this jc/rgrep-org function to work, I had to study and borrow from the internals of rgrep.</description>
     </item>
 
     <item>
       <title>Installing X11 Emacs with homebrew</title>
-      <link>/post/x11/</link>
+      <link>https://julienchastang.com/post/x11/</link>
       <pubDate>Wed, 01 May 2019 00:00:00 -0600</pubDate>
 
-      <guid>/post/x11/</guid>
+      <guid>https://julienchastang.com/post/x11/</guid>
       <description>A while back it was decided that X11 support would be removed from homebrew-core. Taking matters into my own hands and in the spirit of OSS, I now maintain my own version for anyone who wants it. On MacOS, you will find homebrew-core in /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core.
 Once you have the fork brew reinstall emacs --with-x11.
 I only occasionally maintain that branch so if you want something more up-to-date, be sure to rebase against homebrew-core/master.</description>
@@ -52,10 +52,10 @@ I only occasionally maintain that branch so if you want something more up-to-dat
 
     <item>
       <title>Migrating Blog to Hugo</title>
-      <link>/post/blog/</link>
+      <link>https://julienchastang.com/post/blog/</link>
       <pubDate>Fri, 02 Nov 2018 00:00:00 -0600</pubDate>
 
-      <guid>/post/blog/</guid>
+      <guid>https://julienchastang.com/post/blog/</guid>
       <description>Revamping this site. More to come hopefully.</description>
     </item>
 
