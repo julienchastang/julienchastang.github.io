@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Extending Emacs rgrep for Org Mode Only Search | julienchastang</title>
+    <title>Books I Read in 2019 | julienchastang</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/fonts.css" />
 
@@ -54,9 +54,9 @@
     <br/>
 
 <div class="article-meta">
-<h1><span class="title">Extending Emacs rgrep for Org Mode Only Search</span></h1>
+<h1><span class="title">Books I Read in 2019</span></h1>
 
-<h2 class="date">2019/05/23</h2>
+<h2 class="date">2019/12/28</h2>
 <p class="terms">
 
 
@@ -69,19 +69,27 @@
 
 
 <main>
-<p>I recently wanted to extend emacs <code>rgrep</code> to search within org files only. Here is what I came up with:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(<span style="color:#a2f">defun</span> <span style="color:#b8860b">jc/rgrep-org</span> (<span style="color:#b8860b">regexp</span> <span style="color:#b8860b">dir</span>)
-  <span style="color:#b44">&#34;</span><span style="color:#b44">rgrep for org files only</span><span style="color:#b44">&#34;</span>
-  (<span style="color:#a2f">interactive</span>
-   (<span style="color:#a2f">progn</span>
-     (<span style="color:#b8860b">grep-compute-defaults</span>)
-     (<span style="color:#a2f">let*</span> ((<span style="color:#b8860b">regexp</span> (<span style="color:#b8860b">grep-read-regexp</span>))
-            (<span style="color:#b8860b">dir</span> (<span style="color:#b8860b">read-directory-name</span> <span style="color:#b44">&#34;</span><span style="color:#b44">Base directory: </span><span style="color:#b44">&#34;</span>
-                                      <span style="color:#800">nil</span> <span style="color:#b8860b">default-directory</span> <span style="color:#800">t</span>)))
-       (<span style="color:#00a000">list</span> <span style="color:#b8860b">regexp</span> <span style="color:#b8860b">dir</span>))))
-  (<span style="color:#b8860b">rgrep</span> <span style="color:#b8860b">regexp</span> <span style="color:#b44">&#34;</span><span style="color:#b44">*.org</span><span style="color:#b44">&#34;</span> <span style="color:#b8860b">dir</span> <span style="color:#800">nil</span>))
-</code></pre></div><p>Note that in order to get this <code>jc/rgrep-org</code> function to work, I had to study and borrow from the internals of <code>rgrep</code>. In particular, the <code>interactive</code> form was most inspired  from studying <code>grep.el.gz</code>.</p>
-<p><code>M-x find-function rgrep</code> for more details.</p>
+<ul>
+<li><strong>Ishi, Last of His Tribe</strong> by Theodora Kroeber</li>
+<li><strong>Ancient Walls: Indian Ruins of the Southwest</strong> by Chuck Place</li>
+<li>Very Short Introductions (Oxford University Press):
+<ul>
+<li><strong>Anthropocene</strong> by Erle C. Ellis</li>
+<li><strong>The Scientific Revolution</strong> by Lawrence M. Principe</li>
+<li><strong>Galaxies</strong> by John Gribbin</li>
+<li><strong>Voltaire</strong> by Nicholas Cronk</li>
+</ul>
+</li>
+<li>French Literature
+<ul>
+<li><strong>Bel Ami</strong> by Guy De Maupassant</li>
+<li><strong>Une Vie</strong> by Guy De Maupassant</li>
+<li><strong>Les Miserables</strong> (Tomes I-V, ~2000 pages!) by Victor Hugo</li>
+<li><strong>Notre Dame de Paris</strong> by Victor Hugo</li>
+<li><strong>Vingt Mille Lieues Sous Les Mers</strong> by Jules Verne</li>
+</ul>
+</li>
+</ul>
 
 </main>
 

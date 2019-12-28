@@ -1,6 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://julienchastang.com/post/books-2019/</loc>
+    <lastmod>2019-12-28T00:00:00-07:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://julienchastang.com/</loc>
+    <lastmod>2019-12-28T00:00:00-07:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://julienchastang.com/post/</loc>
+    <lastmod>2019-12-28T00:00:00-07:00</lastmod>
+  </url>
 
   <url>
     <loc>https://julienchastang.com/about/</loc>
@@ -9,16 +24,6 @@
 
   <url>
     <loc>https://julienchastang.com/post/join-lines/</loc>
-    <lastmod>2019-10-18T00:00:00-06:00</lastmod>
-  </url>
-
-  <url>
-    <loc>https://julienchastang.com/</loc>
-    <lastmod>2019-10-18T00:00:00-06:00</lastmod>
-  </url>
-
-  <url>
-    <loc>https://julienchastang.com/post/</loc>
     <lastmod>2019-10-18T00:00:00-06:00</lastmod>
   </url>
 
