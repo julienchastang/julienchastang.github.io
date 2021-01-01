@@ -3,17 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://julienchastang.com/post/books-2019/</loc>
-    <lastmod>2019-12-28T00:00:00-07:00</lastmod>
+    <loc>https://julienchastang.com/post/books-2020/</loc>
+    <lastmod>2020-12-31T00:00:00-07:00</lastmod>
   </url>
 
   <url>
     <loc>https://julienchastang.com/</loc>
-    <lastmod>2019-12-28T00:00:00-07:00</lastmod>
+    <lastmod>2020-12-31T00:00:00-07:00</lastmod>
   </url>
 
   <url>
     <loc>https://julienchastang.com/post/</loc>
+    <lastmod>2020-12-31T00:00:00-07:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://julienchastang.com/post/books-2019/</loc>
     <lastmod>2019-12-28T00:00:00-07:00</lastmod>
   </url>
 
