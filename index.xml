@@ -6,7 +6,17 @@
     <description>Recent content in Julien Chastang on julienchastang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 -0700</lastBuildDate><atom:link href="https://julienchastang.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Sep 2021 00:00:00 -0600</lastBuildDate><atom:link href="https://julienchastang.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>For Security Purposes, Regularly Expunge Your macOS Clipboard</title>
+      <link>https://julienchastang.com/post/pbcopy/</link>
+      <pubDate>Sun, 19 Sep 2021 00:00:00 -0600</pubDate>
+
+      <guid>https://julienchastang.com/post/pbcopy/</guid>
+      <description>I was recently surprised to find some sensitive information in my macOS clipboard that I must have unintentionally copied there earlier. This information could accidentally leak out as a result of an unfortunate or inadvertent paste in a shared Google Doc, for example. Moreover, there is an abundance of information on the Internet concerning clipboards as hacking attack vectors.
+As result, I have added the following entry to my crontab:</description>
+    </item>
+
     <item>
       <title>Books I Read in 2020</title>
       <link>https://julienchastang.com/post/books-2020/</link>
