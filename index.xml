@@ -6,7 +6,18 @@
     <description>Recent content in Julien Chastang on julienchastang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Sep 2021 00:00:00 -0600</lastBuildDate><atom:link href="https://julienchastang.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Oct 2021 00:00:00 -0600</lastBuildDate><atom:link href="https://julienchastang.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Update: Installing X11 Emacs with homebrew</title>
+      <link>https://julienchastang.com/post/x11-update/</link>
+      <pubDate>Mon, 04 Oct 2021 00:00:00 -0600</pubDate>
+
+      <guid>https://julienchastang.com/post/x11-update/</guid>
+      <description>In 2019, I wrote about maintaining my own homebrew formula for X11 emacs. I continue to maintain this bit of code from time to time. Moreover, homebrew no longer support &amp;lsquo;with&amp;rsquo; style options (e.g., --with-x11 ) so the installation command has changed:
+brew reinstall --build-from-source emacs
+You will find homebrew-core in /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core. Once you have my homebrew GitHub fork, run that command to install X11 emacs. There are no additional options with that command.</description>
+    </item>
+
     <item>
       <title>For Security Purposes, Regularly Expunge Your macOS Clipboard</title>
       <link>https://julienchastang.com/post/pbcopy/</link>
@@ -61,9 +72,9 @@ As a result, I have added the following entry to my crontab:</description>
       <pubDate>Wed, 01 May 2019 00:00:00 -0600</pubDate>
 
       <guid>https://julienchastang.com/post/x11/</guid>
-      <description>A while back it was decided that X11 support would be removed from homebrew-core. Taking matters into my own hands and in the spirit of OSS, I now maintain my own version for anyone who wants it. On MacOS, you will find homebrew-core in /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core.
-Once you have the fork brew reinstall emacs --with-x11.
-I only occasionally maintain that branch so if you want something more up-to-date, be sure to rebase against homebrew-core/master.</description>
+      <description>Edit: As of &amp;lt;2021-10-01 Fri&amp;gt;, this post is out of date. Please see here for updated instructions.
+A while back it was decided that X11 support would be removed from homebrew-core. Taking matters into my own hands and in the spirit of OSS, I now maintain my own version for anyone who wants it. On MacOS, you will find homebrew-core in /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core.
+Once you have the fork brew reinstall emacs --with-x11.</description>
     </item>
 
     <item>

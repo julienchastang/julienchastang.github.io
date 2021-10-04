@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Posts | julienchastang</title>
+    <title>Update: Installing X11 Emacs with homebrew | julienchastang</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/fonts.css" />
 
@@ -53,58 +53,27 @@
   <body>
     <br/>
 
+<div class="article-meta">
+<h1><span class="title">Update: Installing X11 Emacs with homebrew</span></h1>
 
-
-<h1>Posts</h1>
-
-
-
-
-<ul>
+<h2 class="date">2021/10/04</h2>
+<p class="terms">
 
 
 
-  <li>
-    <span class="date">2021/10/04</span>
-    <a href="/post/x11-update/">Update: Installing X11 Emacs with homebrew</a>
-  </li>
 
-  <li>
-    <span class="date">2021/09/19</span>
-    <a href="/post/pbcopy/">For Security Purposes, Regularly Expunge Your macOS Clipboard</a>
-  </li>
 
-  <li>
-    <span class="date">2020/12/31</span>
-    <a href="/post/books-2020/">Books I Read in 2020</a>
-  </li>
+</p>
+</div>
 
-  <li>
-    <span class="date">2019/12/28</span>
-    <a href="/post/books-2019/">Books I Read in 2019</a>
-  </li>
 
-  <li>
-    <span class="date">2019/10/18</span>
-    <a href="/post/join-lines/">Join lines, vi-style in Emacs</a>
-  </li>
 
-  <li>
-    <span class="date">2019/05/23</span>
-    <a href="/post/rgrep/">Extending Emacs rgrep for Org Mode Only Search</a>
-  </li>
+<main>
+<p>In 2019, <a href="https://julienchastang.com/post/x11/">I wrote about maintaining my own homebrew formula for X11 emacs</a>. <a href="https://github.com/julienchastang/homebrew-core/tree/x11emacs">I continue to maintain this bit of code from time to time</a>. Moreover, <a href="https://github.com/Homebrew/homebrew-core/issues/31510">homebrew no longer support &lsquo;with&rsquo; style options</a> (e.g., <code>--with-x11</code> ) so the installation command has changed:</p>
+<p><code>brew reinstall --build-from-source emacs</code></p>
+<p>You will find homebrew-core in <code>/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core</code>. Once you have <a href="https://github.com/julienchastang/homebrew-core/tree/x11emacs">my homebrew GitHub fork</a>, run that command to install X11 emacs. There are no additional options with that command. X11 emacs is all you get.</p>
 
-  <li>
-    <span class="date">2019/05/01</span>
-    <a href="/post/x11/">Installing X11 Emacs with homebrew</a>
-  </li>
-
-  <li>
-    <span class="date">2018/11/02</span>
-    <a href="/post/blog/">Migrating Blog to Hugo</a>
-  </li>
-
-</ul>
+</main>
 
     <footer>
 

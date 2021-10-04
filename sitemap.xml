@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://julienchastang.com/post/pbcopy/</loc>
-    <lastmod>2021-09-19T00:00:00-06:00</lastmod>
-  </url><url>
     <loc>https://julienchastang.com/</loc>
-    <lastmod>2021-09-19T00:00:00-06:00</lastmod>
+    <lastmod>2021-10-04T00:00:00-06:00</lastmod>
   </url><url>
     <loc>https://julienchastang.com/post/</loc>
+    <lastmod>2021-10-04T00:00:00-06:00</lastmod>
+  </url><url>
+    <loc>https://julienchastang.com/post/x11-update/</loc>
+    <lastmod>2021-10-04T00:00:00-06:00</lastmod>
+  </url><url>
+    <loc>https://julienchastang.com/post/pbcopy/</loc>
     <lastmod>2021-09-19T00:00:00-06:00</lastmod>
   </url><url>
     <loc>https://julienchastang.com/post/books-2020/</loc>
