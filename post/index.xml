@@ -72,7 +72,7 @@ As a result, I have added the following entry to my crontab:</description>
       <pubDate>Wed, 01 May 2019 00:00:00 -0600</pubDate>
 
       <guid>https://julienchastang.com/post/x11/</guid>
-      <description>Edit: As of &amp;lt;2021-10-01 Fri&amp;gt;, this post is out of date. Please see here for updated instructions.
+      <description>Edit: As of &amp;lt;2021-10-04 Mon&amp;gt;, this post is out of date. Please see here for updated instructions.
 A while back it was decided that X11 support would be removed from homebrew-core. Taking matters into my own hands and in the spirit of OSS, I now maintain my own version for anyone who wants it. On MacOS, you will find homebrew-core in /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core.
 Once you have the fork brew reinstall emacs --with-x11.</description>
     </item>
