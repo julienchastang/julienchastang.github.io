@@ -6,7 +6,17 @@
     <description>Recent content in Julien Chastang on julienchastang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 31 Dec 2021 00:00:00 -0700</lastBuildDate><atom:link href="https://julienchastang.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Dec 2022 00:00:00 -0700</lastBuildDate><atom:link href="https://julienchastang.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Books I Read in 2022</title>
+      <link>https://julienchastang.com/post/books-2022/</link>
+      <pubDate>Sat, 31 Dec 2022 00:00:00 -0700</pubDate>
+
+      <guid>https://julienchastang.com/post/books-2022/</guid>
+      <description>The books I read in 2022:
+The Picture of Dorian Gray by Oscar Wilde On the Road by Jack Kerouac Littérature française: Les Trois Mousquetaires by Alexandre Dumas La Guerre de Cent Ans by Jean Favier Yet another poor year for not completing many books though in my own defense a couple of them were quite long. Hopefully, 2023 will be better in the reading category.</description>
+    </item>
+
     <item>
       <title>Books I Read in 2021</title>
       <link>https://julienchastang.com/post/books-2021/</link>
@@ -14,7 +24,7 @@
 
       <guid>https://julienchastang.com/post/books-2021/</guid>
       <description>The books I read in 2021:
- Eclipse: The Celestial Phenomenon That Changed the Course of History by Duncan Steel Cryptography: A Very Short Introduction by Fred C. Piper, Sean Murphy The Measure of All Things: The Seven-Year Odyssey and Hidden Error That Transformed the World by Ken Alder Littérature française:  Le Misanthrope by Molière Le Malade imaginaire by Molière L&amp;rsquo;Avare by Molière La Horla by Guy de Maupassant La géographie de la France by Gérard Labrune Germinal by Émile Zola Petite Histoire de France by Jacques Bainville    I had hoped to read more books in 2021 though I am in the middle of a few others that I was not able to complete this year.</description>
+Eclipse: The Celestial Phenomenon That Changed the Course of History by Duncan Steel Cryptography: A Very Short Introduction by Fred C. Piper, Sean Murphy The Measure of All Things: The Seven-Year Odyssey and Hidden Error That Transformed the World by Ken Alder Littérature française: Le Misanthrope by Molière Le Malade imaginaire by Molière L&amp;rsquo;Avare by Molière La Horla by Guy de Maupassant La géographie de la France by Gérard Labrune Germinal by Émile Zola Petite Histoire de France by Jacques Bainville I had hoped to read more books in 2021 though I am in the middle of a few others that I was not able to complete this year.</description>
     </item>
 
     <item>
@@ -45,7 +55,7 @@ As a result, I have added the following entry to my crontab:</description>
 
       <guid>https://julienchastang.com/post/books-2020/</guid>
       <description>2020 was not quite the year I had hoped for in terms of reading or blogging. Anyway, here is my reading list for the last year:
- The Snowflake by Kenneth Libbrecht The Columbian Exchange: Biological and Cultural Consequences of 1492 by Alfred W. Crosby Matilda by Roald Dahl (I read a French translation of this book with my daughter.) Littérature française  Le Comte de Monte-Cristo (~1500 pages!) by Alexandre Dumas Les Liaisons Dangereuses by Pierre Choderlos de Laclos Le Père Goriot by Honoré de Balzac La Chartreuse de Parme by Stendhal    Let&amp;rsquo;s hope life can get back to normal in 2021.</description>
+The Snowflake by Kenneth Libbrecht The Columbian Exchange: Biological and Cultural Consequences of 1492 by Alfred W. Crosby Matilda by Roald Dahl (I read a French translation of this book with my daughter.) Littérature française Le Comte de Monte-Cristo (~1500 pages!) by Alexandre Dumas Les Liaisons Dangereuses by Pierre Choderlos de Laclos Le Père Goriot by Honoré de Balzac La Chartreuse de Parme by Stendhal Let&amp;rsquo;s hope life can get back to normal in 2021.</description>
     </item>
 
     <item>
@@ -54,7 +64,7 @@ As a result, I have added the following entry to my crontab:</description>
       <pubDate>Sat, 28 Dec 2019 00:00:00 -0700</pubDate>
 
       <guid>https://julienchastang.com/post/books-2019/</guid>
-      <description> Ishi, Last of His Tribe by Theodora Kroeber Ancient Walls: Indian Ruins of the Southwest by Chuck Place Very Short Introductions (Oxford University Press):  Anthropocene by Erle C. Ellis The Scientific Revolution by Lawrence M. Principe Galaxies by John Gribbin Voltaire by Nicholas Cronk   French Literature  Bel Ami by Guy De Maupassant Une Vie by Guy De Maupassant Les Miserables (Tomes I-V, ~2000 pages!) by Victor Hugo Notre Dame de Paris by Victor Hugo Vingt Mille Lieues Sous Les Mers by Jules Verne    </description>
+      <description> Ishi, Last of His Tribe by Theodora Kroeber Ancient Walls: Indian Ruins of the Southwest by Chuck Place Very Short Introductions (Oxford University Press): Anthropocene by Erle C. Ellis The Scientific Revolution by Lawrence M. Principe Galaxies by John Gribbin Voltaire by Nicholas Cronk French Literature Bel Ami by Guy De Maupassant Une Vie by Guy De Maupassant Les Miserables (Tomes I-V, ~2000 pages!) by Victor Hugo Notre Dame de Paris by Victor Hugo Vingt Mille Lieues Sous Les Mers by Jules Verne </description>
     </item>
 
     <item>
@@ -63,7 +73,7 @@ As a result, I have added the following entry to my crontab:</description>
       <pubDate>Fri, 18 Oct 2019 00:00:00 -0600</pubDate>
 
       <guid>https://julienchastang.com/post/join-lines/</guid>
-      <description>I mostly edit in Emacs but occasionally I like to use vi. vi is often the only editor available in certain computing environments. In Emacs, I find myself missing vi&amp;rsquo;s join line capability. Emacs&#39; closest equivalent is M-^ or the unintuitively named delete-indentation function. M-^ is awkward in that it joins the current line to the previous line. This behavior feels unnatural especially when joining many lines in succession where you have to go to the end of the block you want to join and repeatedly type M-^.</description>
+      <description>I mostly edit in Emacs but occasionally I like to use vi. vi is often the only editor available in certain computing environments. In Emacs, I find myself missing vi&amp;rsquo;s join line capability. Emacs&amp;rsquo; closest equivalent is M-^ or the unintuitively named delete-indentation function. M-^ is awkward in that it joins the current line to the previous line. This behavior feels unnatural especially when joining many lines in succession where you have to go to the end of the block you want to join and repeatedly type M-^.</description>
     </item>
 
     <item>
@@ -102,7 +112,7 @@ Once you have the fork brew reinstall emacs --with-x11.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
 
       <guid>https://julienchastang.com/about/</guid>
-      <description>me  I am scientific software developer living in beautiful Boulder, Colorado USA. I am passionate about the application of computing technology to science and math. I am currently employed at the Unidata Program Center and have been part of the UCAR organization 1 since 1999 when I started here as a student. I specialize in scientific data, metadata, analysis and visualization using a variety of programming languages and technologies.</description>
+      <description>me I am scientific software developer living in beautiful Boulder, Colorado USA. I am passionate about the application of computing technology to science and math. I am currently employed at the Unidata Program Center and have been part of the UCAR organization 1 since 1999 when I started here as a student. I specialize in scientific data, metadata, analysis and visualization using a variety of programming languages and technologies. I am also an emacs enthusiast.</description>
     </item>
 
   </channel>
